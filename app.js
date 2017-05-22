@@ -2,6 +2,10 @@ var express = require('express');
 var path = require('path');
 var favicon = require('serve-favicon');
 
+var conf = require('nconf').file({ file: path.join(__dirname, '/config/_conf.json') });
+
+console.log('conf : ' + conf.get('database:host'));
+
 var index = require('./routes/index');
 var users = require('./routes/users');
 

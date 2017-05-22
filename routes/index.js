@@ -3,7 +3,8 @@ const router = express.Router();
 
 /* GET home page. */
 router.get('/', function(req, res, next) {
-    log.warning('COUCOU');
+    console.log('ok');
+    // console.log('conf2 : ' + conf.get('database:host'));
     res.render('index.html.twig', { title: 'Express' });
 });
 
