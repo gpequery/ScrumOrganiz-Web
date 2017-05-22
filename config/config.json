@@ -7,17 +7,17 @@
     "dialect": "mysql"
   },
   "test": {
-    "username": "root",
-    "password": null,
-    "database": "database_test",
-    "host": "127.0.0.1",
+    "username": "scrum",
+    "password": "ScrumRpz",
+    "database": "scrum_organize",
+    "host": "mysql-scrum.alwaysdata.net",
     "dialect": "mysql"
   },
   "production": {
-    "username": "root",
-    "password": null,
-    "database": "database_production",
-    "host": "127.0.0.1",
+    "username": "scrum",
+    "password": "ScrumRpz",
+    "database": "scrum_organize",
+    "host": "mysql-scrum.alwaysdata.net",
     "dialect": "mysql"
   }
 }
