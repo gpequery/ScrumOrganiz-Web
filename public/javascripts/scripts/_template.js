@@ -1,0 +1,3 @@
+$j(function() {
+  alert('GOOOD');
+});
