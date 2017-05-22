@@ -5,7 +5,7 @@ const router = express.Router();
 router.get('/', function(req, res, next) {
     console.log('ok');
     // console.log('conf2 : ' + conf.get('database:host'));
-    res.render('index.html.twig', { title: 'Express' });
+    res.render('home/home.html.twig', { title: 'Express' });
 });
 
 module.exports = router;
