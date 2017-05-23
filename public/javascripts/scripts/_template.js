@@ -1,3 +1,3 @@
-$j(function() {
-  alert('GOOOD');
+$j(function () {
+
 });
