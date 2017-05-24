@@ -2,14 +2,12 @@ var express = require('express');
 var path = require('path');
 var favicon = require('serve-favicon');
 
-//var conf = require('nconf').file({ file: path.join(__dirname, '/config/_conf.json') });
-
 var index = require('./routes/index');
 var users = require('./routes/users');
 
 var models = require('./models');
-// models.sequelize.sync();
-models.sequelize.sync({'force': 'true'});
+models.sequelize.sync();
+// models.sequelize.sync({'force': 'true'});
 
 var app = express();
 

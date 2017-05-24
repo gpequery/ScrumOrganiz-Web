@@ -1,0 +1,71 @@
+body {
+    margin: 0;
+    header {
+        background-color: $color-corportate-light;
+        position: fixed;
+        left: 0;
+        top: 0;
+        width: 100%;
+        height: 94px;
+
+        .logo,
+        .input {
+            display: inline-block;
+            width: 49.5%;
+
+            img {
+                width: 300px;
+                vertical-align: middle;
+                padding: 10px 20px;
+                margin-top: -2px;
+            }
+
+            input {
+                width:20%;
+                vertical-align: middle;
+                height: 40px;
+                box-shadow: 3px 2px 5px black;
+                &:first-child {
+                    margin-right: 20px;
+                    font-weight: normal;
+                }
+            }
+        }
+
+        .input {
+            text-align: right;
+        }
+    }
+
+    .homeContent {
+        text-align: center;
+        margin-top: 94px;
+
+        .whatsScrum {
+            color: $color-corportate-dark;
+        }
+
+        .desktopApi {
+            background-color: $color-corportate-two;
+            color: $color-corportate-white;
+            padding-bottom: 20px;
+
+            div {
+                button {
+                    display: block;
+                    color: $color-corportate-white;
+                    background-color: $color-corportate-tree;
+                    height: 40px;
+                    margin-top: 20px;
+
+                }
+
+                button:before {
+                    font-family: 'scrum-font';
+                    content: $font-download;
+                }
+            }
+        }
+    }
+}
+

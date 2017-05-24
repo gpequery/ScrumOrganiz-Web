@@ -1,6 +1,30 @@
 {% include '../includes/header.html.twig' %}
 
-        <h1>Titre</h1>
+        <header>
+            <div class='logo'>
+                <img src="/images/logo/logo-horizontal.png"/>
+            </div>
+            <div class='input'>
+                <input class='gray navigate' data-url='/login' type='submit' value='Se connecter'/>
+                <input class='green navigate' data-url='/signup' type='submit' value='Créer un compte'/>
+            </div>
+        </header>
+
+        <div class="homeContent">
+            <div class='whatsScrum'>
+                <h1>ScrumOrganiz</h1>
+                <div>
+                    C'est ...
+                </div>
+            </div>
+            <div class='desktopApi'>
+                <h1>Avez-vous l'application desktop ?</h1>
+                <div>
+                    Elle permet ...
+                    <button>Télécharger</button>
+                </div>
+            </div>
+        </div>
 
 
 {% include '../includes/footer.html.twig' %}
