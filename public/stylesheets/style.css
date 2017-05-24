@@ -1,3 +1,15 @@
-h1 {
-    color: blue;
-}
+input { display: inline-block; margin: auto; font-size: 16px; border: none; border-radius: 5px; height: 30px; cursor: pointer; }
+
+input.gray:hover { background-color: #5bc0de; border-color: #46b8da; }
+
+input.green { color: #fff; background-color: #5cb85c; border-color: #4cae4c; }
+
+input.green:hover { color: #fff; background-color: #449d44; border-color: #398439; }
+
+header { background-color: #dddddd; position: fixed; left: 0; top: 0; width: 100%; }
+header .logo, header .input { display: inline-block; width: 49.5%; }
+header .logo img, header .input img { width: 300px; vertical-align: middle; padding: 10px 20px; margin-top: -2px; }
+header .logo input, header .input input { width: 20%; vertical-align: middle; height: 40px; box-shadow: 3px 2px 5px black; }
+header .logo input:first-child, header .input input:first-child { margin-right: 20px; }
+header .logo input.green, header .input input.green { font-weight: bold; }
+header .input { text-align: right; }
