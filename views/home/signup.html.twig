@@ -1,0 +1,31 @@
+{% include '../includes/header.html.twig' %}
+
+    <header>
+        <div class='logo navigate' data-url='/'>
+            <img src="/images/logo/logo-horizontal.png"/>
+        </div>
+    </header>
+
+    <div class='signupcontent'>
+        <h1>Inscription</h1>
+        <form method='post' action='#'>
+            <label for='pseudo'>Pseudo</label>
+            <input type='text' name='pseudo' placeholder='ex : gpequery'/>
+
+            <label for='email'>E-mail</label>
+            <input type='email' name='email' placeholder='ex : mon-mail@mail.fr'/>
+
+            <label for='pwd'>Mot de passe</label>
+            <input type='password' name='pwd' placeholder='ex : *****' minlength='5'/>
+
+            <input type='submit' value="M'inscrire" class='green' />
+        </form>
+
+        <div class='existAcount'>
+            <span>Vous avez déjà un compte ? </span>
+            <span class='link navigate' data-url='/'>Connectez-vous</span>
+        </div>
+    </div>
+
+
+{% include '../includes/footer.html.twig' %}

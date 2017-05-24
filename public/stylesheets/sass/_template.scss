@@ -1,13 +1,30 @@
+body {
+    margin: 0;
+    color: $color-corportate-dark;
+
+    .navigate {
+        cursor: pointer;
+    }
+}
+
 button,
-input {
+input[type='submit'] {
     display: inline-block;
     margin: auto;
     font-size: 16px;
     border: none;
     border-radius: 5px;
-    height: 30px;
     cursor: pointer;
     font-weight: bold;
+    box-shadow: 3px 2px 5px black;
+    height: 40px;
+}
+
+input {
+    background: #edeff0;
+    border-radius: 4px;
+    border: 1px solid #cdd2d4;
+    height: 35px;
 }
 
 input.gray:hover {
