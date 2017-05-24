@@ -1,3 +1,4 @@
+button,
 input {
     display: inline-block;
     margin: auto;
@@ -6,10 +7,7 @@ input {
     border-radius: 5px;
     height: 30px;
     cursor: pointer;
-}
-
-input.gray {
-
+    font-weight: bold;
 }
 
 input.gray:hover {
