@@ -2,8 +2,13 @@ $j(function () {
 
     /* Enables POST navigation everywhere */
     $j('.navigate').on('click', function() {
-        $j('.formNavigate').attr('action', $j(this).attr('data-url'));
-        $j('.formNavigate').submit();
+        goToUrl($j(this).attr('data-url'));
     });
 
 });
+
+function goToUrl(url) {
+    $j('.formNavigate').attr('action', url);
+    $j('.formNavigate').submit();
+}
+

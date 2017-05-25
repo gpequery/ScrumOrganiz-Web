@@ -2,11 +2,72 @@ body {
     margin: 0;
     color: $color-corportate-dark;
 
+    header {
+        background-color: $color-corportate-light;
+        position: fixed;
+        left: 0;
+        top: 0;
+        width: 100%;
+        height: 94px;
+
+        .logo,
+        .input {
+            display: inline-block;
+            width: 49.5%;
+
+            img {
+                width: 300px;
+                vertical-align: middle;
+                padding: 10px 20px;
+                margin-top: -2px;
+            }
+
+            input {
+                width: 20%;
+                vertical-align: middle;
+
+                &:first-child {
+                    margin-right: 20px;
+                    font-weight: normal;
+                }
+            }
+        }
+
+        .input {
+            text-align: right;
+        }
+    }
+
     .navigate {
         cursor: pointer;
     }
 }
 
+/* MSG INFO */
+.msgInfo {
+    width: 35%;
+    margin: auto;
+    height: 50px;
+    line-height: 50px;
+    border-radius: 7px;
+    font-size: 20px;
+}
+
+.msgInfoOk {
+    color: $color-success;
+    background-color: $color-background-success;
+    border-color: $color-border-success;
+    box-shadow: 3px 2px 5px $color-corportate-darker;
+}
+
+.msgInfoNok {
+    color: $color-danger;
+    background-color: $color-background-danger;
+    border-color: $color-border-danger;
+    box-shadow: 3px 2px 5px $color-corportate-darker;
+}
+
+/* FORM */
 button,
 input[type='submit'] {
     display: inline-block;
@@ -16,7 +77,7 @@ input[type='submit'] {
     border-radius: 5px;
     cursor: pointer;
     font-weight: bold;
-    box-shadow: 3px 2px 5px black;
+    box-shadow: 3px 2px 5px $color-corportate-darker;
     height: 40px;
 }
 
@@ -42,11 +103,21 @@ input.green {
     }
 }
 
+input.blue {
+    color: $input-blue-color;
+    background-color: $input-blue-background;
+    &:hover {
+        background-color: $input-blue-background-over;
+    }
+}
+
 button.orange,
 input.orange {
-    color: $color-corportate-white;
+    color: $input-orange-color;
     background-color: $input-orange-background;
     &:hover {
         background-color: $input-orange-background-over;
     }
 }
+
+
