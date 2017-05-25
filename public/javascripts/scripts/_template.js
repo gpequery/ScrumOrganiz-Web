@@ -4,5 +4,6 @@ $j(function () {
     $j('.navigate').on('click', function() {
         $j('.formNavigate').attr('action', $j(this).attr('data-url'));
         $j('.formNavigate').submit();
-    })
+    });
+
 });
