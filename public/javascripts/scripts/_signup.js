@@ -13,7 +13,7 @@ $j(function () {
         var verifyPwd = signUpVerifyPwd();
         // var verifyPwd = $j('#divForm input[name=pwd]').val().length >= $j('#divForm input[name=pwd]').attr('minlength') ? true : false;
 
-        if (verifyPseudo.isOk && verifyEmail.isOk && verifyPwd) {
+        if (verifyPseudo.isOk && verifyEmail.isOk && verifyPwd.isOk) {
             $j('.signupcontent .msgInfo').removeClass('msgInfoNok');
             $j('.signupcontent .msgInfo').html('&nbsp;');
 
@@ -45,8 +45,8 @@ $j(function () {
                 $j('.signupcontent .msgInfo').html(verifyPseudo.message);
             } else if (!verifyEmail.isOk) {
                 $j('.signupcontent .msgInfo').html(verifyEmail.message);
-            } else if (!verifyPwd) {
-                $j('.signupcontent .msgInfo').html('Mot de passe : au moins ' + $j('#divForm input[name=pwd]').attr('minlength') + ' caractères.');
+            } else if (!verifyPwd.isOk) {
+                $j('.signupcontent .msgInfo').html(verifyPwd.message);
             }
         }
     });
