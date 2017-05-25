@@ -10,16 +10,10 @@ module.exports = function (sequelize, DataTypes) {
         pseudo: {
             type: DataTypes.STRING
         },
+        email: {
+            type: DataTypes.STRING
+        },
         password: {
-            type: DataTypes.STRING
-        },
-        lastname: {
-            type: DataTypes.STRING
-        },
-        firstname: {
-            type: DataTypes.STRING
-        },
-        mail: {
             type: DataTypes.STRING
         }
     }, {

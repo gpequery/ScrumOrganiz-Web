@@ -1,11 +1,47 @@
-//colors
+/* FONT */
+$font-download: '\e9c7';
+
+
+/* COLORS */
 $color-corportate-one: #87ce00;
 $color-corportate-two: #337ab7;
-$color-corportate-tree: #f0ad4e;
 
-$color-corportate-white: #ffffff;
-$color-corportate-light: #dddddd;
+$color-corportate-white: #fff;
+$color-corportate-lighter: #eee;
+$color-corportate-light: #ddd;
 $color-corportate-dark: #565656;
+$color-corportate-darker: #000;
 
-//font
-$font-download: '\e9c7'
+
+/* ALERT */
+$color-success: #3C763D;
+$color-background-success: #DFF0F8;
+$color-border-success: #D6D9C6;
+
+$color-danger: #A94442;
+$color-background-danger: #F2DDED;
+$color-border-danger: #EBCCD1;
+
+/* INPUT */
+$input-default-color: #edeff0;
+
+    /* GRAY */
+    $input-gray-color: #000;
+    $input-gray-background: #eee;
+    $input-gray-background-over: #5bc0de;
+
+    /* GREEN */
+    $input-green-color: #fff;
+    $input-green-background: #5cb85c;
+    $input-green-background-over: #449d44;
+
+    /* BLUE */
+    $input-blue-color: #fff;
+    $input-blue-background: #337ab7;
+    $input-blue-background-over: #286090;
+
+    /* ORANGE */
+    $input-orange-color: #fff;
+    $input-orange-background: #f0ad4e;
+    $input-orange-background-over: #ec971f;
+

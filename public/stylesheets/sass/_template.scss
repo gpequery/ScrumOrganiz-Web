@@ -1,28 +1,123 @@
+body {
+    margin: 0;
+    color: $color-corportate-dark;
+
+    header {
+        background-color: $color-corportate-light;
+        position: fixed;
+        left: 0;
+        top: 0;
+        width: 100%;
+        height: 94px;
+
+        .logo,
+        .input {
+            display: inline-block;
+            width: 49.5%;
+
+            img {
+                width: 300px;
+                vertical-align: middle;
+                padding: 10px 20px;
+                margin-top: -2px;
+            }
+
+            input {
+                width: 20%;
+                vertical-align: middle;
+
+                &:first-child {
+                    margin-right: 20px;
+                    font-weight: normal;
+                }
+            }
+        }
+
+        .input {
+            text-align: right;
+        }
+    }
+
+    .navigate {
+        cursor: pointer;
+    }
+}
+
+/* MSG INFO */
+.msgInfo {
+    width: 35%;
+    margin: auto;
+    height: 50px;
+    line-height: 50px;
+    border-radius: 7px;
+    font-size: 20px;
+}
+
+.msgInfoOk {
+    color: $color-success;
+    background-color: $color-background-success;
+    border-color: $color-border-success;
+    box-shadow: 3px 2px 5px $color-corportate-darker;
+}
+
+.msgInfoNok {
+    color: $color-danger;
+    background-color: $color-background-danger;
+    border-color: $color-border-danger;
+    box-shadow: 3px 2px 5px $color-corportate-darker;
+}
+
+/* FORM */
 button,
-input {
+input[type='submit'] {
     display: inline-block;
     margin: auto;
     font-size: 16px;
     border: none;
     border-radius: 5px;
-    height: 30px;
     cursor: pointer;
     font-weight: bold;
+    box-shadow: 3px 2px 5px $color-corportate-darker;
+    height: 40px;
 }
 
-input.gray:hover {
-    background-color: #5bc0de;
-    border-color: #46b8da;
+input {
+    background: $input-default-color;
+    border-radius: 4px;
+    height: 35px;
+}
+
+input.gray {
+    color: $input-gray-color;
+    background-color: $input-gray-background;
+    &:hover {
+        background-color: $input-gray-background-over;
+    }
 }
 
 input.green {
-    color: #fff;
-    background-color: #5cb85c;
-    border-color: #4cae4c;
+    color: $input-green-color;
+    background-color: $input-green-background;
+    &:hover {
+        background-color: $input-green-background-over;
+    }
 }
 
-input.green:hover {
-    color: #fff;
-    background-color: #449d44;
-    border-color: #398439;
+input.blue {
+    color: $input-blue-color;
+    background-color: $input-blue-background;
+    &:hover {
+        background-color: $input-blue-background-over;
+    }
 }
+
+button.orange,
+input.orange {
+    color: $input-orange-color;
+    background-color: $input-orange-background;
+    &:hover {
+        background-color: $input-orange-background-over;
+    }
+}
+
+
