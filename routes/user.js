@@ -1,6 +1,7 @@
 const express = require('express');
 const router = express.Router();
 const models = require('../models');
+const bcrypt = require('bcrypt');
 const User = models.User;
 
 /* GET sign up page */
@@ -25,12 +26,12 @@ router.post('/addUser', function(req, res, next) {
             User.create({
                 pseudo: req.body.pseudo,
                 email: req.body.email,
-                password: req.body.pwd
+                password: bcrypt.hashSync(req.body.pwd, bcrypt.genSaltSync())
             }).then(function(usr) {
                 res.send({etat: 'ok'})
             }).catch(function(err) {
                 console.warn('ERROR : ' + error);
-                res.send({etat: 'error', message: err});
+                res.send({etat: 'error', message: err.toString()});
             });
         } else {
             if (user.pseudo == req.body.pseudo) {
@@ -41,7 +42,7 @@ router.post('/addUser', function(req, res, next) {
         }
     }).catch(function(error) {
         console.warn('ERROR : ' + error);
-        res.send({etat: 'error', message: error});
+        res.send({etat: 'error', message: error.toString()});
     });
 });
 

@@ -4,6 +4,7 @@
     npm install --save sequelize
     npm install --save mysql2
     npm install --save body-parser
+    npm install --save bcrypt
     
 ##Formalisme
 #### Redirection (en post)

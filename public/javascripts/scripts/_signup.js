@@ -32,8 +32,8 @@ $j(function () {
                         }
 
                     } else {
+                        console.log('JSON : ' + JSON.stringify(data));
                         $j('.signupcontent .msgInfo').addClass('msgInfoNok');
-
                         $j('.signupcontent .msgInfo').html(data.message);
                     }
                 });
