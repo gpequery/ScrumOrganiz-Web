@@ -9,7 +9,7 @@ router.post('/addUser', function (req, res, next) {
     let messages = allConfig.get('sign_up_message');
 
     if (bcrypt.compareSync(req.body.servicesLogin, servicesID.login) && bcrypt.compareSync(req.body.servicesPassword, servicesID.password)) {
-        let userOk = services_add_user_verify_info(messages, allConfig.get('conf_services:user_rules'), req.body.pseudo, req.body.email, req.body.password);
+        let userOk = services_add_user_verify_info(messages, allConfig.get('conf_user_rules'), req.body.pseudo, req.body.email, req.body.password);
 
         if (userOk.etat) {
             let options = {
@@ -29,7 +29,7 @@ router.post('/addUser', function (req, res, next) {
                         email: req.body.email,
                         password: bcrypt.hashSync(req.body.password, bcrypt.genSaltSync())
                     }).then(function (usr) {
-                        res.send({etat: true})
+                        res.send({etat: true, message: messages.succes})
                     }).catch(function (err) {
                         res.send({etat: false, message: err.toString()});
                     });

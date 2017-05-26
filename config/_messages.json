@@ -3,10 +3,16 @@
         "acces_refused": "Login et/ou MDP incorrect"
     },
     "sign_up_message": {
+        "succes": "Ajout réussis",
         "pseudo_used": "Pseudo déjà utilisé",
         "mail_used": "Mail déjà associé à un compte",
         "pseudo_min_length": "Pseudo : au moins 4 caractères.",
         "mail_format": "Email : veuillez saisir une adresse valide",
         "password_min_length": "Mot de passe : au moins 5 caractères."
+    },
+    "login_message": {
+        "success": "Connexion réussis",
+        "pseudo_no_exist": "Il n'y as pas de compte associé à ce pseudo",
+        "bad_password": "Mauvais mot de passe"
     }
 }

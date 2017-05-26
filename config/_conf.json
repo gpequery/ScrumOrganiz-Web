@@ -3,11 +3,11 @@
         "acces": {
             "login": "$2a$10$mMm1L2Wuk7mfH5vb8oQodOxJIibwlfSbOur.IrcsVPzmn6EAe3Jp2",
             "password": "$2a$10$1xBRcaDqgSgyWphQZPPobOu89t2.gRWw3tR/a8gj/jTW6AuWnlcXu"
-        },
-        "user_rules": {
-            "pseudo_min_length": 4,
-            "email_regex": "^[a-z0-9!#$%&'*+\\/=?^_`{|}~.-]+@[a-z0-9-]+(\\.[a-z0-9-]+)*$",
-            "password_min_length": 5
         }
+    },
+    "conf_user_rules": {
+        "pseudo_min_length": 4,
+        "email_regex": "^[a-z0-9!#$%&'*+\\/=?^_`{|}~.-]+@[a-z0-9-]+(\\.[a-z0-9-]+)*$",
+        "password_min_length": 5
     }
 }
