@@ -9,8 +9,8 @@ router.post('/addUser', function (req, res, next) {
     let servicesID = conf.get('services:acces');
 
     if (bcrypt.compareSync(req.body.servicesLogin, servicesID.login) && bcrypt.compareSync(req.body.servicesPassword, servicesID.password)) {
-        let userRules = conf.get('services:user_rules');
-        let userOk = services_add_user_verify_info(userRules, req.body.pseudo, req.body.email, req.body.password);
+        // let userRules = conf.get('services:user_rules');
+        let userOk = services_add_user_verify_info(conf.get('services:user_rules'), req.body.pseudo, req.body.email, req.body.password);
 
         if (userOk.etat) {
             let options = {
