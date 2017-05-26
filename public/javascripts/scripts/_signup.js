@@ -1,12 +1,12 @@
 $j(function () {
 
     /* pseudo without space */
-    $j('#divForm input[name=pseudo]').on('keyup', function () {
+    $j('#divFormSignIn input[name=pseudo]').on('keyup', function () {
         $j(this).val($j(this).val().replace(' ', ''));
     });
 
     /* on submit form */
-    $j('#divForm input[type=submit]').on('click', function () {
+    $j('#divFormSignIn input[type=submit]').on('click', function () {
         var verifyPseudo = signUpVerifyPseudo();
         var verifyEmail = signUpVerifyEmail();
         var verifyPwd = signUpVerifyPwd();
@@ -17,9 +17,9 @@ $j(function () {
 
             $j.post(
                 '/user/addUser', {
-                    pseudo: $j('#divForm input[name=pseudo]').val(),
-                    email: $j('#divForm input[name=email]').val(),
-                    pwd: $j('#divForm input[name=pwd]').val()
+                    pseudo: $j('#divFormSignIn input[name=pseudo]').val(),
+                    email: $j('#divFormSignIn input[name=email]').val(),
+                    pwd: $j('#divFormSignIn input[name=pwd]').val()
                 }, function(data) {
                     if (data.etat) {
                         $j('.signupcontent .msgInfo').removeClass('msgInfoNok');
@@ -51,17 +51,17 @@ $j(function () {
 });
 
 function signUpVerifyPseudo() {
-    if ($j('#divForm input[name=pseudo]').val().length >= $j('#divForm input[name=pseudo]').attr('minlength')) {
+    if ($j('#divFormSignIn input[name=pseudo]').val().length >= $j('#divFormSignIn input[name=pseudo]').attr('minlength')) {
         return {isOk: true};
     } else {
-        return {isOk: false, message: 'Pseudo : au moins ' + $j('#divForm input[name=pseudo]').attr('minlength') + ' caractères.'};
+        return {isOk: false, message: 'Pseudo : au moins ' + $j('#divFormSignIn input[name=pseudo]').attr('minlength') + ' caractères.'};
     }
 }
 
 function signUpVerifyEmail() {
     var regexEmail = /^[a-z0-9!#$%&'*+/=?^_`{|}~.-]+@[a-z0-9-]+(\.[a-z0-9-]+)*$/;
 
-    if (regexEmail.test($j('#divForm input[name=email]').val())) {
+    if (regexEmail.test($j('#divFormSignIn input[name=email]').val())) {
         return {isOk: true};
     } else {
         return {isOk: false, message: 'Email : veuillez saisir une adresse valide'};
@@ -69,9 +69,9 @@ function signUpVerifyEmail() {
 }
 
 function signUpVerifyPwd(){
-    if ($j('#divForm input[name=pwd]').val().length >= $j('#divForm input[name=pwd]').attr('minlength')) {
+    if ($j('#divFormSignIn input[name=pwd]').val().length >= $j('#divFormSignIn input[name=pwd]').attr('minlength')) {
         return {isOk: true};
     } else {
-        return {isOk: false, message: 'Mot de passe : au moins ' + $j('#divForm input[name=pwd]').attr('minlength') + ' caractères.'};
+        return {isOk: false, message: 'Mot de passe : au moins ' + $j('#divFormSignIn input[name=pwd]').attr('minlength') + ' caractères.'};
     }
 }

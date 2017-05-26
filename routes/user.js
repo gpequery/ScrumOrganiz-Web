@@ -9,6 +9,11 @@ router.post('/signup', function (req, res, next) {
     res.render('home/signup.html.twig');
 });
 
+/* GET login page */
+router.post('/login', function (req, res, next) {
+    res.render('home/login.html.twig');
+});
+
 /* Add user if pseudo and mail is not already used */
 router.post('/addUser', function(req, res, next) {
     let options = {

@@ -49,9 +49,19 @@ button.orange:hover, input.orange:hover { background-color: #ec971f; }
 
 .signupcontent { text-align: center; width: 60%; margin: 94px auto 0 auto; }
 .signupcontent .msgInfo { display: inline-block; margin-top: 70px; margin-bottom: 10px; }
-.signupcontent #divForm { display: inline-block; text-align: left; width: 35%; margin: auto; }
-.signupcontent #divForm label, .signupcontent #divForm input { display: block; font-size: 20px; }
-.signupcontent #divForm input { margin-bottom: 15px; width: 100%; }
-.signupcontent #divForm input[type='submit'] { margin-top: 30px; }
-.signupcontent #divForm label { color: black; }
+.signupcontent #divFormSignIn { display: inline-block; text-align: left; width: 35%; margin: auto; }
+.signupcontent #divFormSignIn label, .signupcontent #divFormSignIn input { display: block; font-size: 20px; }
+.signupcontent #divFormSignIn input { margin-bottom: 15px; width: 100%; }
+.signupcontent #divFormSignIn input[type='submit'] { margin-top: 30px; }
+.signupcontent #divFormSignIn label { color: black; }
 .signupcontent .existAcount .link { text-decoration: underline; }
+
+.loginContent { text-align: center; width: 60%; margin: 94px auto 0 auto; }
+.loginContent .msgInfo { display: inline-block; margin-top: 70px; margin-bottom: 10px; }
+.loginContent #divFormLogin { display: inline-block; text-align: left; width: 35%; margin: auto; }
+.loginContent #divFormLogin label, .loginContent #divFormLogin input { display: block; font-size: 20px; }
+.loginContent #divFormLogin input { margin-bottom: 15px; width: 100%; }
+.loginContent #divFormLogin input[type='submit'] { margin-top: 30px; }
+.loginContent #divFormLogin label { color: black; }
+.loginContent #divFormLogin label span { color: #565656; }
+.loginContent .existAcount .link, .loginContent .forgotPwd .link { text-decoration: underline; }
