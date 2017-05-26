@@ -10,4 +10,8 @@ $j(function() {
     $j.getScript('/javascripts/scripts/_signup.js', function() {
         console.info('LOAD STATUS : Load was performed --> _signup');
     });
+
+    $j.getScript('/javascripts/scripts/_login.js', function() {
+        console.info('LOAD STATUS : Load was performed --> _login');
+    });
 });

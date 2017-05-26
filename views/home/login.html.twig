@@ -5,32 +5,33 @@
         <img src="/images/logo/logo-horizontal.png" class='navigate' data-url='/'/>
     </div>
     <div class='input'>
-        <input class='gray navigate' data-url='/login' type='submit' value='Se connecter'/>
+        <input class='gray navigate' data-url='/signup' type='submit' value='Inscription'/>
         <input class='blue navigate' data-url='/' type='submit' value='Retour'/>
     </div>
 </header>
 
-<div class='signupcontent'>
+<div class='loginContent'>
     <div class='msgInfo'>&nbsp;</div>
 
-    <h1>Inscription</h1>
+    <h1>Connexion</h1>
 
-    <div id='divFormSignIn'>
+    <div id='divFormLogin'>
         <label for='pseudo'>Pseudo</label>
         <input type='text' name='pseudo' required placeholder='ex : pdurand' minlength='4'/>
-
-        <label for='email'>E-mail</label>
-        <input type='email' name='email' required placeholder='ex : mon-mail@mail.fr'/>
 
         <label for='pwd'>Mot de passe</label>
         <input type='password' name='pwd' required placeholder='ex : *****' minlength='5'/>
 
-        <input type='submit' value="M'inscrire" class='green'/>
+        <input type='submit' value="Connexion" class='green'/>
     </div>
 
     <div class='existAcount'>
-        <span>Vous avez déjà un compte ? </span>
-        <span class='link navigate' data-url='/login'>Connectez-vous</span>
+        <span>Pas de compte ? </span>
+        <span class='link navigate' data-url='/signup'>Inscrivez-vous</span>
+    </div>
+    <div class='forgotPwd'>
+        <span>Mot de passe oublié ? </span>
+        <span class='link'>Réinitialisez</span>
     </div>
 </div>
 

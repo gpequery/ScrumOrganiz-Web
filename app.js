@@ -3,6 +3,13 @@ var path = require('path');
 var favicon = require('serve-favicon');
 var models = require('./models');
 
+/**/
+allConfig = require('nconf');
+allConfig.add('test', {type: 'file', file: 'config/_conf.json'});
+allConfig.add('greg', {type: 'file', file: 'config/_messages.json'});
+allConfig.load();
+/**/
+
 var bodyParser = require('body-parser');
 
 var index = require('./routes/index');
