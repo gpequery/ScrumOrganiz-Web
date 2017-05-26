@@ -52,6 +52,36 @@ router.post('/addUser', function (req, res, next) {
     }
 });
 
+/* Respond boolean correspond if user's information correspond an existing account */
+router.post('/loginUser', function(req, res, next) {
+    let servicesID = allConfig.get('conf_services:acces');
+    let messages = allConfig.get('login_message');
+
+    if (bcrypt.compareSync(req.body.servicesLogin, servicesID.login) && bcrypt.compareSync(req.body.servicesPassword, servicesID.password)) {
+        let options = {
+            where : {
+                pseudo: req.body.pseudo
+            }
+        };
+
+        User.findOne(options).then(function(user) {
+            if (user != null) {
+                if (bcrypt.compareSync(req.body.password, user.password)) {
+                    res.send({etat: true, message: messages.success})
+                } else {
+                    res.send({etat: false, message: messages.bad_password})
+                }
+            } else {
+                res.send({etat: false, message: messages.pseudo_no_exist});
+            }
+        }).catch(function(err) {
+            res.send({etat: false, message: err.toString()});
+        });
+    } else {
+        res.send({etat: false, message: allConfig.get('services_message:acces_refused')});
+    }
+});
+
 module.exports = router;
 
 function services_add_user_verify_info(messages, userRules, pseudo, email, password) {
