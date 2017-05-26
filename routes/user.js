@@ -28,21 +28,21 @@ router.post('/addUser', function(req, res, next) {
                 email: req.body.email,
                 password: bcrypt.hashSync(req.body.pwd, bcrypt.genSaltSync())
             }).then(function(usr) {
-                res.send({etat: 'ok'})
+                res.send({etat: true})
             }).catch(function(err) {
                 console.warn('ERROR : ' + error);
-                res.send({etat: 'error', message: err.toString()});
+                res.send({etat: false, message: err.toString()});
             });
         } else {
-            if (user.pseudo == req.body.pseudo) {
-                res.send({etat: 'nok', message: 'Pseudo déjà utilisé'});
+            if (user.pseudo.toLowerCase() == req.body.pseudo.toLowerCase()) {
+                res.send({etat: false, message: 'Pseudo déjà utilisé'});
             } else {
-                res.send({etat: 'nok', message: 'Mail déjà associé à un compte'});
+                res.send({etat: false, message: 'Mail déjà associé à un compte'});
             }
         }
     }).catch(function(error) {
         console.warn('ERROR : ' + error);
-        res.send({etat: 'error', message: error.toString()});
+        res.send({etat: false, message: error.toString()});
     });
 });
 

@@ -7,7 +7,7 @@ var bodyParser = require('body-parser');
 
 var index = require('./routes/index');
 var user = require('./routes/user');
-var services = require('./routes/services');
+var webService = require('./routes/web_services');
 
 models.sequelize.sync();
 // models.sequelize.sync({'force': 'true'});
@@ -23,7 +23,7 @@ app.use(bodyParser.urlencoded({ extended: false }));
 
 app.use('/', index);
 app.use('/user', user);
-app.use('/services', services);
+app.use('/web_services', webService);
 
 // catch 404 and forward to error handler
 app.use(function (req, res, next) {
