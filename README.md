@@ -18,17 +18,18 @@
 
 Pour toute requête (en POST)
     
-    LIEN : [url-du-site]/web_services/[requête]
-    PARAMETRES MINIMUM : servicesLogin, servicesPassword
+    LIEN :                  [url-du-site]/web_services/[requête]
+    PARAMETRES MINIMUM :    servicesLogin, servicesPassword
 
 ####Reponse :
     etat :
-        true -> action réussis
-        false -> action pas fini
+        true    ->  action réussis
+        false   ->  action pas fini
      
     message :
         contient un message d'information en rapport avec l'etat ou informations complémentaires
 
 ####Ajouter nouvelle utilisateur
-    
+    LIEN :                          [url-du-site]/web_services/addUser
+    PARAMETRES SUPPLAMENTAIRE :     pseudo, password, email
     
