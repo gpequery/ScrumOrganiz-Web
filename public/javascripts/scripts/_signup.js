@@ -9,9 +9,7 @@ $j(function () {
     $j('#divForm input[type=submit]').on('click', function () {
         var verifyPseudo = signUpVerifyPseudo();
         var verifyEmail = signUpVerifyEmail();
-
         var verifyPwd = signUpVerifyPwd();
-        // var verifyPwd = $j('#divForm input[name=pwd]').val().length >= $j('#divForm input[name=pwd]').attr('minlength') ? true : false;
 
         if (verifyPseudo.isOk && verifyEmail.isOk && verifyPwd.isOk) {
             $j('.signupcontent .msgInfo').removeClass('msgInfoNok');
@@ -23,7 +21,7 @@ $j(function () {
                     email: $j('#divForm input[name=email]').val(),
                     pwd: $j('#divForm input[name=pwd]').val()
                 }, function(data) {
-                    if (data.etat == 'ok') {
+                    if (data.etat) {
                         $j('.signupcontent .msgInfo').removeClass('msgInfoNok');
                         if(confirm("Votre compte à bien été créer !\n voulez-vous vous connecter ?")) {
                             goToUrl('/user/login');
@@ -37,7 +35,6 @@ $j(function () {
                         $j('.signupcontent .msgInfo').html(data.message);
                     }
                 });
-
         } else {
             $j('.signupcontent .msgInfo').addClass('msgInfoNok');
 
