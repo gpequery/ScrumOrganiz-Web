@@ -4,6 +4,7 @@ const models = require('../models');
 const bcrypt = require('bcrypt');
 const User = models.User;
 
+/* add user with post url */
 router.post('/addUser', function (req, res, next) {
     let servicesID = allConfig.get('conf_services:acces');
     let messages = allConfig.get('sign_up_message');
