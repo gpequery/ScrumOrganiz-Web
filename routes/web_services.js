@@ -1,16 +1,15 @@
 const express = require('express');
 const router = express.Router();
 const models = require('../models');
-const conf = require('nconf').file('config/_conf.json');
 const bcrypt = require('bcrypt');
 const User = models.User;
 
 router.post('/addUser', function (req, res, next) {
-    let servicesID = conf.get('services:acces');
+    let servicesID = allConfig.get('conf_services:acces');
+    let messages = allConfig.get('sign_up_message');
 
     if (bcrypt.compareSync(req.body.servicesLogin, servicesID.login) && bcrypt.compareSync(req.body.servicesPassword, servicesID.password)) {
-        // let userRules = conf.get('services:user_rules');
-        let userOk = services_add_user_verify_info(conf.get('services:user_rules'), req.body.pseudo, req.body.email, req.body.password);
+        let userOk = services_add_user_verify_info(messages, allConfig.get('conf_services:user_rules'), req.body.pseudo, req.body.email, req.body.password);
 
         if (userOk.etat) {
             let options = {
@@ -24,7 +23,6 @@ router.post('/addUser', function (req, res, next) {
             };
 
             User.findOne(options).then(function (user) {
-                console.log('USER : ' + JSON.stringify(user));
                 if (user == null) {
                     User.create({
                         pseudo: req.body.pseudo,
@@ -36,36 +34,34 @@ router.post('/addUser', function (req, res, next) {
                         res.send({etat: false, message: err.toString()});
                     });
                 } else {
-                    console.log('PWD2 : ');
                     if (user.pseudo.toLowerCase() == req.body.pseudo.toLowerCase()) {
-                        res.send({etat: false, message: 'Pseudo déjà utilisé'});
+                        res.send({etat: false, message: messages.pseudo_used});
                     } else {
-                        res.send({etat: false, message: 'Mail déjà associé à un compte'});
+                        res.send({etat: false, message: messages.mail_used});
                     }
                 }
             }).catch(function (error) {
-                console.log('PWD3 : ');
                 res.send({etat: false, message: error.toString()});
             });
         } else {
             res.send({etat: false, message: userOk.message});
         }
     } else {
-        res.send({etat: false, message: "Login et MDP incorrect"});
+        res.send({etat: false, message: allConfig.get('services_message:acces_refused')});
     }
 });
 
 module.exports = router;
 
-function services_add_user_verify_info(userRules, pseudo, email, password) {
+function services_add_user_verify_info(messages, userRules, pseudo, email, password) {
     if (typeof pseudo == 'undefined' || pseudo.length < userRules.pseudo_min_length) {
-        return {etat: false, message: 'Pseudo : au moins ' + userRules.pseudo_min_length + ' caractères.'};
+        return {etat: false, message: messages.pseudo_min_length};
     }
     else if (!new RegExp(userRules.email_regex).test(email)) {
-        return {etat: false, message: 'Email : veuillez saisir une adresse valide'};
+        return {etat: false, message: messages.mail_format};
     }
     else if (typeof password == 'undefined' || password.length < userRules.password_min_length) {
-        return {etat: false, message: 'Mot de passe : au moins ' + userRules.password_min_length + ' caractères.'};
+        return {etat: false, message: messages.password_min_length};
     } else {
         return {etat: true};
     }
