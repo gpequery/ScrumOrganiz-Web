@@ -16,4 +16,9 @@ router.post('/login', function (req, res, next) {
     res.render('home/login.html.twig');
 });
 
+/* GET board page */
+router.post('/board', function (req, res, next) {
+    res.render('general/board.html.twig');
+});
+
 module.exports = router;
