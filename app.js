@@ -2,15 +2,44 @@ var express = require('express');
 var path = require('path');
 var favicon = require('serve-favicon');
 var models = require('./models');
+//var session = require('express-sessions');
 
-/**/
+/* Config */
 allConfig = require('nconf');
-allConfig.add('test', {type: 'file', file: 'config/_conf.json'});
-allConfig.add('greg', {type: 'file', file: 'config/_messages.json'});
+allConfig.add('conf', {type: 'file', file: 'config/_conf.json'});
+allConfig.add('message', {type: 'file', file: 'config/_messages.json'});
 allConfig.load();
 /**/
 
 var bodyParser = require('body-parser');
+
+/* TEST  TOKEN */
+//var jwt = require('json-web-token');
+/*var secret = 'monPasseSecret';
+var payload = {
+    id: 2,
+    nom: 'Greg'
+};
+
+jwt.encode(secret, payload, function (err, token) {
+    if (!err) {
+        jwt.decode(secret, token, function (err_, decodedPayload, decodedHeader) {
+            if (err) {
+                console.error(err.name, err.message);
+            } else {
+                if (JSON.stringify(payload) == JSON.stringify(decodedPayload)) {
+                    console.log('YAIH');
+                } else {
+                    console.log(payload, decodedPayload);
+                }
+            }
+        });
+    } else {
+        console.error(err.name, err.message);
+    }
+});*/
+
+/* FIN TEST */
 
 var index = require('./routes/index');
 var user = require('./routes/user');
@@ -31,6 +60,7 @@ app.use(bodyParser.urlencoded({ extended: false }));
 app.use('/', index);
 app.use('/user', user);
 app.use('/web_services', webService);
+
 
 // catch 404 and forward to error handler
 app.use(function (req, res, next) {
