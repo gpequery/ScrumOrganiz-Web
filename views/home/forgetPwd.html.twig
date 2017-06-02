@@ -10,28 +10,25 @@
     </div>
 </header>
 
-<div class='loginContent'>
+<div class='forgetContent'>
     <div class='msgInfo'>&nbsp;</div>
 
-    <h1>Connexion</h1>
+    <h1>Réinitialiser</h1>
 
-    <div id='divFormLogin'>
-        <label for='pseudo'>Pseudo</label>
-        <input type='text' name='pseudo' required placeholder='ex : pdurand' minlength='4'/>
+    <div id='divFormForget'>
+        <label for='email'>Email</label>
+        <input type='text' name='email' required placeholder='ex : mon-mail@mail.fr'/>
 
-        <label for='pwd'>Mot de passe</label>
-        <input type='password' name='pwd' required placeholder='ex : *****' minlength='5'/>
-
-        <input type='submit' value="Connexion" class='green'/>
+        <input type='submit' value="Envoyer" class='green'/>
     </div>
 
     <div class='existAcount'>
         <span>Pas de compte ? </span>
         <span class='link navigate' data-url='/signup'>Inscrivez-vous</span>
     </div>
-    <div class='forgotPwd'>
-        <span>Mot de passe oublié ? </span>
-        <span class='link navigate' data-url='/forgetPwd'>Réinitialisez</span>
+    <div class='existAcount'>
+        <span>Vous avez déjà un compte ? </span>
+        <span class='link navigate' data-url='/login'>Connectez-vous</span>
     </div>
 </div>
 

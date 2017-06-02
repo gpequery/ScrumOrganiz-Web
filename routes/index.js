@@ -16,4 +16,9 @@ router.post('/login', function (req, res, next) {
     res.render('home/login.html.twig');
 });
 
+/* GET login page */
+router.post('/forgetPwd', function (req, res, next) {
+    res.render('home/forgetPwd.html.twig');
+});
+
 module.exports = router;
