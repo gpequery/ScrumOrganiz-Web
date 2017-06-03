@@ -11,8 +11,13 @@
         "password_min_length": 5
     },
     "conf_email_orga": {
-        "service": "gmail",
-        "login": "scrum.organize@gmail.com",
-        "password": "sws2017Email"
+        "acces": {
+            "service": "gmail",
+            "login": "scrum.organize@gmail.com",
+            "password": "sws2017Email"
+        },
+        "actions": {
+            "forget_password": "fgtPwd"
+        }
     }
 }

@@ -2,7 +2,6 @@ const express = require('express');
 const router = express.Router();
 const models = require('../models');
 const bcrypt = require('bcrypt');
-const nodemailer = require('nodemailer');
 const User = models.User;
 
 /* Add user if pseudo and mail is not already used */
@@ -74,38 +73,28 @@ router.post('/loginUser', function(req, res, next) {
 
 /* Send mail for changePwd */
 router.post('/forgetPwd', function(req, res, next) {
-    foo();
-    //sendMail();
-    res.send('Ok : ' + req.body.email);
+    let messages = allConfig.get('forget_password_message');
+
+    let options = {
+        where : {
+            pseudo: req.body.pseudo,
+            email: req.body.email
+        }
+    };
+
+    User.findOne(options).then(function(user) {
+        if (user != null) {
+            let actions = allConfig.get('conf_email_orga').actions;
+
+            sendMail(user.email, actions.forget_password);
+            res.send({etat: true, message: messages.success});
+        } else {
+            res.send({etat: false, message: messages.bad_account});
+        }
+    }).catch(function(err) {
+        res.send({etat: false, message: err.toString()});
+    });
+
 });
 
 module.exports = router;
-
-function sendMail() {
-    let confEmail = allConfig.get('conf_email_orga');
-
-    let transporter = nodemailer.createTransport({
-        service: confEmail.service,
-        auth: {
-            user: confEmail.login,
-            pass:  confEmail.password
-        }
-    });
-
-    let mailOptions = {
-        from: confEmail.login,
-        to: 'g.pequery@gmail.com',
-        subject: 'scrum Orga : ',
-        html: 'Le contenue'
-    };
-
-    transporter.sendMail(mailOptions, function(error, info){
-        if(error){
-            console.log('Message Probleme ! ');
-            return console.log(error);
-        }
-        console.log('Message send: ' + info.response);
-    });
-
-    transporter.close();
-}
