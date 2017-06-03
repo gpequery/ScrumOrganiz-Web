@@ -5,6 +5,7 @@
     npm install --save mysql2
     npm install --save body-parser
     npm install --save bcrypt
+    npm install --save nodemailer
     
 ##Formalisme
 #### Redirection (en post)

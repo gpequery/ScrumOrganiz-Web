@@ -14,4 +14,8 @@ $j(function() {
     $j.getScript('/javascripts/scripts/_login.js', function() {
         console.info('LOAD STATUS : Load was performed --> _login');
     });
+
+    $j.getScript('/javascripts/scripts/_forget.js', function() {
+        console.info('LOAD STATUS : Load was performed --> _forget');
+    });
 });

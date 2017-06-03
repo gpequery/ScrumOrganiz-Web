@@ -9,5 +9,10 @@
         "pseudo_min_length": 4,
         "email_regex": "^[a-z0-9!#$%&'*+\\/=?^_`{|}~.-]+@[a-z0-9-]+(\\.[a-z0-9-]+)*$",
         "password_min_length": 5
+    },
+    "conf_email_orga": {
+        "service": "gmail",
+        "login": "scrum.organize@gmail.com",
+        "password": "sws2017Email"
     }
 }

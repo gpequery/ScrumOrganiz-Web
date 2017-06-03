@@ -2,6 +2,7 @@ const express = require('express');
 const router = express.Router();
 const models = require('../models');
 const bcrypt = require('bcrypt');
+const nodemailer = require('nodemailer');
 const User = models.User;
 
 /* Add user if pseudo and mail is not already used */
@@ -71,6 +72,13 @@ router.post('/loginUser', function(req, res, next) {
     });
 });
 
+/* Send mail for changePwd */
+router.post('/forgetPwd', function(req, res, next) {
+    myfunction();
+    //sendMail();
+    res.send('Ok : ' + req.body.email);
+});
+
 module.exports = router;
 
 function services_add_user_verify_info(messages, userRules, pseudo, email, password) {
@@ -85,4 +93,33 @@ function services_add_user_verify_info(messages, userRules, pseudo, email, passw
     } else {
         return {etat: true};
     }
+}
+
+function sendMail() {
+    let confEmail = allConfig.get('conf_email_orga');
+
+    let transporter = nodemailer.createTransport({
+        service: confEmail.service,
+        auth: {
+            user: confEmail.login,
+            pass:  confEmail.password
+        }
+    });
+
+    let mailOptions = {
+        from: confEmail.login,
+        to: 'g.pequery@gmail.com',
+        subject: 'scrum Orga : ',
+        html: 'Le contenue'
+    };
+
+    transporter.sendMail(mailOptions, function(error, info){
+        if(error){
+            console.log('Message Probleme ! ');
+            return console.log(error);
+        }
+        console.log('Message send: ' + info.response);
+    });
+
+    transporter.close();
 }
