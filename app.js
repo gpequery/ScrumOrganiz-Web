@@ -2,6 +2,8 @@ var express = require('express');
 var path = require('path');
 var favicon = require('serve-favicon');
 var models = require('./models');
+var functions = require('./functions.js');
+
 
 /**/
 allConfig = require('nconf');

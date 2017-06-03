@@ -74,26 +74,12 @@ router.post('/loginUser', function(req, res, next) {
 
 /* Send mail for changePwd */
 router.post('/forgetPwd', function(req, res, next) {
-    myfunction();
+    foo();
     //sendMail();
     res.send('Ok : ' + req.body.email);
 });
 
 module.exports = router;
-
-function services_add_user_verify_info(messages, userRules, pseudo, email, password) {
-    if (typeof pseudo == 'undefined' || pseudo.length < userRules.pseudo_min_length) {
-        return {etat: false, message: messages.pseudo_min_length};
-    }
-    else if (!new RegExp(userRules.email_regex).test(email)) {
-        return {etat: false, message: messages.mail_format};
-    }
-    else if (typeof password == 'undefined' || password.length < userRules.password_min_length) {
-        return {etat: false, message: messages.password_min_length};
-    } else {
-        return {etat: true};
-    }
-}
 
 function sendMail() {
     let confEmail = allConfig.get('conf_email_orga');
