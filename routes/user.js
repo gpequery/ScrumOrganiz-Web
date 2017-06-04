@@ -86,7 +86,7 @@ router.post('/forgetPwd', function(req, res, next) {
         if (user != null) {
             let actions = allConfig.get('conf_email_orga').actions;
 
-            sendMail(user.email, actions.forget_password);
+            sendMail(user.email, actions.forget_password, {id: user.id, pseudo: user.pseudo});
             res.send({etat: true, message: messages.success});
         } else {
             res.send({etat: false, message: messages.bad_account});
