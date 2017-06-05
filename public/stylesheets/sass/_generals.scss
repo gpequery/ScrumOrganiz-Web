@@ -1,0 +1,35 @@
+.notFoundContent {
+    background-color: $color-corportate-background-header;
+    width: 50%;
+    margin: 10% auto 0 auto;
+    text-align: left;
+    padding: 2%;
+    border-radius: 15%;
+    box-shadow: 3px 2px 5px $color-corporate-box-shadow;
+
+    div.font,
+    div.message {
+        display: inline-block;
+        vertical-align: middle;
+    }
+
+    div.message {
+        width: 59%;
+        text-align: center;
+
+        .info {
+            font-size: 20px;
+        }
+    }
+
+    div.font {
+        width: 20%;
+        text-align: center;
+        font-family: scrum-font;
+        &:before {
+            content: $font-error;
+            font-size: 200px;
+            color: $color-font-error;
+        }
+    }
+}
