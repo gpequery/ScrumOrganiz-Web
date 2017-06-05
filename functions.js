@@ -102,13 +102,8 @@ function getHtmlForForgetPasswordEmail(infos) {
     let confServer = allConfig.get('conf_serveur');
 
     let urlData = 'forgetPwd&' + infos.id + '&' + new Date().toISOString();
-    // let dataCrypted = crypto.AES.encrypt(urlData, allConfig.get('conf_crypto').secrect_key);
     let dataCrypted = encodeURI(crypto.AES.encrypt(urlData, allConfig.get('conf_crypto').secrect_key));
 
-    // console.log(dataCrypted);
-    // console.log(encodeURI(dataCrypted));
-    // console.log(encodeURI(dataCrypted.toString()));
-    // console.log(encodeURI(new String(dataCrypted)));
 
     let object = allConfig.get('conf_organisation').name + ' : Réinitialisation de votre mot de passe';
 

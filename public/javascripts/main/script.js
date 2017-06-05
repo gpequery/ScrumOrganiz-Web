@@ -18,4 +18,8 @@ $j(function() {
     $j.getScript('/javascripts/scripts/_forget.js', function() {
         console.info('LOAD STATUS : Load was performed --> _forget');
     });
+
+    $j.getScript('/javascripts/scripts/_changePwd.js', function() {
+        console.info('LOAD STATUS : Load was performed --> _changePwd');
+    });
 });

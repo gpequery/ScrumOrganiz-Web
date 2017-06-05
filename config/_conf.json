@@ -9,6 +9,10 @@
             "not_found": {
                 "code": "404",
                 "message": "Page non trouvée !"
+            },
+            "old_link": {
+                "code": "301",
+                "message": "Lien plus valide !"
             }
         }
     },
