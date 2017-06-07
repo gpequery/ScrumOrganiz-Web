@@ -12,14 +12,16 @@
     <h1>Changement du mot de passe</h1>
 
     <div id='divFormChangePwd'>
-        <label for='newPassword'>Mot de passe</label>
-        <input type='password' name='newPassword' required placeholder='Nouveau mot de passe' minlength='5'/>
+        <form>
+            <label for='newPassword'>Mot de passe</label>
+            <input type='password' name='newPassword' required placeholder='Nouveau mot de passe' minlength='5'/>
 
-        <label for='confirm'>Mot de passe</label>
-        <input type='password' name='confirm' required placeholder='Confirmer' minlength='5'/>
+            <label for='confirm'>Mot de passe</label>
+            <input type='password' name='confirm' required placeholder='Confirmer' minlength='5'/>
 
-        <input type='submit' value="Modifier" class='green'/>
-        <input type="hidden" name="data" value="{{ data }}" />
+            <input type='submit' value="Modifier" class='green'/>
+            <input type="hidden" name="data" value="{{ data }}" />
+        </form>
     </div>
 
     <div class='existAcount'>

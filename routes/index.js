@@ -30,8 +30,6 @@ router.get('/changePwdBefore', function (req, res, next) {
 
 
     let allDatas = decodeDatas.split('&');
-
-    // let id = allDatas[1];
     let diff = howMinutesAgo(new Date(allDatas[2]));
 
     if (diff <= allConfig.get('conf_email_orga').minutes_forgetPwd) {
@@ -41,14 +39,5 @@ router.get('/changePwdBefore', function (req, res, next) {
     }
 });
 
-/* GET login page */
-// router.get('/changePwd', function (req, res, next) {
-//     res.render('generals/error.html.twig', {data: allConfig.get('conf_serveur').error.not_found});
-// });
-
-/* GET not found page */
-// router.get('/notFound', function (req, res, next) {
-//     res.render('generals/error.html.twig', {data: allConfig.get('conf_serveur').error.not_found});
-// });
 
 module.exports = router;

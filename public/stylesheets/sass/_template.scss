@@ -64,6 +64,11 @@ body {
     box-shadow: 3px 2px 5px $color-corporate-box-shadow;
 }
 
+div.error {
+    margin: 0px;
+    padding: 0px;
+}
+
 /* FORM */
 button,
 input[type='submit'] {
@@ -76,6 +81,10 @@ input[type='submit'] {
     font-weight: bold;
     box-shadow: 3px 2px 5px $color-corporate-box-shadow;
     height: 40px;
+
+    &:disabled {
+        opacity: 0.4;
+    }
 }
 
 input {

@@ -1,6 +1,14 @@
 $j(function () {
-    /* on submit form */
-    $j('#divFormChangePwd input[type=submit]').on('click', function () {
-        console.log('CLIKED ! ');
+
+    $j('#divFormChangePwd form').validate({
+        rules: {
+            newPassword: {
+                equalTo: "#divFormChangePwd input[name=confirm]"
+            },
+            confirm: {
+                equalTo: "#divFormChangePwd input[name=newPassword]"
+            }
+        }, onkeyup: function(element) {$j(element).valid()}
     });
+
 });

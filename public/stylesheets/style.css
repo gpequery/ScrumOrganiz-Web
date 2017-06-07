@@ -24,8 +24,11 @@ body .navigate { cursor: pointer; }
 
 .msgInfoNok { color: #A94442; background-color: #F2DDED; border-color: #EBCCD1; box-shadow: 3px 2px 5px #000; }
 
+div.error { margin: 0px; padding: 0px; }
+
 /* FORM */
 button, input[type='submit'] { display: inline-block; margin: auto; font-size: 16px; border: none; border-radius: 5px; cursor: pointer; font-weight: bold; box-shadow: 3px 2px 5px #000; height: 40px; }
+button:disabled, input[type='submit']:disabled { opacity: 0.4; }
 
 input { background: #edeff0; border-radius: 4px; height: 35px; }
 
