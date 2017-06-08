@@ -1,4 +1,24 @@
 {
+    "conf_organisation": {
+        "name": "ScrumOrganisation"
+    },
+    "conf_serveur": {
+        "adress": "http://localhost",
+        "port": "3000",
+        "error": {
+            "not_found": {
+                "code": "404",
+                "message": "Page non trouvée !"
+            },
+            "old_link": {
+                "code": "301",
+                "message": "Lien plus valide !"
+            }
+        }
+    },
+    "conf_crypto": {
+        "secrect_key": "qzd5ZD5464qzf!qzf564ZD"
+    },
     "conf_services": {
         "acces": {
             "login": "$2a$10$mMm1L2Wuk7mfH5vb8oQodOxJIibwlfSbOur.IrcsVPzmn6EAe3Jp2",
@@ -9,5 +29,16 @@
         "pseudo_min_length": 4,
         "email_regex": "^[a-z0-9!#$%&'*+\\/=?^_`{|}~.-]+@[a-z0-9-]+(\\.[a-z0-9-]+)*$",
         "password_min_length": 5
+    },
+    "conf_email_orga": {
+        "acces": {
+            "service": "gmail",
+            "login": "scrum.organize@gmail.com",
+            "password": "sws2017Email"
+        },
+        "actions": {
+            "forget_password": "fgtPwd"
+        },
+        "minutes_forgetPwd": "10"
     }
 }

@@ -14,5 +14,11 @@
         "success": "Connexion réussis",
         "pseudo_no_exist": "Il n'y as pas de compte associé à ce pseudo",
         "bad_password": "Mauvais mot de passe"
+    },
+    "forget_password_message": {
+        "send_success": "Un mail viens d'être envoyé à cet utilisateur",
+        "bad_account": "Il n'y as pas de compte associé à ces informations",
+        "no_account_submit": "Mot de passe non modifé, essayez à nouveau",
+        "change_success": "Votre mot de passe a bien été modifié.\nVoulez-vous vous connecter?"
     }
 }
