@@ -82,4 +82,21 @@ router.post('/loginUser', function(req, res, next) {
     }
 });
 
+/* Change PWD : idUser & newPwd */
+router.post('/changePwd', function(req, res, next) {
+    let servicesID = allConfig.get('conf_services:acces');
+    let messages = allConfig.get('services_message');
+
+    if (bcrypt.compareSync(req.body.servicesLogin, servicesID.login) && bcrypt.compareSync(req.body.servicesPassword, servicesID.password)) {
+        User.findById(req.body.id).then(function(user) {
+            user.update({password: bcrypt.hashSync(req.body.newPassword, bcrypt.genSaltSync())});
+            res.send({etat: true, message: messages.pwd_change_success});
+        }).catch(function(error) {
+            res.send({etat: false, message: messages.pwd_change_failed});
+        });
+    } else {
+        res.send({etat: false, message: messages.acces_refused});
+    }
+});
+
 module.exports = router;

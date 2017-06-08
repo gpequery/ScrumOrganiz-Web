@@ -1,6 +1,8 @@
 {
     "services_message": {
-        "acces_refused": "Login et/ou MDP incorrect"
+        "acces_refused": "Login et/ou MDP incorrect",
+        "pwd_change_success": "Mot de passe modifié",
+        "pwd_change_failed": "Utilisateurs non trouvé"
     },
     "sign_up_message": {
         "succes": "Ajout réussis",
