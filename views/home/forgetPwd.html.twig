@@ -1,0 +1,39 @@
+{% include '../includes/header.html.twig' %}
+
+<header>
+    <div class='logo'>
+        <img src="/images/logo/logo-horizontal.png" class='navigate' data-url='/'/>
+    </div>
+    <div class='input'>
+        <input class='gray navigate' data-url='/signup' type='submit' value='Inscription'/>
+        <input class='blue navigate' data-url='/' type='submit' value='Retour'/>
+    </div>
+</header>
+
+<div class='forgetContent'>
+    <div class='msgInfo'>&nbsp;</div>
+
+    <h1>Réinitialiser</h1>
+
+    <div id='divFormForget'>
+        <label for='pseudo'>Pseudo</label>
+        <input type='text' name='pseudo' required placeholder='ex : pdurand' minlength='4'/>
+
+        <label for='email'>Email</label>
+        <input type='email' name='email' required placeholder='ex : mon-mail@mail.fr'/>
+
+        <input type='submit' value="Envoyer" class='green'/>
+    </div>
+
+    <div class='existAcount'>
+        <span>Pas de compte ? </span>
+        <span class='link navigate' data-url='/signup'>Inscrivez-vous</span>
+    </div>
+    <div class='existAcount'>
+        <span>Vous avez déjà un compte ? </span>
+        <span class='link navigate' data-url='/login'>Connectez-vous</span>
+    </div>
+</div>
+
+
+{% include '../includes/footer.html.twig' %}

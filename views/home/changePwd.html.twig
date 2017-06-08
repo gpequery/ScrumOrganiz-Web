@@ -1,0 +1,34 @@
+{% include '../includes/header.html.twig' %}
+
+<header>
+    <div class='logo'>
+        <img src="/images/logo/logo-horizontal.png" class='navigate' data-url='/'/>
+    </div>
+</header>
+
+<div class='changePwdContent'>
+    <div class='msgInfo'>&nbsp;</div>
+
+    <h1>Changement du mot de passe</h1>
+
+    <div id='divFormChangePwd'>
+        <form>
+            <label for='newPassword'>Mot de passe</label>
+            <input type='password' name='newPassword' required placeholder='Nouveau mot de passe' minlength='5'/>
+
+            <label for='confirm'>Mot de passe</label>
+            <input type='password' name='confirm' required placeholder='Confirmer' minlength='5'/>
+
+            <input type='button' value="Modifier" class='green' disabled/>
+            <input type="hidden" name="data" value="{{ data }}" />
+        </form>
+    </div>
+
+    <div class='existAcount'>
+        <span>Mot de passe retrouvé ? </span>
+        <span class='link navigate' data-url='/login'>Connectez-vous</span>
+    </div>
+</div>
+
+
+{% include '../includes/footer.html.twig' %}
