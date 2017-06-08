@@ -31,7 +31,7 @@ Pour toute requête (en POST)
     LIEN :                  [url-du-site]/web_services/[requête]
     PARAMETRES MINIMUM :    servicesLogin, servicesPassword
 
-####Reponse :
+####Reponse (sur toutes les requêtes):
 
     etat :
         true    ->  action réussis
@@ -44,4 +44,14 @@ Pour toute requête (en POST)
 
     LIEN :                          [url-du-site]/web_services/addUser
     PARAMETRES SUPPLAMENTAIRE :     pseudo, password, email
+    
+####Connexion
+
+    LIEN :                          [url-du-site]/web_services/aloginUser
+    PARAMETRES SUPPLAMENTAIRE :     pseudo, password
+    
+####Changer mdp
+
+    LIEN :                          [url-du-site]/web_services/achangePwd
+    PARAMETRES SUPPLAMENTAIRE :     id, password
     
