@@ -2,6 +2,7 @@ const express = require('express');
 const router = express.Router();
 const models = require('../models');
 const bcrypt = require('bcrypt');
+const crypto = require('crypto-js');
 const User = models.User;
 
 /* Add user if pseudo and mail is not already used */
@@ -87,7 +88,7 @@ router.post('/forgetPwd', function(req, res, next) {
             let actions = allConfig.get('conf_email_orga').actions;
 
             sendMail(user.email, actions.forget_password, {id: user.id, pseudo: user.pseudo});
-            res.send({etat: true, message: messages.success});
+            res.send({etat: true, message: messages.send_success});
         } else {
             res.send({etat: false, message: messages.bad_account});
         }
@@ -95,6 +96,30 @@ router.post('/forgetPwd', function(req, res, next) {
         res.send({etat: false, message: err.toString()});
     });
 
+});
+
+/* User change pwd final */
+router.post('/changePwd', function(req, res, next) {
+    let dataUrl = decodeURI(req.body.data).split(' ').join('+');
+    let decodeDatas  = crypto.AES.decrypt(dataUrl, allConfig.get('conf_crypto').secrect_key).toString(crypto.enc.Utf8);
+
+    let allDatas = decodeDatas.split('&');
+    let diff = howMinutesAgo(new Date(allDatas[2]));
+
+    if (diff <= allConfig.get('conf_email_orga').minutes_forgetPwd) {
+        let messages = allConfig.get('forget_password_message');
+
+        User.findById(allDatas[1]).then(function(user) {
+            user.update({password: bcrypt.hashSync(req.body.newPassword, bcrypt.genSaltSync())});
+            res.send({etat: true, message: messages.change_success});
+        }).catch(function(error) {
+            res.send({etat: false, message: messages.no_account_submit});
+        });
+    } else {
+        res.render('generals/error.html.twig', {data: allConfig.get('conf_serveur').error.old_link});
+    }
+
+    //res.send('OK : ' + dataUrl);
 });
 
 module.exports = router;

@@ -39,6 +39,6 @@
         "actions": {
             "forget_password": "fgtPwd"
         },
-        "minutes_forgetPwd": "30"
+        "minutes_forgetPwd": "10"
     }
 }

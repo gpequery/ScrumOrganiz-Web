@@ -27,8 +27,7 @@ router.post('/forgetPwd', function (req, res, next) {
 router.get('/changePwdBefore', function (req, res, next) {
     let dataUrl = decodeURI(req.query.data).split(' ').join('+');
     let decodeDatas  = crypto.AES.decrypt(dataUrl, allConfig.get('conf_crypto').secrect_key).toString(crypto.enc.Utf8);
-
-
+    
     let allDatas = decodeDatas.split('&');
     let diff = howMinutesAgo(new Date(allDatas[2]));
 

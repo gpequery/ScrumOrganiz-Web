@@ -22,8 +22,7 @@ $j(function () {
 
             $j('h1').css('margin-top', '21px');
 
-            $j('input[type=submit]').attr('opacity', 0.4);
-            $j('input[type=submit]').attr('disabled', 'disabled');
+            $j('input[type=button]').attr('disabled', 'disabled');
         },
         success:function(label,element) {
             label.parent().removeClass('error');
@@ -33,8 +32,7 @@ $j(function () {
 
             $j('h1').css('margin-top', '17px');
 
-            $j('input[type=submit]').attr('opacity', 1);
-            $j('input[type=submit]').attr('disabled', false);
+            $j('input[type=button]').attr('disabled', false);
         }
     });
 });

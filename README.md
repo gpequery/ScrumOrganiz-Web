@@ -18,6 +18,10 @@
      
     JS : goToUrl('url-to-go') 
     
+#### Cryptage
+    Mot de passe : bCrypt
+    Transfert de données crytpo
+    
 ##Webservice
 
 ####Acces :
