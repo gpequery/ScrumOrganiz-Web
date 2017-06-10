@@ -20,17 +20,13 @@ $j(function () {
             $j('.msgInfo').addClass('msgInfoNok');
             $j('.msgInfo').html(error);
 
-            $j('h1').css('margin-top', '21px');
-
             $j('input[type=button]').attr('disabled', 'disabled');
         },
         success:function(label,element) {
             label.parent().removeClass('error');
             label.remove();
             $j('.msgInfo').removeClass('msgInfoNok');
-            $j('.msgInfo').html('');
-
-            $j('h1').css('margin-top', '17px');
+            $j('.msgInfo').html('&nbsp;');
 
             $j('input[type=button]').attr('disabled', false);
         }
