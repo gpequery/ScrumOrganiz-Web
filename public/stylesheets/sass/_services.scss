@@ -1,0 +1,23 @@
+.serviceCryptageContent {
+    width: 20%;
+    text-align: center;
+    display: inline-block;
+    margin-left: 40%;
+
+    div#result {
+        margin-top: 20px;
+        font-size: 20px;
+    }
+
+    input[type="text"] {
+        display: block;
+        width: 100%;
+        //font-weight: bold;
+        font-size: 20px;
+    }
+
+    input[type="button"] {
+        margin-top: 20px;
+        margin-bottom: 20px;
+    }
+}

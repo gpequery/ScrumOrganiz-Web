@@ -1,21 +1,20 @@
 const express = require('express');
 const router = express.Router();
 const crypto = require('crypto-js');
-const url = require('url');
 
 /* GET home page. */
 router.all('/', function(req, res, next) {
     res.render('home/home.html.twig');
 });
 
-/* GET sign up page */
+/* GET sign up page with data : confUser */
 router.post('/signup', function (req, res, next) {
-    res.render('home/signup.html.twig');
+    res.render('home/signup.html.twig', {conf: allConfig.get('conf_user_rules')});
 });
 
-/* GET login page */
+/* GET login page with data : confUser */
 router.post('/login', function (req, res, next) {
-    res.render('home/login.html.twig');
+    res.render('home/login.html.twig', {conf: allConfig.get('conf_user_rules')});
 });
 
 /* GET board page */
@@ -25,7 +24,7 @@ router.post('/board', function (req, res, next) {
 
 /* GET login page */
 router.post('/forgetPwd', function (req, res, next) {
-    res.render('home/forgetPwd.html.twig');
+    res.render('home/forgetPwd.html.twig', {conf: allConfig.get('conf_user_rules')});
 });
 
 /* Decrypte infos send by mail and verify date */
@@ -37,9 +36,9 @@ router.get('/changePwdBefore', function (req, res, next) {
     let diff = howMinutesAgo(new Date(allDatas[2]));
 
     if (diff <= allConfig.get('conf_email_orga').minutes_forgetPwd) {
-        res.render('home/changePwd.html.twig', {data: dataUrl});
+        res.render('home/changePwd.html.twig', {data: dataUrl, conf: allConfig.get('conf_user_rules')});
     } else {
-        res.render('generals/error.html.twig', {data: allConfig.get('conf_serveur').error.old_link});
+        res.render('includes/error.html.twig', {data: allConfig.get('conf_serveur').error.old_link});
     }
 });
 
