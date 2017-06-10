@@ -3,7 +3,7 @@ const path = require('path');
 const favicon = require('serve-favicon');
 const models = require('./models');
 const nodemailer = require('nodemailer');
-//var session = require('express-sessions');
+const session = require('cookie-session');
 
 /* Config */
 allConfig = require('nconf');
@@ -14,6 +14,7 @@ allConfig.load();
 
 const functions = require('./functions.js');
 const bodyParser = require('body-parser');
+
 
 
 const index = require('./routes/index');
@@ -32,11 +33,18 @@ app.set('view engine', 'twig');
 
 app.use(express.static(path.join(__dirname, 'public')));
 app.use(bodyParser.urlencoded({ extended: false }));
+app.use(session({
+        secret: allConfig.get('conf_session:secrect_key'),
+        cookie: { secure: true }
+}));
+
 
 app.use('/', index);
 app.use('/user', user);
 app.use('/web_services', webService);
 app.use('/services', service);
+
+
 
 
 // catch 404 and forward to error handler

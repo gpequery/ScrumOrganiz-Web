@@ -6,7 +6,7 @@
     npm install --save mysql2
     npm install --save body-parser
     npm install --save bcrypt
-    npm install --save express-sessions
+    npm install --save cookie-session
     npm install --save redis
     npm install --save json-web-token
     npm install --save nodemailer
