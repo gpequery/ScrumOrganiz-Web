@@ -2,6 +2,35 @@ const express = require('express');
 const router = express.Router();
 const crypto = require('crypto-js');
 
+const models = require('../models');
+const User = models.User;
+
+router.get('/test', function(req, res, next) {
+    let options = {
+        include: [{
+            model: models.Project
+        }]
+    };
+
+
+    User.findAll(options).then(function(users) {
+        let html = 'USERS : ' + users.length + '</br></br></br>';
+
+        for (user of users) {
+            html += JSON.stringify(user);
+
+            let project = user.project;
+            console.log('Project : ' + JSON.stringify(project));
+
+            html += '</br></br>';
+        }
+
+        res.send(html);
+    }).catch(function(error) {
+        res.send('ERROR : ' + error);
+    });
+});
+
 /* GET home page. */
 router.all('/', function(req, res, next) {
     // verifySession(req.session);
@@ -10,7 +39,7 @@ router.all('/', function(req, res, next) {
     // req.session.age = 10;
 
     // req.sessionOptions.expire = new Date(Date.now() + (1000)) ;
-    console.log('1 : ' + JSON.stringify(req.session));
+    // console.log('1 : ' + JSON.stringify(req.session));
 
     res.render('home/home.html.twig');
 });
@@ -27,7 +56,7 @@ router.post('/signup', function (req, res, next) {
 
 /* GET login page with data : confUser */
 router.post('/login', function (req, res, next) {
-    verifySession(req.session);
+    // verifySession(req.session);
 
     res.render('home/login.html.twig', {conf: allConfig.get('conf_user_rules')});
 });
