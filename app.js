@@ -3,6 +3,7 @@ const path = require('path');
 const favicon = require('serve-favicon');
 const models = require('./models');
 const nodemailer = require('nodemailer');
+const helmet = require('helmet');
 
 /**/
 allConfig = require('nconf');
@@ -30,6 +31,7 @@ app.set('view engine', 'twig');
 
 app.use(express.static(path.join(__dirname, 'public')));
 app.use(bodyParser.urlencoded({ extended: false }));
+app.use(helmet());
 
 app.use('/', index);
 app.use('/user', user);
