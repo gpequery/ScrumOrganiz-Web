@@ -32,9 +32,9 @@
     },
     "conf_email_orga": {
         "acces": {
-            "service": "gmail",
-            "login": "scrum.organize@gmail.com",
-            "password": "sws2017Email"
+            "service": "U2FsdGVkX18/nGiQU0ONFa4pba+7ebYa8ymhgkOPEVQ=",
+            "login": "U2FsdGVkX19VKRpPsuxIV7l3qodia0cKgejNmaAaDWRyvVeXM3KFXClATUkAkSEv",
+            "password": "U2FsdGVkX18vZSiJXV+Zfd8bSIG3ZK2znwaBw7PDv58="
         },
         "actions": {
             "forget_password": "fgtPwd"
