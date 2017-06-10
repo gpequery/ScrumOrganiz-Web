@@ -1,7 +1,8 @@
-var express = require('express');
-var path = require('path');
-var favicon = require('serve-favicon');
-var models = require('./models');
+const express = require('express');
+const path = require('path');
+const favicon = require('serve-favicon');
+const models = require('./models');
+const nodemailer = require('nodemailer');
 //var session = require('express-sessions');
 
 /* Config */
@@ -11,44 +12,19 @@ allConfig.add('message', {type: 'file', file: 'config/_messages.json'});
 allConfig.load();
 /**/
 
-var bodyParser = require('body-parser');
+const functions = require('./functions.js');
+const bodyParser = require('body-parser');
 
-/* TEST  TOKEN */
-//var jwt = require('json-web-token');
-/*var secret = 'monPasseSecret';
-var payload = {
-    id: 2,
-    nom: 'Greg'
-};
 
-jwt.encode(secret, payload, function (err, token) {
-    if (!err) {
-        jwt.decode(secret, token, function (err_, decodedPayload, decodedHeader) {
-            if (err) {
-                console.error(err.name, err.message);
-            } else {
-                if (JSON.stringify(payload) == JSON.stringify(decodedPayload)) {
-                    console.log('YAIH');
-                } else {
-                    console.log(payload, decodedPayload);
-                }
-            }
-        });
-    } else {
-        console.error(err.name, err.message);
-    }
-});*/
-
-/* FIN TEST */
-
-var index = require('./routes/index');
-var user = require('./routes/user');
-var webService = require('./routes/web_services');
+const index = require('./routes/index');
+const user = require('./routes/user');
+const webService = require('./routes/web_services');
+const service = require('./routes/services');
 
 models.sequelize.sync();
 // models.sequelize.sync({'force': 'true'});
 
-var app = express();
+const app = express();
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
@@ -60,6 +36,7 @@ app.use(bodyParser.urlencoded({ extended: false }));
 app.use('/', index);
 app.use('/user', user);
 app.use('/web_services', webService);
+app.use('/services', service);
 
 
 // catch 404 and forward to error handler

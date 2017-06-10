@@ -17,13 +17,13 @@
 
     <div id='divFormSignIn'>
         <label for='pseudo'>Pseudo</label>
-        <input type='text' name='pseudo' required placeholder='ex : pdurand' minlength='4'/>
+        <input type='text' name='pseudo' required placeholder='ex : pdurand' minlength='{{ conf.pseudo_min_length }}'/>
 
         <label for='email'>E-mail</label>
         <input type='email' name='email' required placeholder='ex : mon-mail@mail.fr'/>
 
         <label for='pwd'>Mot de passe</label>
-        <input type='password' name='pwd' required placeholder='ex : *****' minlength='5'/>
+        <input type='password' name='pwd' required placeholder='ex : *****' minlength='{{ conf.password_min_length }}'/>
 
         <input type='submit' value="M'inscrire" class='green'/>
     </div>

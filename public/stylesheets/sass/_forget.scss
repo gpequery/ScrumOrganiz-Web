@@ -1,0 +1,42 @@
+.forgetContent {
+    width: 60%;
+    text-align: center;
+    margin: 0 auto;
+
+    .msgInfo {
+        display: inline-block;
+        margin-top: 70px;
+        margin-bottom: 10px;
+    }
+
+    #divFormForget {
+        display: inline-block;
+        text-align: left;
+        width: 35%;
+        margin: auto;
+        label,
+        input {
+            display: block;
+            font-size: 20px;
+        }
+
+        input {
+            margin-bottom: 15px;
+            width: 100%;
+        }
+
+        input[type='submit'] {
+            margin-top: 30px;
+        }
+
+        label {
+            color: black;
+        }
+    }
+
+    .existAcount {
+        .link {
+            text-decoration: underline;
+        }
+    }
+}

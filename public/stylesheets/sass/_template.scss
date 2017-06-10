@@ -3,10 +3,7 @@ body {
     color: $color-corportate-dark;
 
     header {
-        background-color: $color-corportate-light;
-        position: fixed;
-        left: 0;
-        top: 0;
+        background-color: $color-corportate-background-header;
         width: 100%;
         height: 94px;
 
@@ -57,18 +54,24 @@ body {
     color: $color-success;
     background-color: $color-background-success;
     border-color: $color-border-success;
-    box-shadow: 3px 2px 5px $color-corportate-darker;
+    box-shadow: 3px 2px 5px $color-corporate-box-shadow;
 }
 
 .msgInfoNok {
     color: $color-danger;
     background-color: $color-background-danger;
     border-color: $color-border-danger;
-    box-shadow: 3px 2px 5px $color-corportate-darker;
+    box-shadow: 3px 2px 5px $color-corporate-box-shadow;
+}
+
+div.error {
+    margin: 0px;
+    padding: 0px;
 }
 
 /* FORM */
 button,
+input[type='button'],
 input[type='submit'] {
     display: inline-block;
     margin: auto;
@@ -77,8 +80,12 @@ input[type='submit'] {
     border-radius: 5px;
     cursor: pointer;
     font-weight: bold;
-    box-shadow: 3px 2px 5px $color-corportate-darker;
+    box-shadow: 3px 2px 5px $color-corporate-box-shadow;
     height: 40px;
+
+    &:disabled {
+        opacity: 0.4;
+    }
 }
 
 input {
@@ -120,4 +127,7 @@ input.orange {
     }
 }
 
+input:disabled {
+    cursor: Not-Allowed;
+}
 

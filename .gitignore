@@ -1,2 +1,4 @@
 .idea/
 .sass-cache/
+/public/stylesheets/main/style.css
+/public/stylesheets/main/style.css.map

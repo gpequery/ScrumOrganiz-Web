@@ -82,18 +82,21 @@ router.post('/loginUser', function(req, res, next) {
     }
 });
 
-module.exports = router;
+/* Change PWD : idUser & newPwd */
+router.post('/changePwd', function(req, res, next) {
+    let servicesID = allConfig.get('conf_services:acces');
+    let messages = allConfig.get('services_message');
 
-function services_add_user_verify_info(messages, userRules, pseudo, email, password) {
-    if (typeof pseudo == 'undefined' || pseudo.length < userRules.pseudo_min_length) {
-        return {etat: false, message: messages.pseudo_min_length};
-    }
-    else if (!new RegExp(userRules.email_regex).test(email)) {
-        return {etat: false, message: messages.mail_format};
-    }
-    else if (typeof password == 'undefined' || password.length < userRules.password_min_length) {
-        return {etat: false, message: messages.password_min_length};
+    if (bcrypt.compareSync(req.body.servicesLogin, servicesID.login) && bcrypt.compareSync(req.body.servicesPassword, servicesID.password)) {
+        User.findById(req.body.id).then(function(user) {
+            user.update({password: bcrypt.hashSync(req.body.newPassword, bcrypt.genSaltSync())});
+            res.send({etat: true, message: messages.pwd_change_success});
+        }).catch(function(error) {
+            res.send({etat: false, message: messages.pwd_change_failed});
+        });
     } else {
-        return {etat: true};
+        res.send({etat: false, message: messages.acces_refused});
     }
-}
+});
+
+module.exports = router;
