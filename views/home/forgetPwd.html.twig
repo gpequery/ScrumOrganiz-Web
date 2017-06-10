@@ -17,7 +17,7 @@
 
     <div id='divFormForget'>
         <label for='pseudo'>Pseudo</label>
-        <input type='text' name='pseudo' required placeholder='ex : pdurand' minlength='4'/>
+        <input type='text' name='pseudo' required placeholder='ex : pdurand' minlength='{{ conf.pseudo_min_length }}'/>
 
         <label for='email'>Email</label>
         <input type='email' name='email' required placeholder='ex : mon-mail@mail.fr'/>
