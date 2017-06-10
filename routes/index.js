@@ -4,16 +4,31 @@ const crypto = require('crypto-js');
 
 /* GET home page. */
 router.all('/', function(req, res, next) {
+    // verifySession(req.session);
+    // req.session.id = 6;
+    // req.session.name = 'Greg';
+    // req.session.age = 10;
+
+    // req.sessionOptions.expire = new Date(Date.now() + (1000)) ;
+    console.log('1 : ' + JSON.stringify(req.session));
+
     res.render('home/home.html.twig');
 });
 
 /* GET sign up page with data : confUser */
 router.post('/signup', function (req, res, next) {
+    // req.session.age = 24;
+    //
+    // req.sessionOptions.maxAge = 5 * 60 * 60 * 1000 ;
+    // console.log('2 : ' + JSON.stringify(req.session));
+
     res.render('home/signup.html.twig', {conf: allConfig.get('conf_user_rules')});
 });
 
 /* GET login page with data : confUser */
 router.post('/login', function (req, res, next) {
+    verifySession(req.session);
+
     res.render('home/login.html.twig', {conf: allConfig.get('conf_user_rules')});
 });
 

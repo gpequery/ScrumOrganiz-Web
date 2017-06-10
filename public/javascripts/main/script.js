@@ -1,10 +1,6 @@
 jQuery(function() {
     $j = jQuery.noConflict();
 
-    $j.getScript('/javascripts/modules/jquery.validate.min.js', function() {
-        console.info('Load was performed --> _jQuery_validate');
-    });
-
     $j.getScript('/javascripts/scripts/_template.js', function() {
         console.info('Load was performed --> _template');
     });
