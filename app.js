@@ -4,6 +4,7 @@ const favicon = require('serve-favicon');
 const models = require('./models');
 const nodemailer = require('nodemailer');
 const session = require('cookie-session');
+const helmet = require('helmet');
 
 /* Config */
 allConfig = require('nconf');
@@ -33,18 +34,16 @@ app.set('view engine', 'twig');
 
 app.use(express.static(path.join(__dirname, 'public')));
 app.use(bodyParser.urlencoded({ extended: false }));
+app.use(helmet());
 app.use(session({
         secret: allConfig.get('conf_session:secrect_key'),
         cookie: { secure: true }
 }));
 
-
 app.use('/', index);
 app.use('/user', user);
 app.use('/web_services', webService);
 app.use('/services', service);
-
-
 
 
 // catch 404 and forward to error handler
