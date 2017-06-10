@@ -60,6 +60,7 @@ router.post('/loginUser', function(req, res, next) {
     User.findOne(options).then(function(user) {
         if (user != null) {
             if (bcrypt.compareSync(req.body.password, user.password)) {
+                req.session.userId = user.id;
                 res.send({etat: true, message: messages.success})
             } else {
                 res.send({etat: false, message: messages.bad_password})

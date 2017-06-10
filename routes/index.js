@@ -63,6 +63,7 @@ router.post('/login', function (req, res, next) {
 
 /* GET board page */
 router.post('/board', function (req, res, next) {
+    console.log('BoardPage idUser : ' + req.session.userId);
     res.render('general/board.html.twig');
 });
 
