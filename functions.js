@@ -16,6 +16,17 @@ services_add_user_verify_info = function (messages, userRules, pseudo, email, pa
     }
 };
 
+/* TestCookieValidation */
+verifySession = function(cookie) {
+    console.log('test : ' + cookie.id);
+};
+
+/*  return how minutes oldDate ago */
+howMinutesAgo = function (oldDate) {
+    return parseInt((new Date().getTime() - oldDate.getTime()) / 60000);
+};
+
+/* send an email*/
 sendMail = function (emailToSend, action, infosForEmail) {
     let confEmail = allConfig.get('conf_email_orga').acces;
 
@@ -53,10 +64,6 @@ sendMail = function (emailToSend, action, infosForEmail) {
     });
 
     transporter.close();
-};
-
-howMinutesAgo = function (oldDate) {
-    return parseInt((new Date().getTime() - oldDate.getTime()) / 60000);
 };
 
 function getHtmlHeaderEmail(pseudo) {

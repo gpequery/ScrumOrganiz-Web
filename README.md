@@ -6,6 +6,9 @@
     npm install --save mysql2
     npm install --save body-parser
     npm install --save bcrypt
+    npm install --save cookie-session
+    npm install --save redis
+    npm install --save json-web-token
     npm install --save nodemailer
     npm install --save crypto-js
     
@@ -49,6 +52,7 @@ Pour toute requête (en POST)
 
     LIEN :                          [url-du-site]/web_services/aloginUser
     PARAMETRES SUPPLAMENTAIRE :     pseudo, password
+    
     
 ####Changer mdp
 
