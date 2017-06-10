@@ -20,10 +20,10 @@ sendMail = function (emailToSend, action, infosForEmail) {
     let confEmail = allConfig.get('conf_email_orga').acces;
 
     let transporter = nodemailer.createTransport({
-        service: confEmail.service,
+        service: crypto.AES.decrypt(confEmail.service, allConfig.get('conf_crypto').secrect_key).toString(crypto.enc.Utf8),
         auth: {
-            user: confEmail.login,
-            pass: confEmail.password
+            user: crypto.AES.decrypt(confEmail.login, allConfig.get('conf_crypto').secrect_key).toString(crypto.enc.Utf8),
+            pass: crypto.AES.decrypt(confEmail.password, allConfig.get('conf_crypto').secrect_key).toString(crypto.enc.Utf8)
         }
     });
 

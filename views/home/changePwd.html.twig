@@ -14,10 +14,10 @@
     <div id='divFormChangePwd'>
         <form>
             <label for='newPassword'>Mot de passe</label>
-            <input type='password' name='newPassword' required placeholder='Nouveau mot de passe' minlength='5'/>
+            <input type='password' name='newPassword' required placeholder='Nouveau mot de passe' minlength='{{ conf.password_min_length }}'/>
 
             <label for='confirm'>Mot de passe</label>
-            <input type='password' name='confirm' required placeholder='Confirmer' minlength='5'/>
+            <input type='password' name='confirm' required placeholder='Confirmer' minlength='{{ conf.password_min_length }}'/>
 
             <input type='button' value="Modifier" class='green' disabled/>
             <input type="hidden" name="data" value="{{ data }}" />

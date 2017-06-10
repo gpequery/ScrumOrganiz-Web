@@ -116,10 +116,8 @@ router.post('/changePwd', function(req, res, next) {
             res.send({etat: false, message: messages.no_account_submit});
         });
     } else {
-        res.render('generals/error.html.twig', {data: allConfig.get('conf_serveur').error.old_link});
+        res.render('includes/error.html.twig', {data: allConfig.get('conf_serveur').error.old_link});
     }
-
-    //res.send('OK : ' + dataUrl);
 });
 
 module.exports = router;

@@ -14,13 +14,11 @@ $j(function () {
 
 
     $j('#divFormChangePwd input[type=button]').click(function() {
-        console.log('CLICKED');
         $j.post(
             '/user/changePwd', {
                 newPassword: $j('#divFormChangePwd input[name=newPassword]').val(),
                 data: $j('#divFormChangePwd input[name=data]').val()
             }, function (data) {
-                console.log('data : ' + JSON.stringify(data));
                 if (data.etat) {
                     if(confirm(data.message)) {
                         goToUrl('/login');

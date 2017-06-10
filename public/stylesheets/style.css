@@ -97,3 +97,8 @@ input:disabled { cursor: Not-Allowed; }
 .changePwdContent #divFormChangePwd input[type='button'] { margin-top: 30px; }
 .changePwdContent #divFormChangePwd label { color: black; }
 .changePwdContent .existAcount .link { text-decoration: underline; }
+
+.serviceCryptageContent { width: 20%; text-align: center; display: inline-block; margin-left: 40%; }
+.serviceCryptageContent div#result { margin-top: 20px; font-size: 20px; }
+.serviceCryptageContent input[type="text"] { display: block; width: 100%; font-size: 20px; }
+.serviceCryptageContent input[type="button"] { margin-top: 20px; margin-bottom: 20px; }
