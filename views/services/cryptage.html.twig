@@ -1,0 +1,63 @@
+{% include '../includes/header.html.twig' %}
+
+<header>
+    <div class='logo'>
+        <img src="/images/logo/logo-horizontal.png" class='navigate' data-url='/'/>
+    </div>
+</header>
+
+<div class='serviceCryptageContent'>
+    <div id="bcrypt">
+        <h1>BCRYPT</h1>
+        <input type="text" name="crypt" placeholder="crypter"/>
+        <input type="button" value="Résultat" method="bcrypt"/>
+    </div>
+    <div id="crypto">
+        <h1>CRYPTO</h1>
+        <input type="text" name="crypt" placeholder="crypter"/>
+        <input type="text" name="decrypt" placeholder="decrypter"/>
+        <input type="button" value="Résultat" method="crypto"/>
+    </div>
+
+    <div id="result">Test</div>
+</div>
+
+<script>
+    jQuery('#bcrypt input[name=crypt]').on('click', function() {
+        jQuery('#bcrypt input[name=decrypt]').val('');
+    });
+
+    jQuery('#bcrypt input[name=decrypt]').on('click', function() {
+        jQuery('#bcrypt input[name=crypt]').val('');
+    });
+
+    jQuery('#crypto input[name=crypt]').on('click', function() {
+        jQuery('#crypto input[name=decrypt]').val('');
+    });
+
+    jQuery('#crypto input[name=decrypt]').on('click', function() {
+        jQuery('#crypto input[name=crypt]').val('');
+    });
+
+
+
+    jQuery('#bcrypt input[type=button], #crypto input[type=button]').on('click', function() {
+        var value = jQuery('#' + jQuery(this).attr('method') + ' input[name=crypt]').val() == '' ? jQuery('#' + jQuery(this).attr('method') + ' input[name=decrypt]').val() : jQuery('#' + jQuery(this).attr('method') + ' input[name=crypt]').val();
+        var action = jQuery('#' + jQuery(this).attr('method') + ' input[name=crypt]').val() != '' ? 'crypt' : 'decrypt';
+
+        jQuery.post(
+            '/services/cryptage/result', {
+                method: jQuery(this).attr('method'),
+                action: action,
+                value: value
+            }, function (data) {
+                jQuery('#result').html(data);
+            });
+    });
+
+
+
+</script>
+
+
+{% include '../includes/footer.html.twig' %}

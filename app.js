@@ -6,8 +6,8 @@ const nodemailer = require('nodemailer');
 
 /**/
 allConfig = require('nconf');
-allConfig.add('test', {type: 'file', file: 'config/_conf.json'});
-allConfig.add('greg', {type: 'file', file: 'config/_messages.json'});
+allConfig.add('conf', {type: 'file', file: 'config/_conf.json'});
+allConfig.add('message', {type: 'file', file: 'config/_messages.json'});
 allConfig.load();
 /**/
 
@@ -17,6 +17,7 @@ const bodyParser = require('body-parser');
 const index = require('./routes/index');
 const user = require('./routes/user');
 const webService = require('./routes/web_services');
+const service = require('./routes/services');
 
 models.sequelize.sync();
 // models.sequelize.sync({'force': 'true'});
@@ -33,6 +34,7 @@ app.use(bodyParser.urlencoded({ extended: false }));
 app.use('/', index);
 app.use('/user', user);
 app.use('/web_services', webService);
+app.use('/services', service);
 
 // catch 404 and forward to error handler
 app.use(function (req, res, next) {
