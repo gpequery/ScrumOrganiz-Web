@@ -50,6 +50,7 @@ Pour toute requête (en POST)
     LIEN :                          [url-du-site]/web_services/aloginUser
     PARAMETRES SUPPLAMENTAIRE :     pseudo, password
     
+    
 ####Changer mdp
 
     LIEN :                          [url-du-site]/web_services/achangePwd
