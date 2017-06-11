@@ -6,20 +6,27 @@ body {
         background-color: $color-corportate-background-header;
         width: 100%;
 
-        div {
+        div.logo,
+        div.input,
+        div.left,
+        div.right {
+            div {
+                display: inline-block;
+            }
             display: inline-block;
             height: 100%;
+            vertical-align: top;
         }
 
         &#offline {
-            height: 94px;
+            height: $size-heigth-header-offline;
+            line-height: $size-line-heigth-header-offline;
             .logo,
             .input {
                 width: 49.5%;
                 input {
                     width: 20%;
                     vertical-align: middle;
-                    margin-top: 25px;
 
                     &:first-child {
                         margin-right: 20px;
@@ -45,7 +52,8 @@ body {
         }
 
         &#online {
-            height: 35px;
+            height: $size-heigth-header-online;
+            line-height: $size-line-heigth-header-online;
             .left,
             .right {
                 width: 49.5%;

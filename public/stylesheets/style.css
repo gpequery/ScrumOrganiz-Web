@@ -7,17 +7,19 @@
 /* GREEN */
 /* BLUE */
 /* ORANGE */
+/* SIZE */
 @font-face { font-family: 'scrum-font'; src: url("../fonts/scrum-font.eot"); src: url("../fonts/scrum-font.eot") format("embedded-opentype"), url("../fonts/scrum-font.ttf") format("truetype"), url("../fonts/scrum-font.woff") format("woff"), url("../fonts/scrum-font.svg") format("svg"); font-weight: normal; font-style: normal; }
 body { margin: 0; color: #565656; }
 body header { background-color: #eee; width: 100%; }
-body header div { display: inline-block; height: 100%; }
-body header#offline { height: 94px; }
+body header div.logo, body header div.input, body header div.left, body header div.right { display: inline-block; height: 100%; vertical-align: top; }
+body header div.logo div, body header div.input div, body header div.left div, body header div.right div { display: inline-block; }
+body header#offline { height: 94px; line-height: 80px; }
 body header#offline .logo, body header#offline .input { width: 49.5%; }
-body header#offline .logo input, body header#offline .input input { width: 20%; vertical-align: middle; margin-top: 25px; }
+body header#offline .logo input, body header#offline .input input { width: 20%; vertical-align: middle; }
 body header#offline .logo input:first-child, body header#offline .input input:first-child { margin-right: 20px; font-weight: normal; }
 body header#offline .logo div { background: url("/images/logo/logo-horizontal.png") no-repeat; background-size: 100%; height: 100%; width: 350px; margin-left: 10px; }
 body header#offline .input { text-align: right; vertical-align: top; }
-body header#online { height: 35px; }
+body header#online { height: 35px; line-height: 30px; }
 body header#online .left, body header#online .right { width: 49.5%; }
 body header#online .right { text-align: right; }
 body header#online .logo { width: 0; }

@@ -17,8 +17,12 @@ services_add_user_verify_info = function (messages, userRules, pseudo, email, pa
 };
 
 /* TestCookieValidation */
-verifySession = function(cookie) {
-    console.log('test : ' + cookie.id);
+verifySession = function(session) {
+    if (session.length == 0) {
+        return false;
+    } else {
+        return true;
+    }
 };
 
 /*  return how minutes oldDate ago */

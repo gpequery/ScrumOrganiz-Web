@@ -11,7 +11,13 @@
 </header>
 
 <div class='loginContent'>
-    <div class='msgInfo'>&nbsp;</div>
+
+    {% if data is defined %}
+        <div class='msgInfo msgInfoNok'>{{ data.message }}</div>
+    {% else %}
+        <div class='msgInfo'>&nbsp;</div>
+    {%  endif %}
+
 
     <h1>Connexion</h1>
 

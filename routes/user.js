@@ -61,6 +61,8 @@ router.post('/loginUser', function(req, res, next) {
         if (user != null) {
             if (bcrypt.compareSync(req.body.password, user.password)) {
                 req.session.userId = user.id;
+                req.sessionOptions.maxAge = allConfig.get('conf_session:session_max_duration');
+
                 res.send({etat: true, message: messages.success})
             } else {
                 res.send({etat: false, message: messages.bad_password})

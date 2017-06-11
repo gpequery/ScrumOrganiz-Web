@@ -1,13 +1,17 @@
 {% include '../includes/header.html.twig' %}
+
 <header id="online">
     <div class="left">
-        GAUCHE
+        <div>Projets</div>
     </div>
     <div class='logo'>
         <div class='navigate' data-url='/board'></div>
     </div>
     <div class='right'>
-        DROITE
+        <div class="pseudo">
+            <span>{{ user.pseudo | slice(0, 1) | upper}}{{ user.pseudo | reverse | slice(0, 1) | upper}}</span>
+            <span>{{ user.pseudo }}</span>
+        </div>
     </div>
 </header>
 
