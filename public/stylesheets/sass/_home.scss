@@ -15,8 +15,8 @@
                 padding-right: 15px;
 
                 &:before {
-                    font-family: 'scrum-font';
-                    content: $font-download;
+                    font-family: $scrum-font-family;
+                    content: $scrum-font-download;
                     padding: 10px;
                 }
 

@@ -1,7 +1,19 @@
 /* FONT */
-    $font-download: '\e9c7';
-    $font-error: '\e900';
+    $scrum-font-family: 'scrum-font';
+    $scrum-font-error: '\e901';
+    $scrum-font-download: '\e900';
+    $scrum-font-setup: '\e902';
 
+/* SIZE */
+    $size-heigth-header-online: 40px;
+    $size-line-heigth-header-online: 68px;
+    $size-heigth-header-offline: 94px;
+    $size-line-heigth-header-offline: 80px;
+    $size-border-radius: 4px;
+
+/* IMAGES */
+    $image-logo-only: '/images/logo/logo-only.png';
+    $image-logo-horizontal: '/images/logo/logo-horizontal.png';
 
 /* COLORS */
     $color-corportate-one: #87ce00;
@@ -48,9 +60,3 @@
             $input-orange-background: #f0ad4e;
             $input-orange-background-over: #ec971f;
 
-
-/* SIZE */
-$size-heigth-header-online: 35px;
-$size-line-heigth-header-online: 30px;
-$size-heigth-header-offline: 94px;
-$size-line-heigth-header-offline: 80px;

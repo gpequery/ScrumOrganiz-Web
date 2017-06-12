@@ -1,5 +1,7 @@
 @charset "UTF-8";
 /* FONT */
+/* SIZE */
+/* IMAGES */
 /* COLORS */
 /* ALERT */
 /* INPUT */
@@ -7,9 +9,8 @@
 /* GREEN */
 /* BLUE */
 /* ORANGE */
-/* SIZE */
 @font-face {
-  font-family: 'scrum-font';
+  font-family: "scrum-font";
   src: url("../fonts/scrum-font.eot");
   src: url("../fonts/scrum-font.eot") format("embedded-opentype"), url("../fonts/scrum-font.ttf") format("truetype"), url("../fonts/scrum-font.woff") format("woff"), url("../fonts/scrum-font.svg") format("svg");
   font-weight: normal;
@@ -17,59 +18,6 @@
 body {
   margin: 0;
   color: #565656; }
-  body header {
-    background-color: #eee;
-    width: 100%; }
-    body header div.logo,
-    body header div.input,
-    body header div.left,
-    body header div.right {
-      display: inline-block;
-      height: 100%;
-      vertical-align: top; }
-      body header div.logo div,
-      body header div.input div,
-      body header div.left div,
-      body header div.right div {
-        display: inline-block; }
-    body header#offline {
-      height: 94px;
-      line-height: 80px; }
-      body header#offline .logo,
-      body header#offline .input {
-        width: 49.5%; }
-        body header#offline .logo input,
-        body header#offline .input input {
-          width: 20%;
-          vertical-align: middle; }
-          body header#offline .logo input:first-child,
-          body header#offline .input input:first-child {
-            margin-right: 20px;
-            font-weight: normal; }
-      body header#offline .logo div {
-        background: url("/images/logo/logo-horizontal.png") no-repeat;
-        background-size: 100%;
-        height: 100%;
-        width: 350px;
-        margin-left: 10px; }
-      body header#offline .input {
-        text-align: right;
-        vertical-align: top; }
-    body header#online {
-      height: 35px;
-      line-height: 30px; }
-      body header#online .left,
-      body header#online .right {
-        width: 49.5%; }
-      body header#online .right {
-        text-align: right; }
-      body header#online .logo {
-        width: 0; }
-        body header#online .logo div {
-          background: url("/images/logo/logo-only.png") no-repeat;
-          background-size: 100%;
-          height: 100%;
-          width: 33px; }
   body .navigate {
     cursor: pointer; }
 
@@ -106,7 +54,7 @@ input[type='submit'] {
   margin: auto;
   font-size: 16px;
   border: none;
-  border-radius: 5px;
+  border-radius: 4px;
   cursor: pointer;
   font-weight: bold;
   box-shadow: 3px 2px 5px #000;
@@ -133,9 +81,11 @@ input.green {
   input.green:hover {
     background-color: #449d44; }
 
+button.blue,
 input.blue {
   color: #fff;
   background-color: #337ab7; }
+  button.blue:hover,
   input.blue:hover {
     background-color: #286090; }
 
@@ -150,6 +100,77 @@ input.orange {
 input:disabled {
   cursor: Not-Allowed; }
 
+header {
+  background-color: #eee;
+  width: 100%; }
+  header div.logo,
+  header div.input,
+  header div.left,
+  header div.right {
+    display: inline-block;
+    height: 100%;
+    vertical-align: top; }
+    header div.logo div,
+    header div.input div,
+    header div.left div,
+    header div.right div {
+      display: inline-block; }
+  header#offline {
+    height: 94px;
+    line-height: 80px; }
+    header#offline .logo,
+    header#offline .input {
+      width: 49.5%; }
+      header#offline .logo input,
+      header#offline .input input {
+        width: 20%;
+        vertical-align: middle; }
+        header#offline .logo input:first-child,
+        header#offline .input input:first-child {
+          margin-right: 20px;
+          font-weight: normal; }
+    header#offline .logo div {
+      background: url("/images/logo/logo-horizontal.png") no-repeat;
+      background-size: 100%;
+      height: 100%;
+      width: 350px;
+      margin-left: 10px; }
+    header#offline .input {
+      text-align: right;
+      vertical-align: top; }
+  header#online {
+    height: 40px; }
+    header#online div.headOption {
+      background-color: #337ab7;
+      color: #fff;
+      border-radius: 4px;
+      margin-top: 5px;
+      padding: 4px 10px;
+      font-weight: bold;
+      cursor: pointer; }
+      header#online div.headOption:hover {
+        background-color: #286090; }
+      header#online div.headOption.pseudo span {
+        margin-left: 5px; }
+        header#online div.headOption.pseudo span:before {
+          font-family: "scrum-font";
+          content: ""; }
+    header#online .left,
+    header#online .right {
+      width: 49.5%; }
+    header#online .right {
+      text-align: right; }
+    header#online .logo {
+      width: 0; }
+      header#online .logo div {
+        background: url("/images/logo/logo-only.png") no-repeat;
+        background-size: 100%;
+        height: 100%;
+        width: 40px; }
+  header .popinHeaderRight {
+    position: absolute;
+    right: 0; }
+
 .homeContent {
   text-align: center;
   margin: auto 0; }
@@ -163,8 +184,8 @@ input:disabled {
       margin-top: 20px;
       padding-right: 15px; }
       .homeContent .desktopApi div button:before {
-        font-family: 'scrum-font';
-        content: "";
+        font-family: "scrum-font";
+        content: "";
         padding: 10px; }
       .homeContent .desktopApi div button span {
         padding-right: 5px; }
@@ -278,9 +299,9 @@ input:disabled {
   .notFoundContent div.font {
     width: 20%;
     text-align: center;
-    font-family: scrum-font; }
+    font-family: "scrum-font"; }
     .notFoundContent div.font:before {
-      content: "";
+      content: "";
       font-size: 200px;
       color: #DC143C; }
 

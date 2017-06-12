@@ -36,17 +36,17 @@ router.get('/test', function(req, res, next) {
 
 /* GET home page. */
 router.all('/', function(req, res, next) {
-    res.render('home/home.html.twig');
+    res.render('home/home.html.twig', {path: '/'});
 });
 
 /* GET sign up page with data : confUser */
 router.post('/signup', function (req, res, next) {
-    res.render('home/signup.html.twig', {conf: allConfig.get('conf_user_rules')});
+    res.render('home/signup.html.twig', {path: 'signup', conf: allConfig.get('conf_user_rules')});
 });
 
 /* GET login page with data : confUser */
 router.post('/login', function (req, res, next) {
-    res.render('home/login.html.twig', {conf: allConfig.get('conf_user_rules')});
+    res.render('home/login.html.twig', {path: 'login', conf: allConfig.get('conf_user_rules')});
 });
 
 /* GET board page */
@@ -69,20 +69,20 @@ router.post('/board', function (req, res, next) {
                 etat: false,
                 message: allConfig.get('conf_serveur:error:sequelize:message')
             };
-            res.render('home/login.html.twig', {conf: allConfig.get('conf_user_rules'), data: data});
+            res.render('home/login.html.twig', {path: 'login', conf: allConfig.get('conf_user_rules'), data: data});
         });
     } else {
         let data = {
             etat: false,
             message: allConfig.get('conf_session:messages:session_expired')
         };
-        res.render('home/login.html.twig', {conf: allConfig.get('conf_user_rules'), data: data});
+        res.render('home/login.html.twig', {path: 'login', conf: allConfig.get('conf_user_rules'), data: data});
     }
 });
 
 /* GET login page */
 router.post('/forgetPwd', function (req, res, next) {
-    res.render('home/forgetPwd.html.twig', {conf: allConfig.get('conf_user_rules')});
+    res.render('home/forgetPwd.html.twig', {path: 'forgetPwd', conf: allConfig.get('conf_user_rules')});
 });
 
 /* Decrypte infos send by mail and verify date */
@@ -94,9 +94,9 @@ router.get('/changePwdBefore', function (req, res, next) {
     let diff = howMinutesAgo(new Date(allDatas[2]));
 
     if (diff <= allConfig.get('conf_email_orga').minutes_forgetPwd) {
-        res.render('home/changePwd.html.twig', {data: dataUrl, conf: allConfig.get('conf_user_rules')});
+        res.render('home/changePwd.html.twig', {path: 'changePwd', data: dataUrl, conf: allConfig.get('conf_user_rules')});
     } else {
-        res.render('includes/error.html.twig', {data: allConfig.get('conf_serveur').error.old_link});
+        res.render('includes/error.html.twig', {path: 'error', data: allConfig.get('conf_serveur').error.old_link});
     }
 });
 

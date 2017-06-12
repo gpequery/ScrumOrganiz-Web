@@ -25,9 +25,9 @@
     div.font {
         width: 20%;
         text-align: center;
-        font-family: scrum-font;
+        font-family: $scrum-font-family;
         &:before {
-            content: $font-error;
+            content: $scrum-font-error;
             font-size: 200px;
             color: $color-font-error;
         }
