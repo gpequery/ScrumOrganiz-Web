@@ -5,35 +5,6 @@ const crypto = require('crypto-js');
 const models = require('../models');
 const User = models.User;
 
-router.get('/test', function(req, res, next) {
-    let options = {
-        where: {
-            id: req.session.userId
-        },
-        include: [{
-            model: models.Project
-        }]
-    };
-
-
-    User.findAll(options).then(function(users) {
-        let html = 'USERS : ' + users.length + '</br></br></br>';
-
-        for (user of users) {
-            html += JSON.stringify(user);
-
-            let project = user.project;
-            console.log('Project : ' + JSON.stringify(project));
-
-            html += '</br></br>';
-        }
-
-        res.send(html);
-    }).catch(function(error) {
-        res.send('ERROR : ' + error);
-    });
-});
-
 /* GET home page. */
 router.all('/', function(req, res, next) {
     res.render('home/home.html.twig', {path: '/'});
@@ -47,6 +18,11 @@ router.post('/signup', function (req, res, next) {
 /* GET login page with data : confUser */
 router.post('/login', function (req, res, next) {
     res.render('home/login.html.twig', {path: 'login', conf: allConfig.get('conf_user_rules')});
+});
+
+/* GET login page */
+router.post('/forgetPwd', function (req, res, next) {
+    res.render('home/forgetPwd.html.twig', {path: 'forgetPwd', conf: allConfig.get('conf_user_rules')});
 });
 
 /* GET board page */
@@ -80,9 +56,32 @@ router.post('/board', function (req, res, next) {
     }
 });
 
-/* GET login page */
-router.post('/forgetPwd', function (req, res, next) {
-    res.render('home/forgetPwd.html.twig', {path: 'forgetPwd', conf: allConfig.get('conf_user_rules')});
+/* GET Setting page */
+router.post('/setting', function(req, res, nex) {
+    if (verifySession(req.session)) {
+        let options = {
+            where: {
+                id: req.session.userId
+            }
+        };
+
+        User.findOne(options).then(function(user) {
+            res.render('general/setting.html.twig', {user: user, conf: allConfig.get('conf_user_rules')});
+        }).catch(function(error) {
+            console.warn('error : ' + error);
+            let data = {
+                etat: false,
+                message: allConfig.get('conf_serveur:error:sequelize:message')
+            };
+            res.render('home/login.html.twig', {path: 'login', conf: allConfig.get('conf_user_rules'), data: data});
+        });
+    } else {
+        let data = {
+            etat: false,
+            message: allConfig.get('conf_session:messages:session_expired')
+        };
+        res.render('home/login.html.twig', {path: 'login', conf: allConfig.get('conf_user_rules'), data: data});
+    }
 });
 
 /* Decrypte infos send by mail and verify date */

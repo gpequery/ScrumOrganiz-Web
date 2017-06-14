@@ -1,0 +1,22 @@
+{% include '../includes/header_online.html.twig' %}
+
+<div class="settingContent">
+
+    <div class="accountSetting">
+        <h1>Paramètres du compte</h1>
+
+        <div id='divFormSettingsAccount'>
+            <label for='pseudo'>Pseudo</label>
+            <input type='text' name='pseudo' required placeholder='ex : pdurand' minlength='{{ conf.pseudo_min_length }}'/>
+
+            <label for='pwd'>Mot de passe</label>
+            <input type='password' name='pwd' required placeholder='ex : *****' minlength='{{ conf.password_min_length }}'/>
+
+            <input type='submit' value="Connexion" class='green'/>
+        </div>
+    </div>
+
+</div>
+
+
+{% include '../includes/footer.html.twig' %}

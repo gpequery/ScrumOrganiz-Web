@@ -21,14 +21,14 @@ body {
     color: $color-success;
     background-color: $color-background-success;
     border-color: $color-border-success;
-    box-shadow: 3px 2px 5px $color-corporate-box-shadow;
+    box-shadow: $css-default-box-shadow;
 }
 
 .msgInfoNok {
     color: $color-danger;
     background-color: $color-background-danger;
     border-color: $color-border-danger;
-    box-shadow: 3px 2px 5px $color-corporate-box-shadow;
+    box-shadow: $css-default-box-shadow;
 }
 
 div.error {
@@ -47,7 +47,7 @@ input[type='submit'] {
     border-radius: $size-border-radius;
     cursor: pointer;
     font-weight: bold;
-    box-shadow: 3px 2px 5px $color-corporate-box-shadow;
+    box-shadow: $css-default-box-shadow;
     height: 40px;
 
     &:disabled {

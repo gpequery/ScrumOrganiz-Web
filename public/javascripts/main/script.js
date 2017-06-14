@@ -5,6 +5,10 @@ jQuery(function() {
         console.info('Load was performed --> _template');
     });
 
+    $j.getScript('/javascripts/scripts/_header.js', function() {
+        console.info('Load was performed --> _header');
+    });
+
     $j.getScript('/javascripts/scripts/_home.js', function() {
         console.info('Load was performed --> _home');
     });

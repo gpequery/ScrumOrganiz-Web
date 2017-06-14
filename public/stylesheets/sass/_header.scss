@@ -68,7 +68,8 @@ header {
                     margin-left: 5px;
                     &:before {
                         font-family: $scrum-font-family;
-                        content: $scrum-font-setup;
+                        content: $scrum-font-setting;
+                        font-size: 14px;
                     }
                 }
             }
@@ -92,10 +93,28 @@ header {
                 width: $size-heigth-header-online;
             }
         }
-    }
 
-    .popinHeaderRight {
-        position: absolute;
-        right: 0;
+        .popinHeaderRight {
+            position: absolute;
+            right: 10px;
+            top: $size-heigth-header-online + 5px;
+            box-shadow: $css-default-box-shadow;
+            border-radius: $size-border-radius;
+            border: 1px solid black;
+            display: none;
+
+            div {
+                display: block;
+                cursor: pointer;
+                padding: 0 15px 0 5px;
+                &:hover {
+                    background-color: $color-corportate-background-header;
+                }
+
+                &.startSection {
+                    border-top: 1px solid $color-corportate-dark;
+                }
+            }
+        }
     }
 }

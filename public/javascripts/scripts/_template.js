@@ -31,11 +31,6 @@ $j(function () {
             $j('input[type=button]').attr('disabled', false);
         }
     });
-
-
-    $j('.headOption.pseudo').on('click', function() {
-        console.log('CLICKED');
-    });
 });
 
 function goToUrl(url) {

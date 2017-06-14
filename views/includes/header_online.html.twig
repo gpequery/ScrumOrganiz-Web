@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>ScrumOrganiz</title>
+        <meta charset='UTF-8' />
+        <link href='/stylesheets/style.css' rel='stylesheet' type='text/css' />
+        <script src='/javascripts/modules/jquery.min.js'></script>
+        <script src='/javascripts/modules/jquery.validate.min.js'></script>
+        <script src='/javascripts/main/script.js'></script>
+    </head>
+    <body>
+
+    <header id="online">
+        <div class="left">
+            <div>Projets</div>
+        </div>
+        <div class='logo'>
+            <div class='navigate' data-url='/board'></div>
+        </div>
+        <div class='right'>
+            <div class='headOption pseudo'>
+                {{ user.pseudo }}
+                <span></span>
+            </div>
+        </div>
+
+
+        <div class='popinHeaderRight pseudo'>
+            <div class='navigate' data-url='/setting'>
+                Mon compte
+             </div>
+            <div class='startSection navigate' data-url='/'>
+                Déconnexion
+            </div>
+        </div>
+    </header>
+
+
+
+
