@@ -1,5 +1,8 @@
 @charset "UTF-8";
 /* FONT */
+/* SIZE */
+/* CSS DEFAULT */
+/* IMAGES */
 /* COLORS */
 /* ALERT */
 /* INPUT */
@@ -7,18 +10,14 @@
 /* GREEN */
 /* BLUE */
 /* ORANGE */
-@font-face { font-family: 'scrum-font'; src: url("../fonts/scrum-font.eot"); src: url("../fonts/scrum-font.eot") format("embedded-opentype"), url("../fonts/scrum-font.ttf") format("truetype"), url("../fonts/scrum-font.woff") format("woff"), url("../fonts/scrum-font.svg") format("svg"); font-weight: normal; font-style: normal; }
+@font-face { font-family: "scrum-font"; src: url("../fonts/scrum-font.eot"); src: url("../fonts/scrum-font.eot") format("embedded-opentype"), url("../fonts/scrum-font.ttf") format("truetype"), url("../fonts/scrum-font.woff") format("woff"), url("../fonts/scrum-font.svg") format("svg"); font-weight: normal; font-style: normal; }
 body { margin: 0; color: #565656; }
-body header { background-color: #eee; width: 100%; height: 94px; }
-body header .logo, body header .input { display: inline-block; width: 49.5%; }
-body header .logo img, body header .input img { width: 300px; vertical-align: middle; padding: 10px 20px; margin-top: -2px; }
-body header .logo input, body header .input input { width: 20%; vertical-align: middle; }
-body header .logo input:first-child, body header .input input:first-child { margin-right: 20px; font-weight: normal; }
-body header .input { text-align: right; }
 body .navigate { cursor: pointer; }
 
 /* MSG INFO */
 .msgInfo { width: 35%; margin: auto; height: 50px; line-height: 50px; border-radius: 7px; font-size: 20px; }
+
+.msgInfo-large { max-width: 90%; margin: auto; min-height: 50px; line-height: 50px; border-radius: 7px; font-size: 20px; }
 
 .msgInfoOk { color: #3C763D; background-color: #DFF0F8; border-color: #D6D9C6; box-shadow: 3px 2px 5px #000; }
 
@@ -27,7 +26,7 @@ body .navigate { cursor: pointer; }
 div.error { margin: 0px; padding: 0px; }
 
 /* FORM */
-button, input[type='button'], input[type='submit'] { display: inline-block; margin: auto; font-size: 16px; border: none; border-radius: 5px; cursor: pointer; font-weight: bold; box-shadow: 3px 2px 5px #000; height: 40px; }
+button, input[type='button'], input[type='submit'] { display: inline-block; margin: auto; font-size: 16px; border: none; border-radius: 4px; cursor: pointer; font-weight: bold; box-shadow: 3px 2px 5px #000; height: 40px; }
 button:disabled, input[type='button']:disabled, input[type='submit']:disabled { opacity: 0.4; }
 
 input { background: #edeff0; border-radius: 4px; height: 35px; }
@@ -38,18 +37,41 @@ input.gray:hover { background-color: #5bc0de; }
 input.green { color: #fff; background-color: #5cb85c; }
 input.green:hover { background-color: #449d44; }
 
-input.blue { color: #fff; background-color: #337ab7; }
-input.blue:hover { background-color: #286090; }
+button.blue, input.blue { color: #fff; background-color: #337ab7; }
+button.blue:hover, input.blue:hover { background-color: #286090; }
 
 button.orange, input.orange { color: #fff; background-color: #f0ad4e; }
 button.orange:hover, input.orange:hover { background-color: #ec971f; }
 
 input:disabled { cursor: Not-Allowed; }
 
+header { background-color: #eee; width: 100%; }
+header div.logo, header div.input, header div.left, header div.right { display: inline-block; height: 100%; vertical-align: top; }
+header div.logo div, header div.input div, header div.left div, header div.right div { display: inline-block; }
+header#offline { height: 94px; line-height: 80px; }
+header#offline .logo, header#offline .input { width: 49.5%; }
+header#offline .logo input, header#offline .input input { width: 20%; vertical-align: middle; }
+header#offline .logo input:first-child, header#offline .input input:first-child { margin-right: 20px; font-weight: normal; }
+header#offline .logo div { background: url("/images/logo/logo-horizontal.png") no-repeat; background-size: 100%; height: 100%; width: 350px; margin-left: 10px; }
+header#offline .input { text-align: right; vertical-align: top; }
+header#online { height: 40px; }
+header#online div.headOption { background-color: #337ab7; color: #fff; border-radius: 4px; margin-top: 5px; padding: 4px 10px; font-weight: bold; cursor: pointer; }
+header#online div.headOption:hover { background-color: #286090; }
+header#online div.headOption.pseudo span { margin-left: 5px; }
+header#online div.headOption.pseudo span:before { font-family: "scrum-font"; content: ""; font-size: 14px; }
+header#online .left, header#online .right { width: 49.5%; }
+header#online .right { text-align: right; }
+header#online .logo { width: 0; }
+header#online .logo div { background: url("/images/logo/logo-only.png") no-repeat; background-size: 100%; height: 100%; width: 40px; }
+header#online .popinHeaderRight { position: absolute; right: 10px; top: 45px; box-shadow: 3px 2px 5px #000; border-radius: 4px; border: 1px solid black; display: none; }
+header#online .popinHeaderRight div { display: block; cursor: pointer; padding: 0 15px 0 5px; }
+header#online .popinHeaderRight div:hover { background-color: #eee; }
+header#online .popinHeaderRight div.startSection { border-top: 1px solid #565656; }
+
 .homeContent { text-align: center; margin: auto 0; }
 .homeContent .desktopApi { background-color: #337ab7; color: #fff; padding-bottom: 20px; }
 .homeContent .desktopApi div button { display: block; height: 40px; margin-top: 20px; padding-right: 15px; }
-.homeContent .desktopApi div button:before { font-family: 'scrum-font'; content: ""; padding: 10px; }
+.homeContent .desktopApi div button:before { font-family: "scrum-font"; content: ""; padding: 10px; }
 .homeContent .desktopApi div button span { padding-right: 5px; }
 
 .signupcontent { width: 60%; text-align: center; margin: 0 auto; }
@@ -71,7 +93,16 @@ input:disabled { cursor: Not-Allowed; }
 .loginContent #divFormLogin label span { color: #565656; }
 .loginContent .existAcount .link, .loginContent .forgotPwd .link { text-decoration: underline; }
 
-.boardContent { text-align: center; width: 60%; margin: 94px auto 0 auto; }
+.boardContent { text-align: center; width: 60%; margin: 0 auto; }
+
+.settingContent { text-align: center; width: 100%; margin: 0 auto; }
+.settingContent h1 { margin-bottom: 5%; }
+.settingContent .left, .settingContent .center, .settingContent .right { display: inline-block; vertical-align: middle; }
+.settingContent .center { width: 25%; }
+.settingContent .left, .settingContent .right { width: 20%; }
+.settingContent .left div, .settingContent .right div { margin: auto; text-align: left; width: 90%; }
+.settingContent .left div label, .settingContent .left div input[type=submit], .settingContent .right div label, .settingContent .right div input[type=submit] { display: block; width: 50%; }
+.settingContent .left div input, .settingContent .right div input { display: inline-block; width: 100%; margin-bottom: 20px; font-size: 20px; }
 
 .forgetContent { width: 60%; text-align: center; margin: 0 auto; }
 .forgetContent .msgInfo { display: inline-block; margin-top: 70px; margin-bottom: 10px; }
@@ -86,8 +117,8 @@ input:disabled { cursor: Not-Allowed; }
 .notFoundContent div.font, .notFoundContent div.message { display: inline-block; vertical-align: middle; }
 .notFoundContent div.message { width: 59%; text-align: center; }
 .notFoundContent div.message .info { font-size: 20px; }
-.notFoundContent div.font { width: 20%; text-align: center; font-family: scrum-font; }
-.notFoundContent div.font:before { content: ""; font-size: 200px; color: #DC143C; }
+.notFoundContent div.font { width: 20%; text-align: center; font-family: "scrum-font"; }
+.notFoundContent div.font:before { content: ""; font-size: 200px; color: #DC143C; }
 
 .changePwdContent { width: 60%; text-align: center; margin: 0 auto; }
 .changePwdContent .msgInfo { display: inline-block; margin-top: 70px; margin-bottom: 10px; }

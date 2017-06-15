@@ -1,0 +1,43 @@
+.settingContent {
+    text-align: center;
+    width: 100%;
+    margin: 0 auto;
+
+    h1 {
+        margin-bottom: 5%;
+    }
+
+    .left,
+    .center,
+    .right {
+        display: inline-block;
+        vertical-align: middle;
+    }
+
+    .center {
+        width: 25%;
+    }
+
+    .left,
+    .right {
+        width: 20%;
+
+        div {
+            margin: auto;
+            text-align: left;
+            width: 90%;
+            label,
+            input[type=submit] {
+                display: block;
+                width: 50%;
+            }
+
+            input {
+                display: inline-block;
+                width: 100%;
+                margin-bottom: 20px;
+                font-size: 20px;
+            }
+        }
+    }
+}

@@ -5,6 +5,10 @@ jQuery(function() {
         console.info('Load was performed --> _template');
     });
 
+    $j.getScript('/javascripts/scripts/_header.js', function() {
+        console.info('Load was performed --> _header');
+    });
+
     $j.getScript('/javascripts/scripts/_home.js', function() {
         console.info('Load was performed --> _home');
     });
@@ -23,5 +27,9 @@ jQuery(function() {
 
     $j.getScript('/javascripts/scripts/_changePwd.js', function() {
         console.info('Load was performed --> _changePwd');
+    });
+
+    $j.getScript('/javascripts/scripts/_setting.js', function() {
+        console.info('Load was performed --> _setting');
     });
 });

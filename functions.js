@@ -16,9 +16,41 @@ services_add_user_verify_info = function (messages, userRules, pseudo, email, pa
     }
 };
 
+/* Change infos : Vérify informations formats */
+services_add_user_verify_info_without_password = function (userRules, pseudo, email) {
+    let messages = allConfig.get('sign_up_message');
+
+    if (typeof pseudo == 'undefined' || pseudo.length < userRules.pseudo_min_length) {
+        return {etat: false, message: messages.pseudo_min_length};
+    }
+    else if (!new RegExp(userRules.email_regex).test(email)) {
+        return {etat: false, message: messages.mail_format};
+    }
+    else {
+        return {etat: true};
+    }
+};
+
+/* verify new password */
+services_verify_new_password = function(pwd1, pwd2) {
+    let minLength = allConfig.get('conf_user_rules:password_min_length');
+
+    if (pwd1.length < minLength || pwd2.length < minLength) {
+        return {etat: false, message: allConfig.get('sign_up_message:password_min_length')};
+    } else if (pwd1 != pwd2) {
+        return {etat: false, message: allConfig.get('update_info_message:same_password')};
+    } else {
+        return {etat: true};
+    }
+};
+
 /* TestCookieValidation */
-verifySession = function(cookie) {
-    console.log('test : ' + cookie.id);
+verifySession = function(session) {
+    if (session.length == 0) {
+        return false;
+    } else {
+        return true;
+    }
 };
 
 /*  return how minutes oldDate ago */

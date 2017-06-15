@@ -13,11 +13,15 @@
             "old_link": {
                 "code": "301",
                 "message": "Lien plus valide !"
+            },
+            "sequelize": {
+                "message": "Sequelize Database Error"
             }
         }
     },
     "conf_session": {
-        "secrect_key": "jkahdDS!kf!afz35JQ1qsd"
+        "secrect_key": "jkahdDS!kf!afz35JQ1qsd",
+        "session_max_duration": 3600000
     },
     "conf_crypto": {
         "secrect_key": "qzd5ZD5464qzf!qzf564ZD"

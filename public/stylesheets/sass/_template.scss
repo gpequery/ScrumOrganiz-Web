@@ -2,39 +2,6 @@ body {
     margin: 0;
     color: $color-corportate-dark;
 
-    header {
-        background-color: $color-corportate-background-header;
-        width: 100%;
-        height: 94px;
-
-        .logo,
-        .input {
-            display: inline-block;
-            width: 49.5%;
-
-            img {
-                width: 300px;
-                vertical-align: middle;
-                padding: 10px 20px;
-                margin-top: -2px;
-            }
-
-            input {
-                width: 20%;
-                vertical-align: middle;
-
-                &:first-child {
-                    margin-right: 20px;
-                    font-weight: normal;
-                }
-            }
-        }
-
-        .input {
-            text-align: right;
-        }
-    }
-
     .navigate {
         cursor: pointer;
     }
@@ -50,18 +17,27 @@ body {
     font-size: 20px;
 }
 
+.msgInfo-large {
+    max-width: 90%;
+    margin: auto;
+    min-height: 50px;
+    line-height: 50px;
+    border-radius: 7px;
+    font-size: 20px;
+}
+
 .msgInfoOk {
     color: $color-success;
     background-color: $color-background-success;
     border-color: $color-border-success;
-    box-shadow: 3px 2px 5px $color-corporate-box-shadow;
+    box-shadow: $css-default-box-shadow;
 }
 
 .msgInfoNok {
     color: $color-danger;
     background-color: $color-background-danger;
     border-color: $color-border-danger;
-    box-shadow: 3px 2px 5px $color-corporate-box-shadow;
+    box-shadow: $css-default-box-shadow;
 }
 
 div.error {
@@ -77,10 +53,10 @@ input[type='submit'] {
     margin: auto;
     font-size: 16px;
     border: none;
-    border-radius: 5px;
+    border-radius: $size-border-radius;
     cursor: pointer;
     font-weight: bold;
-    box-shadow: 3px 2px 5px $color-corporate-box-shadow;
+    box-shadow: $css-default-box-shadow;
     height: 40px;
 
     &:disabled {
@@ -90,7 +66,7 @@ input[type='submit'] {
 
 input {
     background: $input-default-color;
-    border-radius: 4px;
+    border-radius: $size-border-radius;
     height: 35px;
 }
 
@@ -110,6 +86,7 @@ input.green {
     }
 }
 
+button.blue,
 input.blue {
     color: $input-blue-color;
     background-color: $input-blue-background;

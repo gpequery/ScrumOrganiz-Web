@@ -1,0 +1,120 @@
+header {
+    background-color: $color-corportate-background-header;
+    width: 100%;
+
+    div.logo,
+    div.input,
+    div.left,
+    div.right {
+        div {
+            display: inline-block;
+        }
+        display: inline-block;
+        height: 100%;
+        vertical-align: top;
+    }
+
+    &#offline {
+        height: $size-heigth-header-offline;
+        line-height: $size-line-heigth-header-offline;
+        .logo,
+        .input {
+            width: 49.5%;
+            input {
+                width: 20%;
+                vertical-align: middle;
+
+                &:first-child {
+                    margin-right: 20px;
+                    font-weight: normal;
+                }
+            }
+        }
+
+        .logo {
+            div {
+                background: url($image-logo-horizontal) no-repeat;
+                background-size: 100%;
+                height: 100%;
+                width: 350px;
+                margin-left: 10px;
+            }
+        }
+
+        .input {
+            text-align: right;
+            vertical-align: top;
+        }
+    }
+
+    &#online {
+        height: $size-heigth-header-online;
+
+        div.headOption {
+            background-color: $color-corportate-two;
+            color: $color-corportate-white;
+            border-radius: $size-border-radius;
+            margin-top: 5px;
+            padding: 4px 10px;
+            font-weight: bold;
+            cursor: pointer;
+
+            &:hover {
+                background-color: $input-blue-background-over;
+            }
+
+            &.pseudo {
+                span {
+                    margin-left: 5px;
+                    &:before {
+                        font-family: $scrum-font-family;
+                        content: $scrum-font-setting;
+                        font-size: 14px;
+                    }
+                }
+            }
+        }
+
+        .left,
+        .right {
+            width: 49.5%;
+        }
+
+        .right {
+            text-align: right;
+        }
+
+        .logo {
+            width: 0;
+            div {
+                background: url($image-logo-only) no-repeat;
+                background-size: 100%;
+                height: 100%;
+                width: $size-heigth-header-online;
+            }
+        }
+
+        .popinHeaderRight {
+            position: absolute;
+            right: 10px;
+            top: $size-heigth-header-online + 5px;
+            box-shadow: $css-default-box-shadow;
+            border-radius: $size-border-radius;
+            border: 1px solid black;
+            display: none;
+
+            div {
+                display: block;
+                cursor: pointer;
+                padding: 0 15px 0 5px;
+                &:hover {
+                    background-color: $color-corportate-background-header;
+                }
+
+                &.startSection {
+                    border-top: 1px solid $color-corportate-dark;
+                }
+            }
+        }
+    }
+}

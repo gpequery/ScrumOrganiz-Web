@@ -1,26 +1,30 @@
-/**
- * Created by Greg on 22/05/2017.
- * Init table User
- */
-
 'use strict';
 
 module.exports = function (sequelize, DataTypes) {
     var User = sequelize.define('User', {
         pseudo: {
-            type: DataTypes.STRING
+            type: DataTypes.STRING,
+            allowNull: false
         },
         email: {
-            type: DataTypes.STRING
+            type: DataTypes.STRING,
+            allowNull: false
         },
         password: {
-            type: DataTypes.STRING
+            type: DataTypes.STRING,
+            allowNull: false
         }
     }, {
         paranoid: true,
         underscored: true,
         freezeTableName: true,
-        classMethods: {},
+        classMethods: {
+            associate: function (models) {
+                User.belongsToMany(
+                    models.Project, {through: 'User_Projects'}
+                );
+            }
+        },
         instanceMethods: {}
     });
     return User;

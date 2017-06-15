@@ -1,10 +1,4 @@
-{% include '../includes/header.html.twig' %}
-
-<header>
-    <div class='logo'>
-        <img src="/images/logo/logo-horizontal.png" class='navigate' data-url='/'/>
-    </div>
-</header>
+{% include '../includes/header_offline.html.twig' %}
 
 <div class='serviceCryptageContent'>
     <div id="bcrypt">
@@ -40,7 +34,6 @@
     });
 
 
-
     jQuery('#bcrypt input[type=button], #crypto input[type=button]').on('click', function() {
         var value = jQuery('#' + jQuery(this).attr('method') + ' input[name=crypt]').val() == '' ? jQuery('#' + jQuery(this).attr('method') + ' input[name=decrypt]').val() : jQuery('#' + jQuery(this).attr('method') + ' input[name=crypt]').val();
         var action = jQuery('#' + jQuery(this).attr('method') + ' input[name=crypt]').val() != '' ? 'crypt' : 'decrypt';
@@ -54,9 +47,6 @@
                 jQuery('#result').html(data);
             });
     });
-
-
-
 </script>
 
 

@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>ScrumOrganiz</title>
+        <meta charset='UTF-8' />
+        <link href='/stylesheets/style.css' rel='stylesheet' type='text/css' />
+        <script src='/javascripts/modules/jquery.min.js'></script>
+        <script src='/javascripts/modules/jquery.validate.min.js'></script>
+        <script src='/javascripts/main/script.js'></script>
+    </head>
+    <body>
+
+    <header id="offline">
+        <div class='logo'>
+            <div class='navigate' data-url='/'></div>
+        </div>
+
+        {% if path == '/' %}
+                <div class='input'>
+                    <input class='gray navigate' data-url='/login' type='submit' value='Se connecter'/>
+                    <input class='green navigate' data-url='/signup' type='submit' value='Créer un compte'/>
+                </div>
+        {% elseif path == 'signup' %}
+            <div class='input'>
+                <input class='gray navigate' data-url='/login' type='submit' value='Se connecter'/>
+                <input class='blue navigate' data-url='/' type='submit' value='Retour'/>
+            </div>
+        {% elseif path == 'login' or path == 'forgetPwd' %}
+            <div class='input'>
+                <input class='gray navigate' data-url='/signup' type='submit' value='Inscription'/>
+                <input class='blue navigate' data-url='/' type='submit' value='Retour'/>
+            </div>
+        {% elseif path == 'error' %}
+            <div class='input'>
+                <input type="hidden">
+                <input class='blue navigate' data-url='/' type='submit' value='Retour'/>
+            </div>
+        {% endif %}
+    </header>
+
+
+
+

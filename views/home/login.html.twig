@@ -1,17 +1,13 @@
-{% include '../includes/header.html.twig' %}
-
-<header>
-    <div class='logo'>
-        <img src="/images/logo/logo-horizontal.png" class='navigate' data-url='/'/>
-    </div>
-    <div class='input'>
-        <input class='gray navigate' data-url='/signup' type='submit' value='Inscription'/>
-        <input class='blue navigate' data-url='/' type='submit' value='Retour'/>
-    </div>
-</header>
+{% include '../includes/header_offline.html.twig' %}
 
 <div class='loginContent'>
-    <div class='msgInfo'>&nbsp;</div>
+
+    {% if data is defined %}
+        <div class='msgInfo msgInfoNok'>{{ data.message }}</div>
+    {% else %}
+        <div class='msgInfo'>&nbsp;</div>
+    {%  endif %}
+
 
     <h1>Connexion</h1>
 

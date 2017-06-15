@@ -4,6 +4,10 @@
         "pwd_change_success": "Mot de passe modifié",
         "pwd_change_failed": "Utilisateurs non trouvé"
     },
+    "session_message": {
+        "expired": "Session expiré !",
+        "not_found": "Problème avec votre session"
+    },
     "sign_up_message": {
         "succes": "Ajout réussis",
         "pseudo_used": "Pseudo déjà utilisé",
@@ -22,5 +26,10 @@
         "bad_account": "Il n'y as pas de compte associé à ces informations",
         "no_account_submit": "Mot de passe non modifé, essayez à nouveau",
         "change_success": "Votre mot de passe a bien été modifié.\nVoulez-vous vous connecter?"
+    },
+    "update_info_message": {
+        "update_info_success": "Compte mise à jour !",
+        "same_password": "Les deux mot de passes doivent être identiques",
+        "update_password_success": "Mot de passe modifié !"
     }
 }
