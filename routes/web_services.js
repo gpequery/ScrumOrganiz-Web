@@ -7,10 +7,9 @@ const User = models.User;
 /* add user with post url */
 router.post('/addUser', function (req, res, next) {
     let servicesID = allConfig.get('conf_services:acces');
-    let messages = allConfig.get('sign_up_message');
 
     if (bcrypt.compareSync(req.body.servicesLogin, servicesID.login) && bcrypt.compareSync(req.body.servicesPassword, servicesID.password)) {
-        let userOk = services_add_user_verify_info(messages, allConfig.get('conf_user_rules'), req.body.pseudo, req.body.email, req.body.password);
+        let userOk = services_add_user_verify_info(req.body.pseudo, req.body.email, req.body.password);
 
         if (userOk.etat) {
             let options = {
@@ -24,6 +23,8 @@ router.post('/addUser', function (req, res, next) {
             };
 
             User.findOne(options).then(function (user) {
+                let messages = allConfig.get('sign_up_message');
+
                 if (user == null) {
                     User.create({
                         pseudo: req.body.pseudo,

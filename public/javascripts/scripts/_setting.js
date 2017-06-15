@@ -12,6 +12,7 @@ $j(function () {
             $j('.settingContent input[type=submit]#account').attr('disabled', 'disabled');
             $j('.settingContent .msgInfo-large').removeClass('msgInfoNok');
             $j('.settingContent .msgInfo-large').removeClass('msgInfoOk');
+
             $j('.settingContent .msgInfo-large').html('&nbsp;');
         } else {
             $j.post(
