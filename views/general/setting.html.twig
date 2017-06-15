@@ -1,20 +1,38 @@
 {% include '../includes/header_online.html.twig' %}
 
 <div class="settingContent">
+    <h1>Paramètres du compte</h1>
 
-    <div class="accountSetting">
-        <h1>Paramètres du compte</h1>
+    <div>
+        <div class='left'>
+            <div>
+                <label for='pseudo'>Pseudo</label>
+                <input type='text' name='pseudo' value='{{ user.pseudo }}' data-default='{{ user.pseudo }}' minlength='{{ conf.pseudo_min_length }}'/>
 
-        <div id='divFormSettingsAccount'>
-            <label for='pseudo'>Pseudo</label>
-            <input type='text' name='pseudo' required placeholder='ex : pdurand' minlength='{{ conf.pseudo_min_length }}'/>
+                <label for='email'>E-mail</label>
+                <input type='email' name='email' value='{{ user.email }}' data-default='{{ user.email }}'/>
 
-            <label for='pwd'>Mot de passe</label>
-            <input type='password' name='pwd' required placeholder='ex : *****' minlength='{{ conf.password_min_length }}'/>
+                <input type='submit' value="Modifier" class='green' id='account' disabled/>
+            </div>
+        </div>
 
-            <input type='submit' value="Connexion" class='green'/>
+        <div class='center'>
+            <div class='msgInfo-large'>&nbsp;</div>
+        </div>
+
+        <div class='right'>
+            <div>
+                <label for='pwd'>Mot de passe</label>
+                <input type='password' name='pwd' required placeholder='ex : *****' minlength='{{ conf.password_min_length }}'/>
+
+                <label for='pwd'>Mot de passe</label>
+                <input type='password' name='pwd' required placeholder='ex : *****' minlength='{{ conf.password_min_length }}'/>
+
+                <input type='submit' value="Changer" class='green' id='password' disabled/>
+            </div>
         </div>
     </div>
+
 
 </div>
 

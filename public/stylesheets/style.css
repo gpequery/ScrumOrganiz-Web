@@ -17,6 +17,8 @@ body .navigate { cursor: pointer; }
 /* MSG INFO */
 .msgInfo { width: 35%; margin: auto; height: 50px; line-height: 50px; border-radius: 7px; font-size: 20px; }
 
+.msgInfo-large { max-width: 90%; margin: auto; min-height: 50px; line-height: 50px; border-radius: 7px; font-size: 20px; }
+
 .msgInfoOk { color: #3C763D; background-color: #DFF0F8; border-color: #D6D9C6; box-shadow: 3px 2px 5px #000; }
 
 .msgInfoNok { color: #A94442; background-color: #F2DDED; border-color: #EBCCD1; box-shadow: 3px 2px 5px #000; }
@@ -94,11 +96,13 @@ header#online .popinHeaderRight div.startSection { border-top: 1px solid #565656
 .boardContent { text-align: center; width: 60%; margin: 0 auto; }
 
 .settingContent { text-align: center; width: 100%; margin: 0 auto; }
-.settingContent .menu, .settingContent .content { display: inline-block; }
-.settingContent .menu { width: 18%; background-color: #eee; border-radius: 4px; box-shadow: 3px 2px 5px #000; text-align: left; }
-.settingContent .menu .title { text-align: center; font-size: 20px; font-weight: bold; }
-.settingContent .menu .item span { display: block; }
-.settingContent .content { width: 81%; }
+.settingContent h1 { margin-bottom: 5%; }
+.settingContent .left, .settingContent .center, .settingContent .right { display: inline-block; vertical-align: middle; }
+.settingContent .center { width: 25%; }
+.settingContent .left, .settingContent .right { width: 20%; }
+.settingContent .left div, .settingContent .right div { margin: auto; text-align: left; width: 90%; }
+.settingContent .left div label, .settingContent .left div input[type=submit], .settingContent .right div label, .settingContent .right div input[type=submit] { display: block; width: 50%; }
+.settingContent .left div input, .settingContent .right div input { display: inline-block; width: 100%; margin-bottom: 20px; font-size: 20px; }
 
 .forgetContent { width: 60%; text-align: center; margin: 0 auto; }
 .forgetContent .msgInfo { display: inline-block; margin-top: 70px; margin-bottom: 10px; }

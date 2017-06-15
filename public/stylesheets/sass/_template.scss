@@ -17,6 +17,15 @@ body {
     font-size: 20px;
 }
 
+.msgInfo-large {
+    max-width: 90%;
+    margin: auto;
+    min-height: 50px;
+    line-height: 50px;
+    border-radius: 7px;
+    font-size: 20px;
+}
+
 .msgInfoOk {
     color: $color-success;
     background-color: $color-background-success;

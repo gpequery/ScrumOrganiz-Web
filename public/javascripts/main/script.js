@@ -28,4 +28,8 @@ jQuery(function() {
     $j.getScript('/javascripts/scripts/_changePwd.js', function() {
         console.info('Load was performed --> _changePwd');
     });
+
+    $j.getScript('/javascripts/scripts/_setting.js', function() {
+        console.info('Load was performed --> _setting');
+    });
 });

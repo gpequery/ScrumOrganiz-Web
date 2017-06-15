@@ -22,5 +22,8 @@
         "bad_account": "Il n'y as pas de compte associé à ces informations",
         "no_account_submit": "Mot de passe non modifé, essayez à nouveau",
         "change_success": "Votre mot de passe a bien été modifié.\nVoulez-vous vous connecter?"
+    },
+    "general_message": {
+        "update_info_success": "Compte mise à jour !"
     }
 }

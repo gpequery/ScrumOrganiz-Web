@@ -3,32 +3,41 @@
     width: 100%;
     margin: 0 auto;
 
-    .menu,
-    .content {
-        display: inline-block;
+    h1 {
+        margin-bottom: 5%;
     }
 
-    .menu {
-        width: 18%;
-        background-color: $color-corportate-background-header;
-        border-radius: $size-border-radius;
-        box-shadow: $css-default-box-shadow;
-        text-align: left;
+    .left,
+    .center,
+    .right {
+        display: inline-block;
+        vertical-align: middle;
+    }
 
-        .title {
-            text-align: center;
-            font-size: 20px;
-            font-weight: bold;
-        }
+    .center {
+        width: 25%;
+    }
 
-        .item {
-            span {
+    .left,
+    .right {
+        width: 20%;
+
+        div {
+            margin: auto;
+            text-align: left;
+            width: 90%;
+            label,
+            input[type=submit] {
                 display: block;
+                width: 50%;
+            }
+
+            input {
+                display: inline-block;
+                width: 100%;
+                margin-bottom: 20px;
+                font-size: 20px;
             }
         }
-    }
-
-    .content {
-        width: 81%;
     }
 }
