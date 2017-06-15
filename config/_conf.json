@@ -21,10 +21,7 @@
     },
     "conf_session": {
         "secrect_key": "jkahdDS!kf!afz35JQ1qsd",
-        "session_max_duration": 3600000,
-        "messages": {
-            "session_expired": "Session expiré !"
-        }
+        "session_max_duration": 3600000
     },
     "conf_crypto": {
         "secrect_key": "qzd5ZD5464qzf!qzf564ZD"

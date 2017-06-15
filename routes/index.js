@@ -50,7 +50,7 @@ router.post('/board', function (req, res, next) {
     } else {
         let data = {
             etat: false,
-            message: allConfig.get('conf_session:messages:session_expired')
+            message: allConfig.get('session_message:expired')
         };
         res.render('home/login.html.twig', {path: 'login', conf: allConfig.get('conf_user_rules'), data: data});
     }
@@ -78,7 +78,7 @@ router.post('/setting', function(req, res, nex) {
     } else {
         let data = {
             etat: false,
-            message: allConfig.get('conf_session:messages:session_expired')
+            message: allConfig.get('session_message:expired')
         };
         res.render('home/login.html.twig', {path: 'login', conf: allConfig.get('conf_user_rules'), data: data});
     }

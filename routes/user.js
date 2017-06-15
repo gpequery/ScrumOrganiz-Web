@@ -165,27 +165,75 @@ const User = models.User;
         } else {
             let data = {
                 etat: false,
-                message: allConfig.get('conf_session:messages:session_expired')
+                message: allConfig.get('session_message:expired')
             };
             res.render('home/login.html.twig', {path: 'login', conf: allConfig.get('conf_user_rules'), data: data});
         }
-
     });
 
     /* Update with new info */
     router.post('/updateInfo', function(req, res, next) {
         if (verifySession(req.session)) {
             User.findById(req.session.userId).then(function(user) {
-                user.update({pseudo: req.body.pseudo, email: req.body.email});
+                if(user) {
+                    user.update({pseudo: req.body.pseudo, email: req.body.email});
 
-                res.send({etat: true, message: allConfig.get('general_message:update_info_success')})
+                    res.send({etat: true, message: allConfig.get('update_info_message:update_info_success')})
+                } else {
+                    let data = {
+                        etat: false,
+                        message: allConfig.get('session_message:not_found')
+                    };
+                    res.render('home/login.html.twig', {path: 'login', conf: allConfig.get('conf_user_rules'), data: data});
+                }
+
             }).catch(function(error) {
                 res.send({etat: false, message: error.toString()})
             });
         } else {
             let data = {
                 etat: false,
-                message: allConfig.get('conf_session:messages:session_expired')
+                message: allConfig.get('session_message:expired')
+            };
+            res.render('home/login.html.twig', {path: 'login', conf: allConfig.get('conf_user_rules'), data: data});
+        }
+    });
+
+    /* Veify new password validy */
+    router.post('/verifyNewPassword', function(req, res, next) {
+        let result = services_verify_new_password(req.body.pwd1, req.body.pwd2);
+
+        res.send({etat: result.etat, message: result.message});
+    });
+
+    /* update new password */
+    router.post('/updatePassword', function(req, res, next) {
+        if (verifySession(req.session)) {
+            if (req.body.pwd1 == req.body.pwd2) {
+                User.findById(req.session.userId).then(function(user) {
+                    if(user) {
+                        let pwd = bcrypt.hashSync(req.body.pwd1, bcrypt.genSaltSync());
+                        user.update({password: pwd});
+
+                        res.send({etat: true, message: allConfig.get('update_info_message:update_info_success')})
+                    } else {
+                        let data = {
+                            etat: false,
+                            message: allConfig.get('session_message:not_found')
+                        };
+                        res.render('home/login.html.twig', {path: 'login', conf: allConfig.get('conf_user_rules'), data: data});
+                    }
+
+                }).catch(function(error) {
+                    res.send({etat: false, message: error.toString()});
+                });
+            } else {
+                res.send({etat: false, message: allConfig.get('update_info_message:same_password')});
+            }
+        } else {
+            let data = {
+                etat: false,
+                message: allConfig.get('session_message:expired')
             };
             res.render('home/login.html.twig', {path: 'login', conf: allConfig.get('conf_user_rules'), data: data});
         }
