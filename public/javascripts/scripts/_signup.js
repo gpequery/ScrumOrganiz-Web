@@ -18,11 +18,22 @@ $j(function () {
             }, function (data) {
                 if (data.etat) {
                     $j('.signupcontent .msgInfo').removeClass('msgInfoNok');
-                    if (confirm("Votre compte à bien été créer !\n voulez-vous vous connecter ?")) {
-                        goToUrl('/login');
-                    } else {
-                        goToUrl('/');
-                    }
+                    $j('.signupcontent .msgInfo').html('&nbsp;');
+
+                    $j.alert({
+                        title: '',
+                        content: data.message,
+                        closeIcon: false,
+                        buttons: {
+                            done: {
+                                text: 'Ok',
+                                btnClass: 'btn-green',
+                                action: function () {
+                                    goToUrl('/board');
+                                }
+                            }
+                        }
+                    });
                 } else {
                     $j('.signupcontent .msgInfo').addClass('msgInfoNok');
                     $j('.signupcontent .msgInfo').html(data.message);

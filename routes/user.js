@@ -28,8 +28,11 @@ const User = models.User;
                         pseudo: req.body.pseudo,
                         email: req.body.email,
                         password: bcrypt.hashSync(req.body.password, bcrypt.genSaltSync())
-                    }).then(function(usr) {
-                        res.send({etat: true, message: messages.succes})
+                    }).then(function(user) {
+                        req.session.userId = user.id;
+                        req.sessionOptions.maxAge = allConfig.get('conf_session:session_max_duration');
+
+                        res.send({etat: true, message: messages.succes});
                     }).catch(function(err) {
                         res.send({etat: false, message: err.toString()});
                     });
