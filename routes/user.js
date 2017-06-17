@@ -160,7 +160,7 @@ const User = models.User;
         }
     });
 
-    /* Update with new info (AJAX) (SESSION) */
+    /* Update with new info (SESSION) */
     router.post('/updateInfo', function(req, res, next) {
         if (verifySession(req)) {
             User.findById(req.session.userId).then(function(user) {
@@ -188,7 +188,7 @@ const User = models.User;
 
     /* update new password (SESSION)*/
     router.post('/updatePassword', function(req, res, next) {
-        if (verifySession(req.session)) {
+        if (verifySession(req)) {
             if (req.body.pwd1 == req.body.pwd2) {
                 User.findById(req.session.userId).then(function(user) {
                     if(user) {

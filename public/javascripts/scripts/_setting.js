@@ -70,7 +70,8 @@ $j(function () {
             $j.post(
                 '/user/verifyNewPassword', {
                     pwd1: $j('.settingContent input[name=pwd1]').val(),
-                    pwd2: $j('.settingContent input[name=pwd2]').val()
+                    pwd2: $j('.settingContent input[name=pwd2]').val(),
+                    date: new Date()
                 }, function (data) {
                     if (data.etat) {
                         $j('.settingContent .msgInfo-large').removeClass('msgInfoNok');
@@ -96,7 +97,8 @@ $j(function () {
         $j.post(
             '/user/updatePassword', {
                 pwd1: $j('.settingContent input[name=pwd1]').val(),
-                pwd2: $j('.settingContent input[name=pwd2]').val()
+                pwd2: $j('.settingContent input[name=pwd2]').val(),
+                date: new Date()
             }, function (data) {
                 if (data.etat) {
                     $j('.settingContent .msgInfo-large').removeClass('msgInfoNok');
