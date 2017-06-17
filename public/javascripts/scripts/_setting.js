@@ -18,7 +18,8 @@ $j(function () {
             $j.post(
                 '/user/verifyNewInfo', {
                     pseudo: $j('.settingContent input[name=pseudo]').val(),
-                    email: $j('.settingContent input[name=email]').val()
+                    email: $j('.settingContent input[name=email]').val(),
+                    date: new Date()
                 }, function (data) {
                     if (data.etat) {
                         $j('.settingContent .msgInfo-large').removeClass('msgInfoNok');
@@ -42,7 +43,8 @@ $j(function () {
         $j.post(
             '/user/updateInfo', {
                 pseudo: $j('.settingContent input[name=pseudo]').val(),
-                email: $j('.settingContent input[name=email]').val()
+                email: $j('.settingContent input[name=email]').val(),
+                date: new Date()
             }, function (data) {
                 if (data.etat) {
                     $j('.settingContent input[name=pseudo]').attr('data-default', $j('.settingContent input[name=pseudo]').val());

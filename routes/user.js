@@ -6,7 +6,7 @@ const crypto = require('crypto-js');
 const User = models.User;
 
 /* OFFLINE ACTIONS -> without session*/
-    /* Add user if pseudo and mail is not already used */
+    /* Add user if pseudo and mail is not already used (NO SESSION) */
     router.post('/addUser', function(req, res, next) {
         let userOk = services_add_user_verify_info(req.body.pseudo, req.body.email, req.body.password);
 
@@ -30,10 +30,7 @@ const User = models.User;
                         email: req.body.email,
                         password: bcrypt.hashSync(req.body.password, bcrypt.genSaltSync())
                     }).then(function(user) {
-                        req.session.userId = user.id;
-                        req.sessionOptions.maxAge = allConfig.get('conf_session:session_max_duration');
-
-                        res.send({etat: true, message: messages.succes});
+                        res.send({etat: true, message: messages.succes, idUser: user.id});
                     }).catch(function(err) {
                         res.send({etat: false, message: err.toString()});
                     });
@@ -52,7 +49,7 @@ const User = models.User;
         }
     });
 
-    /* Respond boolean correspond if user's information correspond an existing account */
+    /* Respond boolean correspond if user's information correspond an existing account (NO SESSION) */
     router.post('/loginUser', function(req, res, next) {
         let messages = allConfig.get('login_message');
 
@@ -65,10 +62,7 @@ const User = models.User;
         User.findOne(options).then(function(user) {
             if (user != null) {
                 if (bcrypt.compareSync(req.body.password, user.password)) {
-                    req.session.userId = user.id;
-                    req.sessionOptions.maxAge = allConfig.get('conf_session:session_max_duration');
-
-                    res.send({etat: true, message: messages.success})
+                    res.send({etat: true, message: messages.success, idUser: user.id})
                 } else {
                     res.send({etat: false, message: messages.bad_password})
                 }
@@ -80,7 +74,7 @@ const User = models.User;
         });
     });
 
-    /* Send mail for changePwd (forget)*/
+    /* Send mail for changePwd (forget) (NO SESSION) */
     router.post('/forgetPwd', function(req, res, next) {
         let messages = allConfig.get('forget_password_message');
 
@@ -105,7 +99,7 @@ const User = models.User;
         });
     });
 
-    /* User change pwd final (forget)*/
+    /* User change pwd final (forget) (NO SESSION) */
     router.post('/changePwd', function(req, res, next) {
         let dataUrl = decodeURI(req.body.data).split(' ').join('+');
         let decodeDatas  = crypto.AES.decrypt(dataUrl, allConfig.get('conf_crypto:secrect_key')).toString(crypto.enc.Utf8);
@@ -128,88 +122,71 @@ const User = models.User;
     });
 
 /* ONLINE ACTIONS -> with verify session */
-    /* Verify if new info are valid */
+    /* Verify if new info are valid (NO SESSION) */
     router.post('/verifyNewInfo', function(req, res, next) {
-        if (verifySession(req.session)) {
-            let userOk = services_add_user_verify_info_without_password(req.body.pseudo, req.body.email);
+        let userOk = services_add_user_verify_info_without_password(req.body.pseudo, req.body.email);
 
-            if (userOk.etat) {
-                let options = {
-                    where : {
-                        $or: [{
-                            pseudo: req.body.pseudo
-                        },{
-                            email: req.body.email
-                        }],
-                        id: {
-                            ne: req.session.userId
-                        }
+        if (userOk.etat) {
+            let options = {
+                where : {
+                    $or: [{
+                        pseudo: req.body.pseudo
+                    },{
+                        email: req.body.email
+                    }],
+                    id: {
+                        ne: req.session.userId
                     }
-                };
-
-                User.findOne(options).then(function(user) {
-                    let messages = allConfig.get('sign_up_message');
-
-                    if (user == null) {
-                        res.send({etat: true})
-                    } else {
-                        if (user.pseudo.toLowerCase() == req.body.pseudo.toLowerCase()) {
-                            res.send({etat: false, message: messages.pseudo_used});
-                        } else {
-                            res.send({etat: false, message: messages.mail_used});
-                        }
-                    }
-                }).catch(function(error) {
-                    res.send({etat: false, message: error.toString()});
-                });
-            } else {
-                res.send({etat: false, message: userOk.message});
-            }
-        } else {
-            let data = {
-                etat: false,
-                message: allConfig.get('session_message:expired')
+                }
             };
-            res.render('home/login.html.twig', {path: 'login', conf: allConfig.get('conf_user_rules'), data: data});
+
+            User.findOne(options).then(function(user) {
+                let messages = allConfig.get('sign_up_message');
+
+                if (user == null) {
+                    res.send({etat: true})
+                } else {
+                    if (user.pseudo.toLowerCase() == req.body.pseudo.toLowerCase()) {
+                        res.send({etat: false, message: messages.pseudo_used});
+                    } else {
+                        res.send({etat: false, message: messages.mail_used});
+                    }
+                }
+            }).catch(function(error) {
+                res.send({etat: false, message: error.toString()});
+            });
+        } else {
+            res.send({etat: false, message: userOk.message});
         }
     });
 
-    /* Update with new info */
+    /* Update with new info (AJAX) (SESSION) */
     router.post('/updateInfo', function(req, res, next) {
-        if (verifySession(req.session)) {
+        if (verifySession(req)) {
             User.findById(req.session.userId).then(function(user) {
                 if(user) {
                     user.update({pseudo: req.body.pseudo, email: req.body.email});
 
                     res.send({etat: true, message: allConfig.get('update_info_message:update_info_success')})
                 } else {
-                    let data = {
-                        etat: false,
-                        message: allConfig.get('session_message:not_found')
-                    };
-                    res.render('home/login.html.twig', {path: 'login', conf: allConfig.get('conf_user_rules'), data: data});
+                    res.send({etat: false, message: allConfig.get('session_message:reconnect')})
                 }
-
             }).catch(function(error) {
                 res.send({etat: false, message: error.toString()})
             });
         } else {
-            let data = {
-                etat: false,
-                message: allConfig.get('session_message:expired')
-            };
-            res.render('home/login.html.twig', {path: 'login', conf: allConfig.get('conf_user_rules'), data: data});
+            res.send({etat: false, message: allConfig.get('session_message:reconnect')})
         }
     });
 
-    /* Veify new password validy */
+    /* Verify new password validy (NO SESSION) */
     router.post('/verifyNewPassword', function(req, res, next) {
         let result = services_verify_new_password(req.body.pwd1, req.body.pwd2);
 
         res.send({etat: result.etat, message: result.message});
     });
 
-    /* update new password */
+    /* update new password (SESSION)*/
     router.post('/updatePassword', function(req, res, next) {
         if (verifySession(req.session)) {
             if (req.body.pwd1 == req.body.pwd2) {
@@ -220,11 +197,7 @@ const User = models.User;
 
                         res.send({etat: true, message: allConfig.get('update_info_message:update_info_success')})
                     } else {
-                        let data = {
-                            etat: false,
-                            message: allConfig.get('session_message:not_found')
-                        };
-                        res.render('home/login.html.twig', {path: 'login', conf: allConfig.get('conf_user_rules'), data: data});
+                        res.send({etat: false, message: allConfig.get('session_message:reconnect')})
                     }
 
                 }).catch(function(error) {
@@ -234,11 +207,7 @@ const User = models.User;
                 res.send({etat: false, message: allConfig.get('update_info_message:same_password')});
             }
         } else {
-            let data = {
-                etat: false,
-                message: allConfig.get('session_message:expired')
-            };
-            res.render('home/login.html.twig', {path: 'login', conf: allConfig.get('conf_user_rules'), data: data});
+            res.send({etat: false, message: allConfig.get('session_message:reconnect')})
         }
     });
 

@@ -1,5 +1,4 @@
 $j(function () {
-
     /* Enables POST navigation everywhere */
     $j('.navigate').on('click', function() {
         goToUrl($j(this).attr('data-url'));
@@ -39,7 +38,12 @@ $j(function () {
     })
 });
 
-function goToUrl(url) {
+function goToUrl(url, data = null) {
+    if(data) {
+        $j('.formNavigate input[name=idUser]').val(data);
+    }
+
+    $j('.formNavigate input[name=date]').val(new Date());
     $j('.formNavigate').attr('action', url);
     $j('.formNavigate').submit();
 }

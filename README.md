@@ -3,12 +3,9 @@
 ##Installation
 
     npm install --save sequelize
-    npm install --save mysql2
     npm install --save body-parser
     npm install --save bcrypt
-    npm install --save cookie-session
-    npm install --save redis
-    npm install --save json-web-token
+    npm install --save express-session
     npm install --save nodemailer
     npm install --save crypto-js
     
@@ -19,11 +16,23 @@
     HTML : lors d'un click sur n'importe quelle balise
         <balise class='navigate' data-url='[url-to-go]'>
      
-    JS : goToUrl('url-to-go') 
+    JS : goToUrl('url-to-go', idUser = null) 
+    (idUser renseigné pour créer le cookie pour acceder à une page sans login. Exemple à la création de compte)
     
 #### Cryptage
     Mot de passe : bCrypt
     Transfert de données crytpo
+    
+    
+#### Session
+
+    Une session = cookie à valeur crypté qui s'appel "allConfig.get('conf_organisation:name') + allConfig.get('conf_session:name')"
+    Session créée au login
+    Une session est valide si : 
+        La variable de ssion existe : durée de vie = "max_duration_ms" (conf)
+        Dans cette variable userId est défini et plus grand que 0
+        Le paramatre post "date" est difini et son ecart avec la date actuel est plus petite que "request_validity_ms" (conf)
+        
     
 ##Webservice
 

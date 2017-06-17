@@ -36,7 +36,7 @@ services_add_user_verify_info_without_password = function (pseudo, email) {
 };
 
 /* verify new password */
-services_verify_new_password = function(pwd1, pwd2) {
+services_verify_new_password = function (pwd1, pwd2) {
     let minLength = allConfig.get('conf_user_rules:password_min_length');
 
     if (pwd1.length < minLength || pwd2.length < minLength) {
@@ -49,12 +49,24 @@ services_verify_new_password = function(pwd1, pwd2) {
 };
 
 /* TestCookieValidation */
-verifySession = function(session) {
-    if (session.length == 0) {
-        return false;
-    } else {
-        return true;
+verifySession = function (req) {
+    /* Create session in login */
+    if (req.body.idUser) {
+        req.session.userId = req.body.idUser;
     }
+
+    /* Verify session : if valide, extend session validity */
+    if (typeof req.session.userId != 'undefined' && typeof req.body.date != 'undefined' && req.session.userId >= 0 && howMilliSecsAgo(new Date(req.body.date)) <= allConfig.get('conf_session:request_validity_ms')) {
+        return true;
+    } else {
+        console.warn('ID : ' + req.session.userId + ' DATE : ' + req.body.date + ' DATE : ' + new Date() + ' HowMSAgo : ' + howMilliSecsAgo(new Date(req.body.date)) + ' request_validity_ms : ' + allConfig.get('conf_session:request_validity_ms'));
+        return false;
+    }
+};
+
+/*  return how milliseconds oldDate ago */
+howMilliSecsAgo = function (oldDate) {
+    return parseInt(new Date().getTime() - oldDate.getTime());
 };
 
 /*  return how minutes oldDate ago */
@@ -107,15 +119,15 @@ function getHtmlHeaderEmail(pseudo) {
 
     let header = '';
 
-    header +=   '<div style="background-color: #ddd; width: 100%; border-radius: 10px 10px 0 0">';
-    header +=           '<img src="' + conf_server.adress + ':' + conf_server.port + '/images/logo/logo-horizontal.png" style="width 20%; vertical-align: middle">';
-    header +=   '</div>';
+    header += '<div style="background-color: #ddd; width: 100%; border-radius: 10px 10px 0 0">';
+    header += '<img src="' + conf_server.adress + ':' + conf_server.port + '/images/logo/logo-horizontal.png" style="width 20%; vertical-align: middle">';
+    header += '</div>';
 
-    header +=   '<div style="border: 4px solid #ddd; width: 95.3%; padding: 2%;">';
+    header += '<div style="border: 4px solid #ddd; width: 95.3%; padding: 2%;">';
 
-    header +=       '<div style="margin-bottom: 15px;">';
-    header +=           'Bonjour ' + pseudo;
-    header +=       '</div>';
+    header += '<div style="margin-bottom: 15px;">';
+    header += 'Bonjour ' + pseudo;
+    header += '</div>';
 
     return header;
 }
@@ -124,19 +136,19 @@ function getHtmlFooterEmail() {
     let nameOrga = allConfig.get('conf_organisation').name;
     let footer = '';
 
-    footer +=  '<div style="margin-top: 15px;">';
-    footer +=      'Merci de nous faire confience';
-    footer +=  '</div>';
+    footer += '<div style="margin-top: 15px;">';
+    footer += 'Merci de nous faire confience';
+    footer += '</div>';
 
-    footer +=  '<div style="margin-top: 20px;text-align: right">';
-    footer +=      'L\'équipe ' + nameOrga;
-    footer +=  '</div>';
+    footer += '<div style="margin-top: 20px;text-align: right">';
+    footer += 'L\'équipe ' + nameOrga;
+    footer += '</div>';
 
-    footer +=   '</div>';
+    footer += '</div>';
 
-    footer +=   '<div style="background-color: #ddd; width: 100%; border-radius: 0 0 10px 10px; text-align: center;">';
-    footer +=           '<div style="vertical-align: middle">&#169; ' + nameOrga + '</div>';
-    footer +=   '</div>';
+    footer += '<div style="background-color: #ddd; width: 100%; border-radius: 0 0 10px 10px; text-align: center;">';
+    footer += '<div style="vertical-align: middle">&#169; ' + nameOrga + '</div>';
+    footer += '</div>';
 
     return footer;
 }
@@ -153,14 +165,14 @@ function getHtmlForForgetPasswordEmail(infos) {
     let content = '';
     content += getHtmlHeaderEmail(infos.pseudo);
 
-    content +=  '<div>';
-    content +=      'Vous recevez ce mail car vous avez demandé de réinitialisé votre mot de passe.';
-    content +=  '</div>';
+    content += '<div>';
+    content += 'Vous recevez ce mail car vous avez demandé de réinitialisé votre mot de passe.';
+    content += '</div>';
 
-    content +=  '<div>';
-    content +=      'Si c\'est bien le cas, <a href="' + confServer.adress + ':' + confServer.port + '/changePwdBefore?data=' + dataCrypted + '">cliquez ici</a> pour le réinitialiser :';
-    content +=      '<span style="text-decoration: underline; font-weight: bold; padding-left: 3px;">lien actif pendant ' + allConfig.get('conf_email_orga').minutes_forgetPwd + ' minutes.</span>';
-    content +=  '</div>';
+    content += '<div>';
+    content += 'Si c\'est bien le cas, <a href="' + confServer.adress + ':' + confServer.port + '/changePwdBefore?data=' + dataCrypted + '">cliquez ici</a> pour le réinitialiser :';
+    content += '<span style="text-decoration: underline; font-weight: bold; padding-left: 3px;">lien actif pendant ' + allConfig.get('conf_email_orga').minutes_forgetPwd + ' minutes.</span>';
+    content += '</div>';
 
     content += getHtmlFooterEmail();
 

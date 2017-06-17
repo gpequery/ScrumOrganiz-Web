@@ -29,7 +29,7 @@ $j(function () {
                                 text: 'Ok',
                                 btnClass: 'btn-green',
                                 action: function () {
-                                    goToUrl('/board');
+                                    goToUrl('/board', data.idUser);
                                 }
                             }
                         }

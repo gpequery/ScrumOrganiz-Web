@@ -20,8 +20,11 @@
         }
     },
     "conf_session": {
+        "name": "_Session",
         "secrect_key": "jkahdDS!kf!afz35JQ1qsd",
-        "session_max_duration": 3600000
+        "max_duration_ms": 3600000,
+        "request_validity_ms": 10000,
+        "reconnect": "Reconnectez-vous"
     },
     "conf_crypto": {
         "secrect_key": "qzd5ZD5464qzf!qzf564ZD"
