@@ -5,7 +5,7 @@
     text-align: left;
     padding: 2%;
     border-radius: 15%;
-    box-shadow: 3px 2px 5px $color-corporate-box-shadow;
+    box-shadow: $css-default-box-shadow;
 
     div.font,
     div.message {
@@ -25,9 +25,9 @@
     div.font {
         width: 20%;
         text-align: center;
-        font-family: scrum-font;
+        font-family: $scrum-font-family;
         &:before {
-            content: $font-error;
+            content: $scrum-font-error;
             font-size: 200px;
             color: $color-font-error;
         }

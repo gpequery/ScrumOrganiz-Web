@@ -15,13 +15,11 @@ router.post('/cryptage/result', function (req, res, next) {
         result = bcrypt.hashSync(req.body.value, bcrypt.genSaltSync());
     } else {
         if (req.body.action == 'crypt') {
-            result = encodeURI(crypto.AES.encrypt(req.body.value, allConfig.get('conf_crypto').secrect_key));
+            result = encodeURI(crypto.AES.encrypt(req.body.value, allConfig.get('conf_crypto:secrect_key')));
         } else {
-            result = crypto.AES.decrypt(req.body.value, allConfig.get('conf_crypto').secrect_key).toString(crypto.enc.Utf8);
+            result = crypto.AES.decrypt(req.body.value, allConfig.get('conf_crypto:secrect_key')).toString(crypto.enc.Utf8);
         }
-
     }
-
 
     res.send(result);
 });

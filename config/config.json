@@ -4,20 +4,23 @@
     "password": "ScrumRpz",
     "database": "scrum_organiz",
     "host": "mysql-scrum.alwaysdata.net",
-    "dialect": "mysql"
+    "dialect": "mysql",
+    "logging": false
   },
   "test": {
     "username": "scrum",
     "password": "ScrumRpz",
     "database": "scrum_organiz",
     "host": "mysql-scrum.alwaysdata.net",
-    "dialect": "mysql"
+    "dialect": "mysql",
+    "logging": false
   },
   "production": {
     "username": "scrum",
     "password": "ScrumRpz",
     "database": "scrum_organiz",
     "host": "mysql-scrum.alwaysdata.net",
-    "dialect": "mysql"
+    "dialect": "mysql",
+    "logging": false
   }
 }

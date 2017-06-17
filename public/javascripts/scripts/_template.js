@@ -1,5 +1,4 @@
 $j(function () {
-
     /* Enables POST navigation everywhere */
     $j('.navigate').on('click', function() {
         goToUrl($j(this).attr('data-url'));
@@ -31,9 +30,20 @@ $j(function () {
             $j('input[type=button]').attr('disabled', false);
         }
     });
+
+    $j('input[type=text]').on('keypress',function(event) {
+        if(event.which == 13) {
+            $j(this).parent().find('input[type=submit]').click();
+        }
+    })
 });
 
-function goToUrl(url) {
+function goToUrl(url, data = null) {
+    if(data) {
+        $j('.formNavigate input[name=idUser]').val(data);
+    }
+
+    $j('.formNavigate input[name=date]').val(new Date());
     $j('.formNavigate').attr('action', url);
     $j('.formNavigate').submit();
 }

@@ -12,7 +12,6 @@ $j(function () {
         onkeyup: function(element) {$j(element).valid()}
     });
 
-
     $j('#divFormChangePwd input[type=button]').click(function() {
         $j.post(
             '/user/changePwd', {
@@ -32,5 +31,4 @@ $j(function () {
                 }
             });
     });
-
 });
