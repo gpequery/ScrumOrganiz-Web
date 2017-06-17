@@ -10,7 +10,7 @@ $j(function () {
             }, function (data) {
                 if (data.etat) {
                     $j('.loginContent .msgInfo').removeClass('msgInfoNok');
-                    goToUrl('/board');
+                    goToUrl('/board', data.idUser);
                 } else {
                     $j('.loginContent .msgInfo').addClass('msgInfoNok');
                     $j('.loginContent .msgInfo').html(data.message);

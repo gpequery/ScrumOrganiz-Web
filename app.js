@@ -3,8 +3,11 @@ const path = require('path');
 const favicon = require('serve-favicon');
 const models = require('./models');
 const nodemailer = require('nodemailer');
-const session = require('cookie-session');
+// const session = require('cookie-session');
+const session = require('express-session');
 const helmet = require('helmet');
+const mysqlStore = require('express-mysql-session');
+const cookieParser = require('cookie-parser');
 
 /* Config */
 allConfig = require('nconf');
@@ -39,16 +42,21 @@ app.use(favicon(path.join(__dirname, 'public', 'images', 'logo', 'favicon-logo-o
 
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(helmet());
+app.use(cookieParser());
+
 app.use(session({
-        secret: allConfig.get('conf_session:secrect_key'),
-        cookie: { secure: true }
+    key: allConfig.get('conf_organisation:name') + allConfig.get('conf_session:name'),
+    secret: allConfig.get('conf_session:secrect_key'),
+    saveUninitialized: true,
+    resave: true,
+    rolling: true,
+    cookie: {maxAge: allConfig.get('conf_session:max_duration_ms')}
 }));
 
 app.use('/', index);
 app.use('/user', user);
 app.use('/web_services', webService);
 app.use('/services', service);
-
 
 // catch 404 and forward to error handler
 app.use(function (req, res, next) {

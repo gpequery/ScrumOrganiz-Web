@@ -27,7 +27,7 @@ router.post('/forgetPwd', function (req, res, next) {
 
 /* GET board page */
 router.post('/board', function (req, res, next) {
-    if (verifySession(req.session)) {
+    if (verifySession(req)) {
         let options = {
             where: {
                 id: req.session.userId
@@ -58,7 +58,7 @@ router.post('/board', function (req, res, next) {
 
 /* GET Setting page */
 router.post('/setting', function(req, res, nex) {
-    if (verifySession(req.session)) {
+    if (verifySession(req)) {
         let options = {
             where: {
                 id: req.session.userId
