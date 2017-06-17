@@ -2,7 +2,10 @@ const nodemailer = require('nodemailer');
 const crypto = require('crypto-js');
 
 /* LOGIN : Vérify informations formats */
-services_add_user_verify_info = function (messages, userRules, pseudo, email, password) {
+services_add_user_verify_info = function (pseudo, email, password) {
+    let messages = allConfig.get('sign_up_message');
+    let userRules = allConfig.get('conf_user_rules');
+
     if (typeof pseudo == 'undefined' || pseudo.length < userRules.pseudo_min_length) {
         return {etat: false, message: messages.pseudo_min_length};
     }
@@ -17,8 +20,9 @@ services_add_user_verify_info = function (messages, userRules, pseudo, email, pa
 };
 
 /* Change infos : Vérify informations formats */
-services_add_user_verify_info_without_password = function (userRules, pseudo, email) {
+services_add_user_verify_info_without_password = function (pseudo, email) {
     let messages = allConfig.get('sign_up_message');
+    let userRules = allConfig.get('conf_user_rules');
 
     if (typeof pseudo == 'undefined' || pseudo.length < userRules.pseudo_min_length) {
         return {etat: false, message: messages.pseudo_min_length};

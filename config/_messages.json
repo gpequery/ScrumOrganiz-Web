@@ -9,7 +9,7 @@
         "not_found": "Problème avec votre session"
     },
     "sign_up_message": {
-        "succes": "Ajout réussis",
+        "succes": "Compte crée, connexion !",
         "pseudo_used": "Pseudo déjà utilisé",
         "mail_used": "Mail déjà associé à un compte",
         "pseudo_min_length": "Pseudo : au moins 4 caractères.",

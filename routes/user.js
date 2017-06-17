@@ -8,8 +8,7 @@ const User = models.User;
 /* OFFLINE ACTIONS -> without session*/
     /* Add user if pseudo and mail is not already used */
     router.post('/addUser', function(req, res, next) {
-        let messages = allConfig.get('sign_up_message');
-        let userOk = services_add_user_verify_info(messages, allConfig.get('conf_user_rules'), req.body.pseudo, req.body.email, req.body.password);
+        let userOk = services_add_user_verify_info(req.body.pseudo, req.body.email, req.body.password);
 
         if (userOk.etat) {
             let options = {
@@ -23,13 +22,18 @@ const User = models.User;
             };
 
             User.findOne(options).then(function(user) {
+                let messages = allConfig.get('sign_up_message');
+
                 if (user == null) {
                     User.create({
                         pseudo: req.body.pseudo,
                         email: req.body.email,
                         password: bcrypt.hashSync(req.body.password, bcrypt.genSaltSync())
-                    }).then(function(usr) {
-                        res.send({etat: true, message: messages.succes})
+                    }).then(function(user) {
+                        req.session.userId = user.id;
+                        req.sessionOptions.maxAge = allConfig.get('conf_session:session_max_duration');
+
+                        res.send({etat: true, message: messages.succes});
                     }).catch(function(err) {
                         res.send({etat: false, message: err.toString()});
                     });
@@ -89,7 +93,7 @@ const User = models.User;
 
         User.findOne(options).then(function(user) {
             if (user != null) {
-                let actions = allConfig.get('conf_email_orga').actions;
+                let actions = allConfig.get('conf_email_orga:actions');
 
                 sendMail(user.email, actions.forget_password, {id: user.id, pseudo: user.pseudo});
                 res.send({etat: true, message: messages.send_success});
@@ -99,13 +103,12 @@ const User = models.User;
         }).catch(function(err) {
             res.send({etat: false, message: err.toString()});
         });
-
     });
 
     /* User change pwd final (forget)*/
     router.post('/changePwd', function(req, res, next) {
         let dataUrl = decodeURI(req.body.data).split(' ').join('+');
-        let decodeDatas  = crypto.AES.decrypt(dataUrl, allConfig.get('conf_crypto').secrect_key).toString(crypto.enc.Utf8);
+        let decodeDatas  = crypto.AES.decrypt(dataUrl, allConfig.get('conf_crypto:secrect_key')).toString(crypto.enc.Utf8);
 
         let allDatas = decodeDatas.split('&');
         let diff = howMinutesAgo(new Date(allDatas[2]));
@@ -120,7 +123,7 @@ const User = models.User;
                 res.send({etat: false, message: messages.no_account_submit});
             });
         } else {
-            res.render('includes/error.html.twig', {data: allConfig.get('conf_serveur').error.old_link});
+            res.render('includes/error.html.twig', {data: allConfig.get('conf_serveur:error:old_link')});
         }
     });
 
@@ -128,7 +131,7 @@ const User = models.User;
     /* Verify if new info are valid */
     router.post('/verifyNewInfo', function(req, res, next) {
         if (verifySession(req.session)) {
-            let userOk = services_add_user_verify_info_without_password(allConfig.get('conf_user_rules'), req.body.pseudo, req.body.email);
+            let userOk = services_add_user_verify_info_without_password(req.body.pseudo, req.body.email);
 
             if (userOk.etat) {
                 let options = {

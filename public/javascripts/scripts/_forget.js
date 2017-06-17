@@ -8,14 +8,15 @@ $j(function () {
                 pseudo: $j('#divFormForget input[name=pseudo]').val(),
                 email: $j('#divFormForget input[name=email]').val()
             }, function (data) {
-                console.log('data : ' + JSON.stringify(data));
                 if (data.etat) {
                     $j('.forgetContent .msgInfo').removeClass('msgInfoNok');
                     $j('.forgetContent .msgInfo').addClass('msgInfoOk');
+
                     $j('.forgetContent .msgInfo').html(data.message);
                 } else {
                     $j('.forgetContent .msgInfo').removeClass('msgInfoOk');
                     $j('.forgetContent .msgInfo').addClass('msgInfoNok');
+
                     $j('.forgetContent .msgInfo').html(data.message);
                 }
             });
