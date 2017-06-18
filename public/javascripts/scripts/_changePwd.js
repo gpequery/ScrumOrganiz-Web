@@ -19,11 +19,28 @@ $j(function () {
                 data: $j('#divFormChangePwd input[name=data]').val()
             }, function (data) {
                 if (data.etat) {
-                    if(confirm(data.message)) {
-                        goToUrl('/login');
-                    } else {
-                        goToUrl('/');
-                    }
+                    $j.alert({
+                        title: '',
+                        content: data.message,
+                        closeIcon: false,
+                        buttons: {
+                            yes: {
+                                text: 'Oui',
+                                btnClass: 'btn-green',
+                                action: function () {
+                                    goToUrl('/login');
+                                }
+                            },
+                            no: {
+                                text: 'Non',
+                                btnClass: 'btn-grey',
+                                action: function () {
+                                    goToUrl('/');
+                                }
+                            }
+
+                        }
+                    });
                 } else {
                     $j('.changePwdContent .msgInfo').removeClass('msgInfoOk');
                     $j('.changePwdContent .msgInfo').addClass('msgInfoNok');

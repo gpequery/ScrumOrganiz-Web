@@ -5,6 +5,36 @@ $j(function () {
         $j(this).val($j(this).val().replace(' ', ''));
     });
 
+    /* confirm password before change infos */
+    $j('.settingContent input[name=confPwd]').on('keyup', function () {
+        $j.post(
+            '/user/verifyCurrentPassword', {
+                pwd: $j(this).val(),
+                date: new Date()
+            }, function (data) {
+                if (data.etat) {
+                    $j('.settingContent .msgInfo-large').removeClass('msgInfoNok');
+                    $j('.settingContent .msgInfo-large').removeClass('msgInfoOk');
+                    $j('.settingContent .msgInfo-large').html('&nbsp;');
+
+                    $j('.divSetting input[type=text], .divSetting input[type=password], .divSetting input[type=email]').attr('disabled', false);
+                } else {
+                    $j('.settingContent .msgInfo-large').removeClass('msgInfoOk');
+                    $j('.settingContent .msgInfo-large').addClass('msgInfoNok');
+
+                    $j('.settingContent .msgInfo-large').html(data.message);
+
+                    $j('.divSetting input').attr('disabled', 'disabled');
+
+                    /* remake default value if bad password */
+                    $j('.settingContent input[name=pseudo]').val($j('.settingContent input[name=pseudo]').attr('data-default'));
+                    $j('.settingContent input[name=email]').val($j('.settingContent input[name=email]').attr('data-default'));
+                    $j('.settingContent input[name=pwd1]').val('');
+                    $j('.settingContent input[name=pwd2]').val('');
+                }
+            });
+    });
+
     /* infos new info */
     $j('.settingContent input[name=pseudo], .settingContent input[name=email]').on('keyup', function () {
         /* verify if info if the current account info */

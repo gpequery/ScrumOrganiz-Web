@@ -59,9 +59,9 @@ header#online div.headOption { background-color: #337ab7; color: #fff; border-ra
 header#online div.headOption:hover { background-color: #286090; }
 header#online div.headOption.pseudo span { margin-left: 5px; }
 header#online div.headOption.pseudo span:before { font-family: "scrum-font"; content: ""; font-size: 14px; }
-header#online .left, header#online .right { width: 49.5%; }
+header#online .left, header#online .right { width: 47.7%; }
 header#online .right { text-align: right; }
-header#online .logo { width: 0; }
+header#online .logo { width: 4%; text-align: center; }
 header#online .logo div { background: url("/images/logo/logo-only.png") no-repeat; background-size: 100%; height: 100%; width: 40px; }
 header#online .popinHeaderRight { position: absolute; right: 10px; top: 45px; box-shadow: 3px 2px 5px #000; border-radius: 4px; border: 1px solid black; display: none; }
 header#online .popinHeaderRight div { display: block; cursor: pointer; padding: 0 15px 0 5px; }
@@ -96,13 +96,15 @@ header#online .popinHeaderRight div.startSection { border-top: 1px solid #565656
 .boardContent { text-align: center; width: 60%; margin: 0 auto; }
 
 .settingContent { text-align: center; width: 100%; margin: 0 auto; }
-.settingContent h1 { margin-bottom: 5%; }
-.settingContent .left, .settingContent .center, .settingContent .right { display: inline-block; vertical-align: middle; }
-.settingContent .center { width: 25%; }
-.settingContent .left, .settingContent .right { width: 20%; }
-.settingContent .left div, .settingContent .right div { margin: auto; text-align: left; width: 90%; }
-.settingContent .left div label, .settingContent .left div input[type=submit], .settingContent .right div label, .settingContent .right div input[type=submit] { display: block; width: 50%; }
-.settingContent .left div input, .settingContent .right div input { display: inline-block; width: 100%; margin-bottom: 20px; font-size: 20px; }
+.settingContent .confPassword { width: 40%; margin: 4% auto; }
+.settingContent .confPassword h2 { font-size: 18px; }
+.settingContent .confPassword input { width: 250px; font-size: 20px; }
+.settingContent .divSetting .left, .settingContent .divSetting .center, .settingContent .divSetting .right { display: inline-block; vertical-align: middle; }
+.settingContent .divSetting .center { width: 25%; }
+.settingContent .divSetting .left, .settingContent .divSetting .right { width: 20%; }
+.settingContent .divSetting .left div, .settingContent .divSetting .right div { margin: auto; text-align: left; width: 90%; }
+.settingContent .divSetting .left div input[type=submit], .settingContent .divSetting .right div input[type=submit] { display: block; width: 50%; }
+.settingContent .divSetting .left div input, .settingContent .divSetting .right div input { display: inline-block; width: 100%; margin-bottom: 20px; font-size: 20px; }
 
 .forgetContent { width: 60%; text-align: center; margin: 0 auto; }
 .forgetContent .msgInfo { display: inline-block; margin-top: 70px; margin-bottom: 10px; }
@@ -462,4 +464,4 @@ body[class*=jconfirm-no-scroll-] { overflow: hidden !important; }
 
 /* Perso */
 .jconfirm-box-container { width: 350px; margin: auto; }
-.jconfirm-box-container .jconfirm-title-c { background: url("/images/logo/logo-only.png") no-repeat top right; background-size: 20px; }
+.jconfirm-box-container .jconfirm-logo { position: absolute; right: 5px; top: 5px; background: url("/images/logo/logo-only.png") no-repeat; background-size: 100%; height: 30px; width: 22px; }

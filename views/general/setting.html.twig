@@ -3,14 +3,18 @@
 <div class="settingContent">
     <h1>Paramètres du compte</h1>
 
-    <div>
+    <div class='confPassword'>
+        <h2>Saisir votre mot de passe pour modifier vos informations</h2>
+        <input type='password' name='confPwd' required placeholder='ex : *****' minlength='{{ conf.password_min_length }}'/>
+    </div>
+    <div class="divSetting">
         <div class='left'>
             <div>
                 <label for='pseudo'>Pseudo</label>
-                <input type='text' name='pseudo' value='{{ user.pseudo }}' data-default='{{ user.pseudo }}' minlength='{{ conf.pseudo_min_length }}'/>
+                <input type='text' name='pseudo' value='{{ user.pseudo }}' data-default='{{ user.pseudo }}' minlength='{{ conf.pseudo_min_length }}' disabled/>
 
                 <label for='email'>E-mail</label>
-                <input type='email' name='email' value='{{ user.email }}' data-default='{{ user.email }}'/>
+                <input type='email' name='email' value='{{ user.email }}' data-default='{{ user.email }}' disabled/>
 
                 <input type='submit' value="Modifier" class='green' id='account' disabled/>
             </div>
@@ -22,11 +26,11 @@
 
         <div class='right'>
             <div>
-                <label for='pwd'>Mot de passe</label>
-                <input type='password' name='pwd1' required placeholder='ex : *****' minlength='{{ conf.password_min_length }}'/>
+                <label for='pwd1'>Changer votre mot de passe</label>
+                <input type='password' name='pwd1' required placeholder='ex : *****' minlength='{{ conf.password_min_length }}' disabled/>
 
-                <label for='pwd'>Mot de passe</label>
-                <input type='password' name='pwd2' required placeholder='ex : *****' minlength='{{ conf.password_min_length }}'/>
+                <label for='pwd2'>Confirmer nouveau mot de passe</label>
+                <input type='password' name='pwd2' required placeholder='ex : *****' minlength='{{ conf.password_min_length }}' disabled/>
 
                 <input type='submit' value="Changer" class='green' id='password' disabled/>
             </div>
