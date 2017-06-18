@@ -167,11 +167,12 @@ header {
           font-size: 14px; }
     header#online .left,
     header#online .right {
-      width: 49.5%; }
+      width: 47.7%; }
     header#online .right {
       text-align: right; }
     header#online .logo {
-      width: 0; }
+      width: 4%;
+      text-align: center; }
       header#online .logo div {
         background: url("/images/logo/logo-only.png") no-repeat;
         background-size: 100%;

@@ -77,7 +77,7 @@ header {
 
         .left,
         .right {
-            width: 49.5%;
+            width: 47.7%;
         }
 
         .right {
@@ -85,7 +85,8 @@ header {
         }
 
         .logo {
-            width: 0;
+            width: 4%;
+            text-align: center;
             div {
                 background: url($image-logo-only) no-repeat;
                 background-size: 100%;
