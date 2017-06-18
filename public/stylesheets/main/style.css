@@ -285,7 +285,8 @@ header {
     .settingContent .confPassword h2 {
       font-size: 18px; }
     .settingContent .confPassword input {
-      width: 250px; }
+      width: 250px;
+      font-size: 20px; }
   .settingContent .divSetting .left,
   .settingContent .divSetting .center,
   .settingContent .divSetting .right {

@@ -98,7 +98,7 @@ header#online .popinHeaderRight div.startSection { border-top: 1px solid #565656
 .settingContent { text-align: center; width: 100%; margin: 0 auto; }
 .settingContent .confPassword { width: 40%; margin: 4% auto; }
 .settingContent .confPassword h2 { font-size: 18px; }
-.settingContent .confPassword input { width: 250px; }
+.settingContent .confPassword input { width: 250px; font-size: 20px; }
 .settingContent .divSetting .left, .settingContent .divSetting .center, .settingContent .divSetting .right { display: inline-block; vertical-align: middle; }
 .settingContent .divSetting .center { width: 25%; }
 .settingContent .divSetting .left, .settingContent .divSetting .right { width: 20%; }
