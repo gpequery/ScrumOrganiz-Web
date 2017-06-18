@@ -13,15 +13,17 @@
 
     <header id="online">
         <div class="left">
-            <div>Projets</div>
+            <div class='headOption project'>
+                <div class='label navigate' data-url='/board'>Project</div>
+                <div class='font addProject navigate' data-url='/newProject'></div>
+            </div>
         </div>
         <div class='logo'>
             <div class='navigate' data-url='/board'></div>
         </div>
         <div class='right'>
-            <div class='headOption pseudo'>
-                {{ user.pseudo }}
-                <span></span>
+            <div class='headOption setting'>
+                <div class='label'>{{ user.pseudo }}<span class='pseudoSetting'></span></div>
             </div>
         </div>
 
@@ -30,7 +32,6 @@
             <div class='navigate' data-url='/setting'>
                 Mon compte
              </div>
-            {#<div class='startSection navigate' data-url='/'>#}
             <div class='startSection logout'>
                 Déconnexion
             </div>

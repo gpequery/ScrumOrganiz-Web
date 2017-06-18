@@ -49,28 +49,48 @@ header {
 
     &#online {
         height: $size-heigth-header-online;
-
+        
         div.headOption {
-            background-color: $color-corportate-two;
-            color: $color-corportate-white;
-            border-radius: $size-border-radius;
-            margin-top: 5px;
-            padding: 4px 10px;
-            font-weight: bold;
-            cursor: pointer;
-
-            &:hover {
-                background-color: $input-blue-background-over;
+            margin-left: 10px;
+            div {
+                margin-top: 5px;
+                border-radius: $size-border-radius;
+                padding: 4px 10px;
+                font-weight: bold;
+                border: 1px solid $color-corportate-two;
+                cursor: pointer;
             }
 
-            &.pseudo {
-                span {
+            div.label {
+                background-color: $color-corportate-two;
+                color: $color-corportate-white;
+
+                &:hover {
+                    background-color: $input-blue-background-over;
+                }
+
+                .pseudoSetting {
                     margin-left: 5px;
                     &:before {
                         font-family: $scrum-font-family;
                         content: $scrum-font-setting;
                         font-size: 14px;
                     }
+                }
+            }
+            div.font {
+                background-color: $color-corportate-background-header;
+                color: $color-corportate-two;
+                margin-left: -10px;
+
+                &.addProject:before {
+                    font-family: $scrum-font-family;
+                    content: $scrum-font-add;
+                    font-size: 14px;
+                }
+
+                &:hover {
+                    background-color: $color-corportate-light;
                 }
             }
         }
