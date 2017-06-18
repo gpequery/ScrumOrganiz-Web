@@ -160,7 +160,7 @@ function getHtmlForForgetPasswordEmail(infos) {
     let dataCrypted = encodeURI(crypto.AES.encrypt(urlData, allConfig.get('conf_crypto').secrect_key));
 
 
-    let object = allConfig.get('conf_organisation').name + ' : Réinitialisation de votre mot de passe';
+    let subject = allConfig.get('conf_organisation').name + ' : Réinitialisation de votre mot de passe';
 
     let content = '';
     content += getHtmlHeaderEmail(infos.pseudo);
@@ -176,6 +176,6 @@ function getHtmlForForgetPasswordEmail(infos) {
 
     content += getHtmlFooterEmail();
 
-    return {object: object, content: content};
+    return {subject: subject, content: content};
 }
 
