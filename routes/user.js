@@ -199,7 +199,6 @@ router.post('/verifyCurrentPassword', function (req, res, next) {
     }
 });
 
-
 /* Verify new password validy (NO SESSION) */
 router.post('/verifyNewPassword', function (req, res, next) {
     let result = services_verify_new_password(req.body.pwd1, req.body.pwd2);
@@ -230,6 +229,14 @@ router.post('/updatePassword', function (req, res, next) {
     } else {
         res.send({etat: false, message: allConfig.get('session_message:reconnect')})
     }
+});
+
+router.post('/closeSession', function (req, res, next) {
+    req.session.destroy(function(err) {
+        console.log("ETAT : " + err)
+    });
+
+   res.end();
 });
 
 module.exports = router;
