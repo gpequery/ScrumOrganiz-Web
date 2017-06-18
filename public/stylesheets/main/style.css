@@ -279,31 +279,34 @@ header {
   text-align: center;
   width: 100%;
   margin: 0 auto; }
-  .settingContent h1 {
-    margin-bottom: 5%; }
-  .settingContent .left,
-  .settingContent .center,
-  .settingContent .right {
+  .settingContent .confPassword {
+    width: 40%;
+    margin: 4% auto; }
+    .settingContent .confPassword h2 {
+      font-size: 18px; }
+    .settingContent .confPassword input {
+      width: 250px; }
+  .settingContent .divSetting .left,
+  .settingContent .divSetting .center,
+  .settingContent .divSetting .right {
     display: inline-block;
     vertical-align: middle; }
-  .settingContent .center {
+  .settingContent .divSetting .center {
     width: 25%; }
-  .settingContent .left,
-  .settingContent .right {
+  .settingContent .divSetting .left,
+  .settingContent .divSetting .right {
     width: 20%; }
-    .settingContent .left div,
-    .settingContent .right div {
+    .settingContent .divSetting .left div,
+    .settingContent .divSetting .right div {
       margin: auto;
       text-align: left;
       width: 90%; }
-      .settingContent .left div label,
-      .settingContent .left div input[type=submit],
-      .settingContent .right div label,
-      .settingContent .right div input[type=submit] {
+      .settingContent .divSetting .left div input[type=submit],
+      .settingContent .divSetting .right div input[type=submit] {
         display: block;
         width: 50%; }
-      .settingContent .left div input,
-      .settingContent .right div input {
+      .settingContent .divSetting .left div input,
+      .settingContent .divSetting .right div input {
         display: inline-block;
         width: 100%;
         margin-bottom: 20px;

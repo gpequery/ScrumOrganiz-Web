@@ -28,6 +28,7 @@
 
     Une session = cookie à valeur crypté qui s'appel "allConfig.get('conf_organisation:name') + allConfig.get('conf_session:name')"
     Session créée au login
+    Sessions fermées quand le serveur s'arrète
     Une session est valide si : 
         La variable de ssion existe : durée de vie = "max_duration_ms" (conf)
         Dans cette variable userId est défini et plus grand que 0
