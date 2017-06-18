@@ -31,7 +31,7 @@ $j(function () {
         }
     });
 
-    $j('input[type=text]').on('keypress',function(event) {
+    $j('input').on('keypress',function(event) {
         if(event.which == 13) {
             $j(this).parent().find('input[type=submit]').click();
         }
