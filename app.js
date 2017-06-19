@@ -3,10 +3,8 @@ const path = require('path');
 const favicon = require('serve-favicon');
 const models = require('./models');
 const nodemailer = require('nodemailer');
-// const session = require('cookie-session');
 const session = require('express-session');
 const helmet = require('helmet');
-const mysqlStore = require('express-mysql-session');
 const cookieParser = require('cookie-parser');
 
 /* Config */
@@ -19,10 +17,9 @@ allConfig.load();
 const functions = require('./functions.js');
 const bodyParser = require('body-parser');
 
-
-
 const index = require('./routes/index');
 const user = require('./routes/user');
+const project = require('./routes/project');
 const webService = require('./routes/web_services');
 const service = require('./routes/services');
 
@@ -43,7 +40,6 @@ app.use(favicon(path.join(__dirname, 'public', 'images', 'logo', 'favicon-logo-o
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(helmet());
 app.use(cookieParser());
-
 app.use(session({
     key: allConfig.get('conf_organisation:name') + allConfig.get('conf_session:name'),
     secret: allConfig.get('conf_session:secrect_key'),
@@ -55,6 +51,7 @@ app.use(session({
 
 app.use('/', index);
 app.use('/user', user);
+app.use('/project', project);
 app.use('/web_services', webService);
 app.use('/services', service);
 

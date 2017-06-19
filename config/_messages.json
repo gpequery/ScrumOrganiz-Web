@@ -25,11 +25,19 @@
         "send_success": "Un mail viens d'être envoyé à cet utilisateur",
         "bad_account": "Il n'y as pas de compte associé à ces informations",
         "no_account_submit": "Mot de passe non modifé, essayez à nouveau",
-        "change_success": "Votre mot de passe a bien été modifié.\nVoulez-vous vous connecter?"
+        "change_success": "Votre mot de passe a bien été modifié.\nVoulez-vous vous connecter ?"
     },
     "update_info_message": {
         "update_info_success": "Compte mise à jour !",
         "same_password": "Les deux mot de passes doivent être identiques",
         "update_password_success": "Mot de passe modifié !"
+    },
+    "project_message": {
+        "add": {
+            "success": "Projet créer !",
+            "no_name": "Un projet à obligatoirement un titre. Veuillez le renseigner",
+            "no_description": "Un projet à obligatoirement une description. Veuiller le renseigner",
+            "project_exist": "Un projet porte déjà ce titre"
+        }
     }
 }
