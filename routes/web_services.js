@@ -117,10 +117,8 @@ router.post('/addNewProject', function(req, res, next) {
 
             Project.findOne(options).then(function (searchProject) {
                 if (searchProject) {
-                    console.log('1');
                     return false;
                 } else {
-                    console.log('2');
                     return Project.create({
                         creatorId: req.body.userId,
                         label: req.body.label,
@@ -129,10 +127,8 @@ router.post('/addNewProject', function(req, res, next) {
                 }
             }).then(function (newProject) {
                 if (newProject) {
-                    console.log('3');
                     res.json({etat: true, message: message.success, project: newProject});
                 } else {
-                    console.log('4');
                     res.json({etat: false, message: message.project_exist});
                 }
             }).catch(function (error) {

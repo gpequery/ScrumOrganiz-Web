@@ -23,8 +23,8 @@ const project = require('./routes/project');
 const webService = require('./routes/web_services');
 const service = require('./routes/services');
 
-// models.sequelize.sync();
-models.sequelize.sync({'force': 'true'});
+models.sequelize.sync();
+// models.sequelize.sync({'force': 'true'});
 
 const app = express();
 
