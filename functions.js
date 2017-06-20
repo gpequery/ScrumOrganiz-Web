@@ -62,6 +62,7 @@ verifySession = function (req) {
         console.warn('ID : ' + req.session.userId + ' DATE : ' + req.body.date + ' DATE : ' + new Date() + ' HowMSAgo : ' + howMilliSecsAgo(new Date(req.body.date)) + ' request_validity_ms : ' + allConfig.get('conf_session:request_validity_ms'));
         return false;
     }
+    // return true;
 };
 
 /*  return how milliseconds oldDate ago */

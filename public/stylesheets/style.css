@@ -55,10 +55,15 @@ header#offline .logo input:first-child, header#offline .input input:first-child 
 header#offline .logo div { background: url("/images/logo/logo-horizontal.png") no-repeat; background-size: 100%; height: 100%; width: 350px; margin-left: 10px; }
 header#offline .input { text-align: right; vertical-align: top; }
 header#online { height: 40px; }
-header#online div.headOption { background-color: #337ab7; color: #fff; border-radius: 4px; margin-top: 5px; padding: 4px 10px; font-weight: bold; cursor: pointer; }
-header#online div.headOption:hover { background-color: #286090; }
-header#online div.headOption.pseudo span { margin-left: 5px; }
-header#online div.headOption.pseudo span:before { font-family: "scrum-font"; content: ""; font-size: 14px; }
+header#online div.headOption { margin-left: 10px; }
+header#online div.headOption div { margin-top: 5px; border-radius: 4px; padding: 4px 10px; font-weight: bold; border: 1px solid #337ab7; cursor: pointer; }
+header#online div.headOption div.label { background-color: #337ab7; color: #fff; }
+header#online div.headOption div.label:hover { background-color: #286090; }
+header#online div.headOption div.label .pseudoSetting { margin-left: 5px; }
+header#online div.headOption div.label .pseudoSetting:before { font-family: "scrum-font"; content: ""; font-size: 14px; }
+header#online div.headOption div.font { background-color: #eee; color: #337ab7; margin-left: -10px; }
+header#online div.headOption div.font.addProject:before { font-family: "scrum-font"; content: ""; font-size: 14px; }
+header#online div.headOption div.font:hover { background-color: #ddd; }
 header#online .left, header#online .right { width: 47.7%; }
 header#online .right { text-align: right; }
 header#online .logo { width: 4%; text-align: center; }
@@ -463,5 +468,9 @@ body[class*=jconfirm-no-scroll-] { overflow: hidden !important; }
 .jconfirm.jconfirm-modern.jconfirm-open .jconfirm-box .jconfirm-title-c .jconfirm-icon-c { -webkit-transform: scale(1); -ms-transform: scale(1); transform: scale(1); }
 
 /* Perso */
-.jconfirm-box-container { width: 350px; margin: auto; }
+.jconfirm-box-container { margin: auto; }
 .jconfirm-box-container .jconfirm-logo { position: absolute; right: 5px; top: 5px; background: url("/images/logo/logo-only.png") no-repeat; background-size: 100%; height: 30px; width: 22px; }
+.jconfirm-box-container .form-control { display: block; width: 90%; padding: 6px 12px; font-size: 14px; line-height: 1.42857143; color: #555; background-color: #fff; background-image: none; border: 1px solid #ccc; border-radius: 4px; box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075); }
+.jconfirm-box-container .bold { font-weight: bold; }
+
+.newProjectContent { text-align: center; width: 60%; margin: 0 auto; }

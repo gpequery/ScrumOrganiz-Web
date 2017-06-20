@@ -84,6 +84,34 @@ router.post('/setting', function(req, res, nex) {
     }
 });
 
+/* Get newProject Page */
+router.post('/newProject', function (req, res, next) {
+    if (verifySession(req)) {
+        let options = {
+            where: {
+                id: req.session.userId
+            }
+        };
+
+        User.findOne(options).then(function(user) {
+            res.render('general/newProject.html.twig', {user: user});
+        }).catch(function(error) {
+            console.warn('error : ' + error);
+            let data = {
+                etat: false,
+                message: allConfig.get('conf_serveur:error:sequelize:message')
+            };
+            res.render('home/login.html.twig', {path: 'login', conf: allConfig.get('conf_user_rules'), data: data});
+        });
+    } else {
+        let data = {
+            etat: false,
+            message: allConfig.get('session_message:expired')
+        };
+        res.render('home/login.html.twig', {path: 'login', conf: allConfig.get('conf_user_rules'), data: data});
+    }
+});
+
 /* Decrypte infos send by mail and verify date */
 router.get('/changePwdBefore', function (req, res, next) {
     let dataUrl = decodeURI(req.query.data).split(' ').join('+');

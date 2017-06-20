@@ -4,8 +4,7 @@
     "password": "ScrumRpz",
     "database": "scrum_organiz",
     "host": "mysql-scrum.alwaysdata.net",
-    "dialect": "mysql",
-    "logging": false
+    "dialect": "mysql"
   },
   "test": {
     "username": "scrum",
