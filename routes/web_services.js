@@ -3,6 +3,7 @@ const router = express.Router();
 const models = require('../models');
 const bcrypt = require('bcrypt');
 const User = models.User;
+const Project = models.Project;
 
 /* add user with post url */
 router.post('/addUser', function (req, res, next) {
@@ -97,6 +98,51 @@ router.post('/changePwd', function(req, res, next) {
         });
     } else {
         res.send({etat: false, message: messages.acces_refused});
+    }
+});
+
+router.post('/addNewProject', function(req, res, next) {
+    let servicesID = allConfig.get('conf_services:acces');
+    let messages = allConfig.get('services_message');
+
+    if (bcrypt.compareSync(req.body.servicesLogin, servicesID.login) && bcrypt.compareSync(req.body.servicesPassword, servicesID.password)) {
+        let message = allConfig.get('project_message:add');
+
+        if (req.body.label != '' && req.body.description != '') {
+            let options = {
+                where: {
+                    label: req.body.label
+                }
+            };
+
+            Project.findOne(options).then(function (searchProject) {
+                if (searchProject) {
+                    console.log('1');
+                    return false;
+                } else {
+                    console.log('2');
+                    return Project.create({
+                        creatorId: req.body.userId,
+                        label: req.body.label,
+                        description: req.body.description
+                    });
+                }
+            }).then(function (newProject) {
+                if (newProject) {
+                    console.log('3');
+                    res.json({etat: true, message: message.success, project: newProject});
+                } else {
+                    console.log('4');
+                    res.json({etat: false, message: message.project_exist});
+                }
+            }).catch(function (error) {
+                res.json({etat: false, message: error.toString()});
+            });
+        } else {
+            res.json({etat: false, message: req.body.label == '' ? message.no_name : message.no_description});
+        }
+    } else {
+        res.json({etat: false, message: messages.acces_refused});
     }
 });
 
