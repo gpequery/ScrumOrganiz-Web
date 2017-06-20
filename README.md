@@ -69,3 +69,8 @@ Pour toute requête (en POST)
     LIEN :                          [url-du-site]/web_services/achangePwd
     PARAMETRES SUPPLAMENTAIRE :     id, password
     
+####Ajouter un nouveau projet
+
+    LIEN :                          [url-du-site]/web_services/addNewProject
+    PARAMETRES SUPPLAMENTAIRE :     userId, label, description
+    

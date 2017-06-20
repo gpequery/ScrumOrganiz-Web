@@ -32,4 +32,12 @@ jQuery(function() {
     $j.getScript('/javascripts/scripts/_setting.js', function() {
         console.info('Load was performed --> _setting');
     });
+
+    $j.getScript('/javascripts/scripts/_board.js', function() {
+        console.info('Load was performed --> _board');
+    });
+
+    $j.getScript('/javascripts/scripts/_newProject.js', function() {
+        console.info('Load was performed --> _newProject');
+    });
 });

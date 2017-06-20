@@ -2,12 +2,17 @@
 
 module.exports = function (sequelize, DataTypes) {
     var Project = sequelize.define('Project', {
+        creatorId: {
+            type: DataTypes.INTEGER,
+            allowNull: false
+        },
         label: {
             type: DataTypes.STRING,
             allowNull: false
         },
         description: {
-            type: DataTypes.STRING
+            type: DataTypes.STRING,
+            allowNull: false
         }
     }, {
         paranoid: true,
