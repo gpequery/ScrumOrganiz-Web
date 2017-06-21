@@ -4,7 +4,7 @@
     },
     "conf_serveur": {
         "adress": "http://localhost",
-        "port": "3000",
+        "port": "8080",
         "error": {
             "not_found": {
                 "code": "404",
