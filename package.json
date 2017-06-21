@@ -32,7 +32,6 @@
     "nconf": "^0.8.4",
     "node-compass": "0.2.3",
     "node-mailer": "^0.1.1",
-    "node-pre-gyp": "^0.6.36",
     "nodemailer": "^4.0.1",
     "redis": "^2.7.1",
     "redis-server": "^1.1.0",
